@@ -2,14 +2,9 @@
 # -*- coding: utf-8 -*-
 # count su number in each session
 
+require "./ext-session.rb"
 
-sessions = {}
-ARGF.each do |line|
-   actionid, userid, userip, sesid, lang, query, action, colid, nrrecords, recordpos, sboxid, objurl, time = line.chomp.split( /\t/ )
-   sessions[ sesid ] ||= []
-   sessions[ sesid ] << line.chomp.split( /\t/ )
-end
-
+sessions = load_logdata
 sessions.keys.each do |sesid|
 	session = sessions[ sesid ]
 	i = 0
