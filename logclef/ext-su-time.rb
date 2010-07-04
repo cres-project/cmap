@@ -12,14 +12,14 @@ sessions.keys.each do |sesid|
 	cur_data = []
 	action_data = nil
 	session.each do |data|
-		if /search_/ =~ data[ 6 ]
+		cur_data << data
+		if /^search_/ =~ data[ 6 ]
 			if action_data
 				units << cur_data
 			end
-			cur_data = []
+			cur_data = [ data ]
 			action_data = data
 		end
-		cur_data << data
 	end
 	if action_data and not cur_data.empty?
 		units << cur_data
