@@ -32,7 +32,8 @@ sessions.keys.each do |sesid|
       last_time  = Time.parse( unit[ -1][12] )
       first_time = Time.parse( unit[ 0 ][12] )
       time = ( last_time - first_time ).to_f
-      action_num = unit.size == 1 ? 1 : unit.size - 1
+      action_num = unit.select{|e| not e[6] =~ /^search_/ }.size
+      action_num += 1 if unit[0][6] =~ /^search_/
       puts [ sesid, i + 1, unit[0][6], action_num, time ].join( "\t" )
    end
 end
