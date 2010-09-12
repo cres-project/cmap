@@ -3,7 +3,8 @@
 
 # count su number and time in each session
 
-require "./ext-session.rb"
+$:.push File.dirname($0)
+require "ext-session.rb"
 
 sessions = load_logdata
 

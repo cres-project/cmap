@@ -4,7 +4,8 @@
 
 # セッション単位でログデータを抽出する。
 
-require "./ext-session.rb"
+$:.push File.dirname($0)
+require "ext-session.rb"
 
 sessions = load_logdata
 
