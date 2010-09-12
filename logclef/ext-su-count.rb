@@ -13,12 +13,14 @@ sessions.keys.each do |sesid|
    units = []
    cur_data = []
    action_data = nil
+   previous_query = nil
    session.each do |data|
       cur_data << data
-      if /^search_/ =~ data[ 6 ]
+      if /^search_/ =~ data[ 6 ] and previous_query != data[ 5 ]
          if action_data
             units << cur_data
          end
+	 previous_query = data[ 5 ]
          cur_data = [ data ]
          action_data = data
       end
@@ -26,11 +28,11 @@ sessions.keys.each do |sesid|
    if action_data and not cur_data.empty?
       units << cur_data
    end
-   units.each do |unit|
+   units.each_with_index do |unit, i|
       last_time  = Time.parse( unit[ -1][12] )
       first_time = Time.parse( unit[ 0 ][12] )
       time = ( last_time - first_time ).to_f
       action_num = unit.size == 1 ? 1 : unit.size - 1
-      puts [ sesid, unit[0][6], action_num, time ].join( "\t" )
+      puts [ sesid, i + 1, unit[0][6], action_num, time ].join( "\t" )
    end
 end
