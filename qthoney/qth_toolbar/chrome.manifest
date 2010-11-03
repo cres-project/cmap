@@ -1,0 +1,4 @@
+overlay	chrome://browser/content/browser.xul	chrome://qthtoolbar/content/logtoolbar.xul
+overlay	chrome://navigator/content/navigator.xul	chrome://qthtoolbar/content/logtoolbar.xul
+content	qthtoolbar	jar:chrome/qth_toolbar.jar!/content/
+skin	qthtoolbar	classic/1.0	jar:chrome/qth_toolbar.jar!/skin/
