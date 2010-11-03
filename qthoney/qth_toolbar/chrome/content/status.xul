@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+
+<window 
+  id="qth_status_dialog"
+  title="QT Honey Toolbar - Status"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+>
+
+<label id="qth_status_label" style="font-size:75pt;width:300px;height:100px" value="start"/>
+
+<script type="text/javascript">
+	<![CDATA[
+	(function(){
+	////////////////////////////////////////////////////////////////////////////////
+	
+	function event_observe(
+		target_element, event_name, observer_func, capture_or_bubbling) {
+		target_element.addEventListener(
+			event_name, observer_func, capture_or_bubbling || false);
+	}
+
+	function dom_get(id) {
+		return document.getElementById(id)
+	}
+
+	////////////////////////////////////////
+
+	event_observe(window, 'load',
+		function(){
+			var log = window.arguments[0];
+			var debug_log = window.arguments[1];
+
+			//debug_log(log['event_label'])
+			dom_get('qth_status_label').setAttribute('value', log['event_label']);
+		}
+	)
+
+	////////////////////////////////////////////////////////////////////////////////
+	})();
+	]]>
+</script>
+
+</window>

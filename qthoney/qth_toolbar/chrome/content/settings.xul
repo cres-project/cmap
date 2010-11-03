@@ -1,0 +1,704 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+
+<dialog 
+  id="dlgToolbarSettings"
+  title="Query Log Toolbar - Settings"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  buttons="accept,cancel,extra1"
+  ondialogaccept="return saveSettings();"
+  ondialogcancel="return true;"
+  buttonlabelextra1="Apply"
+  ondialogextra1="saveSettings();"
+  
+>
+
+<script type="application/x-javascript" src="chrome://qthtoolbar/content/aescipher.js"/>
+<script type="application/x-javascript" src="chrome://qthtoolbar/content/configuration.js" />
+<script type="application/x-javascript" src="chrome://qthtoolbar/content/settings.js" />
+
+<tabbox id="tbSettings">
+  <tabs>
+    <tab label="General" />
+    <tab label="Blacklists" />
+    <tab label="Search Engines" />
+  </tabs>
+  <tabpanels>
+  
+    <tabpanel id="tabSettingsGeneral">
+      <vbox>
+        <groupbox>
+          <caption label="General Settings" />
+          <vbox>
+            <checkbox id="chkAnonSession" label="Generate random session ID" />
+            <checkbox id="chkUseDesktopSearch" label="Log Desktop Search Results" />
+            <checkbox id="qth_cache_enabled" label="Save cache" checked="true"/>
+            <checkbox id="qth_debug_mode" label="Debug mode" />
+          </vbox>
+        </groupbox>
+
+	  <groupbox>
+	    <caption label="QTH Server Settings" />
+	    <hbox>
+	      <label value="URL:" />
+	      <textbox id="txtQTHServer" value="" size="48" />
+	    </hbox>
+	  </groupbox>
+
+        <groupbox>
+          <caption label="Server Settings" />
+          <vbox>
+            <hbox>
+              <label value="Address:" control="txtServer" />
+              <textbox id="txtServer" value="" size="48" onchange="txtServerOnChange();" />
+            </hbox>
+            <groupbox>
+              <caption id="lblAutoUploads" label="Automatic Uploads" />
+              <radiogroup id="rdoGroupAutoUploads">
+                <vbox>
+                  <hbox>
+                    <radio id="btnAllowAutoUploads" label="Allow automatic uploads" />
+                    <radio id="btnManualUploadsOnly" label="Manual uploads only" />
+                  </hbox>
+                  <radio id="btnAutoUploadsWithAsk" label="Allow automatic uploads, but ask first" />
+                </vbox>
+              </radiogroup>
+            </groupbox>
+          </vbox>
+        </groupbox>
+        <groupbox>
+          <caption label="Blacklist Settings" />
+          <vbox>
+            <checkbox id="chkPersonalData" oncommand="chkPersonalDataOnChange();" label="Blacklist Personal Data (CC#'s, phone, Etc.)" checked="true" />
+            <checkbox id="chkAddressData" oncommand="chkAddressDataOnChange();"  label="Blacklist Address Data" checked="true" />
+            <checkbox id="chkProperNameData" oncommand="chkProperNameDataOnChange();"  label="Blacklist Proper Names" checked="true" />
+            <checkbox id="chkKeywordData" oncommand="chkKeywordDataOnChange();"  label="Blacklist Keywords" checked="true" />
+            <label value="Note: the above blacklist items will not be" />
+            <label value="effective unless the blacklist entries on the" />
+            <label value="Blacklists tab are set." />
+          </vbox>
+        </groupbox>
+      </vbox>
+    </tabpanel>
+    
+    <tabpanel id="tabSettingsBlacklist">
+      <vbox>
+        <hbox>
+          <label value="Blacklists:" control="drpBlacklists" />
+          <menulist id="drpBlacklists" oncommand="drpBlacklists_OnSelect();">
+            <menupopup>
+              <menuitem label="Personal Data" selected="true" />
+              <menuitem label="Address Data" />
+              <menuitem label="Proper Names" />
+              <menuitem label="Keywords" />
+            </menupopup>
+          </menulist>
+        </hbox>
+        <vbox>
+          <label id="lblBlacklistGroup" value="Personal Data" />
+          <tabbox id="tbBlacklists" selectedIndex="1">
+            <tabpanels id="tbBlacklistPanels">
+              <tabpanel id="tabBlacklistPersonal" style="border: none;">
+                <vbox>
+                  <label value="Personal data such as SSNs, credit card information," width="300" />
+                  <label value="driver's license numbers, etc. should be entered here" width="300" />
+                  <listbox id="lstBlacklistPersonalData" seltype="single" onselect="doListItemSelection();" />
+                  <button id="btnAddSpecialPersonal" label="Add Special Information" oncommand="btnAddSpecialPersonalOnClick();" />
+                </vbox>
+              </tabpanel>
+              <tabpanel id="tabBlacklistAddress" style="border: none;">
+                <vbox>
+                  <label value="Any addresses to filter should be entered here" width="300" />
+                  <label value="" width="300" />
+                  <listbox id="lstBlacklistAddressData" seltype="single" onselect="doListItemSelection();" />
+                </vbox>
+              </tabpanel>
+              <tabpanel id="tabBlacklistNames" style="border: none;">
+                <vbox>
+                  <label value="Proper names such as people or businesses should be" width="300" />
+                  <label value="entered here" width="300" />
+                  <listbox id="lstBlacklistNameData" seltype="single" onselect="doListItemSelection();" />
+                </vbox>
+              </tabpanel>
+              <tabpanel id="tabBlacklistKeywords" style="border: none;">
+                <vbox>
+                  <label value="Any additional keywords to be filtered should be" width="300" />
+                  <label value="entered here" width="300" />
+                  <listbox id="lstBlacklistKeywordData" seltype="single" onselect="doListItemSelection();" />
+                </vbox>
+              </tabpanel>
+            </tabpanels>
+          </tabbox>
+        </vbox>
+        <hbox>
+          <button id="btnRemoveListItem" align="end" label="Remove Selected" disabled="true" oncommand="btnRemoveListItemOnClick();" />
+        </hbox>
+        <hbox>
+          <label value="New item:" control="txtNewListItem" />
+          <textbox id="txtNewListItem" />
+          <button id="btnAddListItem" align="end" label="Add" oncommand="btnAddListItemOnClick();" />
+        </hbox>
+      </vbox>
+    </tabpanel>
+  
+    <tabpanel id="tabSearchEngines">
+      <vbox>
+        <label id="lblSearchEnginesList" value="Known Search Engines:" />
+		<listbox width="600px" id="qth_search_listbox">
+		  <listhead>
+		    <listheader label="label"/>
+		    <listheader label="base_url"/>
+		    <listheader label="keyword_type"/>
+		    <listheader label="keyword_key"/>
+		    <listheader label="keyword_index"/>
+		    <listheader label="index_key"/>
+		  </listhead>
+
+		  <listcols>
+		    <listcol />
+		    <listcol flex="3"/>
+		    <listcol flex="1"/>
+		    <listcol flex="1"/>
+		    <listcol flex="1"/>
+		    <listcol flex="1"/>
+		  </listcols>
+		</listbox>
+		<grid flex="1">
+			<columns>
+				<column flex="1"/>
+				<column flex="10"/>
+			</columns>
+
+			<rows>
+				<row align="center"><label value="検索エンジンの名前" /><textbox id="qth_search_engine_label" /></row>
+				<row align="center"><label value="検索エンジンのURLテンプレート" /><textbox id="qth_search_engine_url" /></row>
+				<row align="center">
+					<label value="キーワードの位置" />
+					<radiogroup id="qth_search_engine_type">
+						<hbox>
+							<radio id="qth_search_engine_type_parameter" value="parameter" selected="true" label="クエリ"/>
+							<radio id="qth_search_engine_type_in_url" value="in_url" label="URLのパス内"/>
+						</hbox>
+					</radiogroup>
+				</row>
+				<row align="center"><label value="　キーワードがクエリに含まれる場合のキー名" /><textbox id="qth_search_engine_keyword_key" /></row>
+				<row align="center">
+					<vbox>
+						<label value="　キーワードがURLのパス内に含まれる場合の、" />
+						<label value="　キーワードに相当する正規表現のグループ番号" />
+					</vbox>
+					<textbox id="qth_search_engine_keyword_index" disabled="true" />
+				</row>
+				<row align="center"><label value="ページ番号を示すクエリのキー名" /><textbox id="qth_search_engine_index_key" /></row>
+			</rows>
+		</grid>
+        <hbox>
+          <button id="qth_search_list_add" align="end" label="Add" />
+          <button id="qth_search_list_apply" align="end" label="Apply" />
+          <button id="qth_search_list_remove" align="end" label="Remove" />
+          <button id="qth_search_list_import_from_url" align="end" label="Import from URL" />
+          <button id="qth_search_list_import_from_file" align="end" label="Import from File" />
+          <button id="qth_search_list_export_to_file" align="end" label="Export to File" />
+        </hbox>
+      </vbox>
+    </tabpanel>
+  
+  </tabpanels>
+</tabbox>
+
+<script type="text/javascript">
+<![CDATA[
+	// on load - ensure we have the proper settings
+
+	setOptionsSettings();
+
+	(function(){
+	try{
+	////////////////////////////////////////////////////////////////////////////////
+
+	function event_observe(
+		target_element, event_name, observer_func, capture_or_bubbling) {
+		target_element.addEventListener(
+			event_name, observer_func, capture_or_bubbling || false);
+	}
+	function dom_get(id) {
+		return document.getElementById(id)
+	}
+	function dom_create(name, attrs, children, events) {
+		attrs = attrs || {}; events = events || {}; children = children || []
+		var result = document.createElement(name);
+		for(var attr in attrs)
+			result.setAttribute(attr, attrs[attr])
+		for(var index = 0; index < children.length; ++index) {
+			if('string' == typeof children[index])
+				result.appendChild(document.createTextNode(children[index]))
+			else
+				result.appendChild(children[index])
+		}
+		for(var event in events)
+			result.addEventListener(event, events[event], false)
+		return result
+	}
+
+	function xpcom_get(component_id) {
+		return Components.classes[component_id].getService().wrappedJSObject;
+	}
+
+	function get_globals() {
+		return xpcom_get('@kyagroup.com/qth_toolbar/singleton_object;1');
+	}
+
+	var debug_log = get_globals().debug_log;
+
+	function array_each(obj, func) {
+		if('number' == typeof obj)
+			for(var index = 0; index < obj; ++index) { if(func(index)) return; }
+		else if(undefined != obj.length)
+			for(var index2 = 0; index2 < obj.length; ++index2) {
+				if(func(obj[index2], index2)) return;
+			}
+		else
+			for(var name in obj) { if(func(obj[name], name)) return }
+	}
+
+	function array_remove(array, index) {
+		array.splice(index, 1)
+		return array
+	}
+
+	function dom_remove(element) {
+		element.parentNode.removeChild(element)
+	}
+
+	function array_each_result(array, init, func) {
+		array_each(array, function(value, key) {
+			var result = func(init, value, key);
+			init = result[0];
+			if(1 < result.length)
+				return result[1];
+			return false;
+		})
+		return init
+	}
+
+	function array_reduce(array, init, func) {
+		return array_each_result(array, init,
+			function(result, value, key) { return [func(result,value, key)]; }
+		)
+	}
+
+	function array_map(array, func) {
+		return array_reduce(array, [],
+			function(results, value, key) {
+				results.push(func(value, key)); return results
+			}
+		)
+	}
+
+	function array_create(obj) {
+		return array_map(obj, function(item) { return item })
+	}
+
+	function ifile_write(ifile, data) {
+		if( ifile.exists() )
+			ifile.remove(true);
+		ifile.create(ifile.NORMAL_FILE_TYPE, 0666);
+
+		var stream = Components
+			.classes['@mozilla.org/network/file-output-stream;1']
+			.createInstance(Components.interfaces.nsIFileOutputStream);
+		stream.init(ifile, 2, 0x200, false);
+		stream.write(data, data.length);
+		stream.close();
+	}
+
+	function json_encode(json_obj){
+		var nativeJSON = Components.classes["@mozilla.org/dom/json;1"].createInstance(Components.interfaces.nsIJSON);
+		return nativeJSON.encode(json_obj);
+	}
+
+	function path_cd(ifile/*, args*/) {
+		var args = array_create(arguments)
+		var result = args.shift().clone()
+		return array_reduce(
+			args, result,
+			function(result, item) { result.append(item); return result }
+		)
+	}
+
+	function path_get_ifile(type) {
+		return Components.classes['@mozilla.org/file/directory_service;1']
+			.getService(Components.interfaces.nsIProperties)
+			.get(type, Components.interfaces.nsIFile);
+	}
+
+	function path_get_profile_dir() {
+		return path_get_ifile('ProfD');
+	}
+
+	function http_get(url, after_func, post_data, headers) {
+		debug_message(url)
+		after_func = after_func || (function(result) { alert(result) })
+		var method = post_data ? 'POST' : 'GET'
+
+		var xmlHttpRequest = null;
+		try {
+			xmlHttpRequest = new XMLHttpRequest();
+		} catch(e) {}
+
+		if(!xmlHttpRequest)
+			return;
+
+		xmlHttpRequest.onreadystatechange = function() {
+			if(4 == xmlHttpRequest.readyState) {
+				after_func(xmlHttpRequest.responseText, xmlHttpRequest)
+				xmlHttpRequest.onreadystatechange = function() {}
+			}
+		}
+		try {
+			xmlHttpRequest.open(method, url, true);
+			if(post_data)
+				headers['Content-Type'] = 'application/x-www-form-urlencoded'
+			for(var key in headers)
+				xmlHttpRequest.setRequestHeader(key, headers[key]);
+			xmlHttpRequest.send(post_data || null);
+		} catch(e) {}
+	}
+
+	function json_decode(str){
+		var nativeJSON = Components.classes["@mozilla.org/dom/json;1"].createInstance(Components.interfaces.nsIJSON);
+		return nativeJSON.decode(str);
+	}
+
+	function path_ifile_to_config(key, ifile) {
+		setTimeout(function(){
+			var prefs = Components.classes['@mozilla.org/preferences-service;1']
+				.getService(Components.interfaces.nsIPrefService)
+			prefs.setComplexValue(key, Components.interfaces.nsILocalFile, ifile);
+		});
+	}
+
+	function path_ifile_from_config(key) {
+		try {
+			var prefs = Components.classes['@mozilla.org/preferences-service;1']
+				.getService(Components.interfaces.nsIPrefService)
+			return prefs.getComplexValue(key, Components.interfaces.nsILocalFile);
+		} catch(e) {
+			return null
+		}
+
+	}
+
+	function path_dialog(options) {
+		// nsIFilePickerを用意
+		const nsIFilePicker = Components.interfaces.nsIFilePicker;
+		var fp = Components.classes['@mozilla.org/filepicker;1']
+			.createInstance(nsIFilePicker);
+		//初期化
+		var mode = nsIFilePicker.modeOpen;
+		if (options['save'])
+			mode = nsIFilePicker.modeSave;
+		if (options['config'])
+			fp.displayDirectory = path_ifile_from_config(options['config'])
+		if (options['is_dir'])
+			mode |= nsIFilePicker.modeGetFolder;
+		else if(fp.displayDirectory)
+			fp.defaultString = fp.displayDirectory.leafName
+		else
+			fp.defaultString = options['default_string']
+		fp.init(window, options['title'], mode);
+		// 初期ディレクトリを設定
+		// フィルタを用意
+		fp.appendFilters(nsIFilePicker.filterAll | nsIFilePicker.filterText);
+		// 表示
+		var result = fp.show();
+		// 結果を返す
+		if (
+			result == nsIFilePicker.returnOK ||
+			result == nsIFilePicker.returnReplace
+		) {
+			if (options['config'])
+				path_ifile_to_config(options['config'], fp.file)
+			return fp.file
+		}
+		return false;
+	}
+
+	function config_get(key, default_value) {
+		//http://piro.sakura.ne.jp/xul/tips/x0007.html
+		//まず旧形式で取得しようとしてみる。
+		const nsIPrefBranch = Components.interfaces.nsIPrefBranch
+		const prefBranch = Components.classes['@mozilla.org/preferences;1'].getService(nsIPrefBranch)
+		switch(prefBranch.getPrefType(key)) {
+			case nsIPrefBranch.PREF_INVALID: return default_value || null;
+			case nsIPrefBranch.PREF_INT: return prefBranch.getIntPref(key);
+			case nsIPrefBranch.PREF_BOOL: return prefBranch.getBoolPref(key);
+			case nsIPrefBranch.PREF_STRING:
+				try {
+					var result = prefBranch.getCharPref(key);
+					//もしresultの先頭がchrome://なら多分Bundleをつかう。
+					var chrome_str = 'chrome://';
+					if(chrome_str == result.substr(0, chrome_str.length)) {
+						return Components.classes['@mozilla.org/intl/stringbundle;1'].getService(Components.interfaces.nsIStringBundleService).createBundle(result).GetStringFromName(key)
+					} else
+						return result;
+				} catch(e) {
+					return default_value || null;
+				}
+		}
+		return default_value || null;
+	}
+
+	function config_set(key, value) {
+		//http://piro.sakura.ne.jp/xul/tips/x0007.html
+		const nsIPrefBranch = Components.interfaces.nsIPrefBranch
+		const prefBranch = Components.classes['@mozilla.org/preferences;1'].getService(nsIPrefBranch)
+		var setter = prefBranch.setCharPref;
+		switch(typeof value) {
+			case 'boolean': setter = prefBranch.setBoolPref; break;
+			case 'number': setter = prefBranch.setIntPref; break;
+		}
+		try {
+			setter(key, value)
+		} catch(e) {
+			//違う型ですでにキーが存在すると例外が出ることがある。
+			//そのときはいったんクリアしてからもう一度トライ。
+			prefBranch.clearUserPref(key)
+			setter(key, value)
+		}
+	}
+
+	////////////////////////////////////////
+
+	var qth_search_listbox = dom_get('qth_search_listbox');
+
+	var qth_search_engine_label = dom_get('qth_search_engine_label');
+	var qth_search_engine_url = dom_get('qth_search_engine_url');
+	var qth_search_engine_type = dom_get('qth_search_engine_type');
+	var qth_search_engine_keyword_index = dom_get('qth_search_engine_keyword_index');
+	var qth_search_engine_keyword_key = dom_get('qth_search_engine_keyword_key');
+	var qth_search_engine_index_key = dom_get('qth_search_engine_index_key');
+
+	var search_ifile = path_cd(path_get_profile_dir(), 'QT', 'qth_search_list.json');
+
+	event_observe(qth_search_listbox, 'select', function(){
+		var search_engine = get_globals().search_engines[qth_search_listbox.selectedIndex]
+
+		qth_search_engine_label.value = search_engine["search_label"];
+		qth_search_engine_url.value = search_engine["base_url"];
+		qth_search_engine_type.value = search_engine["keyword_type"];
+		qth_search_engine_keyword_index.value = search_engine["keyword_index"];
+		qth_search_engine_keyword_key.value = search_engine["keyword_key"];
+		qth_search_engine_index_key.value = search_engine["index_key"];
+
+		if('in_url' == qth_search_engine_type.value) {
+			qth_search_engine_keyword_index.removeAttribute('disabled');
+			qth_search_engine_keyword_key.setAttribute('disabled', 'true');
+		} else {
+			qth_search_engine_keyword_index.setAttribute('disabled', 'true');
+			qth_search_engine_keyword_key.removeAttribute('disabled');
+		}
+
+	})
+
+	function reload() {
+		array_each(array_create(qth_search_listbox.getElementsByTagName('listitem')), function(listitem) {
+			dom_remove(listitem);
+		})
+		array_each(get_globals().search_engines, 
+			function(search_engine) {
+				var item = dom_create('listitem');
+				var keys = ['search_label', 'base_url', 'keyword_type', 'keyword_key', 'keyword_index', 'index_key'];
+				array_each(keys, function(key) {
+					var value = search_engine[key];
+					if(!value)
+						value = "-";
+					item.appendChild(dom_create('listcell', {'label': value}));
+				})
+				qth_search_listbox.appendChild(item);
+			}
+		)
+	}
+
+	event_observe(window, 'load', function(){
+		reload();
+	});
+
+	event_observe(dom_get('qth_search_list_remove'), 'click', function(){
+		array_remove(get_globals().search_engines, qth_search_listbox.selectedIndex);
+		ifile_write(search_ifile, json_encode(get_globals().search_engines));
+		reload();
+	});
+
+	event_observe(dom_get('qth_search_list_add'), 'click', function(){
+		var search_engine = {
+			"search_label":qth_search_engine_label.value,
+			"base_url":qth_search_engine_url.value,
+			"keyword_type":qth_search_engine_type.value,
+			"keyword_index":qth_search_engine_keyword_index.value,
+			"keyword_key":qth_search_engine_keyword_key.value,
+			"index_key":qth_search_engine_index_key.value
+		};
+
+		get_globals().search_engines.push(search_engine)
+		ifile_write(search_ifile, json_encode(get_globals().search_engines));
+		reload();
+	});
+
+	event_observe(dom_get('qth_search_list_apply'), 'click', function(){
+		var search_engine = {
+			"search_label":qth_search_engine_label.value,
+			"base_url":qth_search_engine_url.value,
+			"keyword_type":qth_search_engine_type.value,
+			"keyword_index":qth_search_engine_keyword_index.value,
+			"keyword_key":qth_search_engine_keyword_key.value,
+			"index_key":qth_search_engine_index_key.value
+		};
+
+		get_globals().search_engines[qth_search_listbox.selectedIndex] = search_engine;
+		ifile_write(search_ifile, json_encode(get_globals().search_engines));
+		reload();
+	});
+
+	event_observe(qth_search_engine_type, 'RadioStateChange', function(){
+		if('in_url' == qth_search_engine_type.value) {
+			qth_search_engine_keyword_index.removeAttribute('disabled');
+			qth_search_engine_keyword_key.setAttribute('disabled', 'true');
+		} else {
+			qth_search_engine_keyword_index.setAttribute('disabled', 'true');
+			qth_search_engine_keyword_key.removeAttribute('disabled');
+		}
+	});
+
+	event_observe(dom_get('qth_search_list_import_from_url'), 'click', function(){
+		var url = prompt('Prease Enter URL', 'http://mew.ntcir.nii.ac.jp/qth_toolbar/qth_search_list.json');
+		if(url) {
+			get_globals().http_get(url,
+				function(result) {
+					get_globals().search_engines = json_decode(result);
+					if(get_globals().search_engines.length) {
+						ifile_write(search_ifile, result);
+						reload();
+					}
+				}
+			);
+		}
+	});
+	
+	event_observe(dom_get('qth_search_list_import_from_file'), 'click', function(){
+
+		var src_ifile = path_dialog( {
+			title: '読み込むファイルのパスを指定してください',
+			config: 'extensions.qth_toolbar.source_path_mru'
+		})
+		if(!src_ifile)
+			return
+
+		var data = "";
+		var fstream = Components.classes["@mozilla.org/network/file-input-stream;1"]
+		                        .createInstance(Components.interfaces.nsIFileInputStream);
+		var sstream = Components.classes["@mozilla.org/scriptableinputstream;1"]
+		                        .createInstance(Components.interfaces.nsIScriptableInputStream);
+		try {
+			fstream.init(src_ifile, -1, 0, 0);
+			try {
+				sstream.init(fstream); 
+				var str = sstream.read(4096);
+				while (str.length > 0) {
+				  data += str;
+				  str = sstream.read(4096);
+				}
+
+				get_globals().search_engines = json_decode(data);
+			} catch(e){
+			}
+			sstream.close();
+		} catch(e) {
+			get_globals().search_engines = [];
+		}
+		fstream.close();
+
+		if(get_globals().search_engines.length) {
+			ifile_write(search_ifile, data);
+			reload();
+		}
+	});
+	
+	event_observe(dom_get('qth_search_list_export_to_file'), 'click', function(){
+		var dst_ifile = path_dialog( {
+			title: '出力先のパスを指定してください',
+			config: 'extensions.qth_toolbar.dst_path_mru',
+			save: true
+		})
+		if(!dst_ifile)
+			return
+		ifile_write(dst_ifile, json_encode(get_globals().search_engines));
+	});
+	
+	var qth_debug_mode = dom_get('qth_debug_mode');
+	if(!get_globals().debug_log.release) {
+		qth_debug_mode.setAttribute('checked', true)
+	}
+
+            var qth_cache_enabled = dom_get('qth_cache_enabled');
+        qth_cache_enabled.setAttribute('checked', config_get('extension.qth_toolbar.cache_enabled') ? true : false);
+
+        event_observe(qth_cache_enabled, 'command', function(){
+                          var enabled = qth_cache_enabled.getAttribute('checked') == 'true';
+                          get_globals().cache_enabled = enabled;
+                          config_set('extension.qth_toolbar.cache_enabled', enabled);
+                      });
+
+
+        var txtQTHServer = dom_get('txtQTHServer');
+        txtQTHServer.value = config_get('extension.qth_toolbar.server');
+        var onApply = function() {
+            config_set('extension.qth_toolbar.server', dom_get('txtQTHServer').value);
+        }
+        var dlg = dom_get('dlgToolbarSettings');
+        event_observe(dlg.getButton('accept'), 'command', onApply);
+        event_observe(dlg.getButton('extra1'), 'command', onApply);
+
+	event_observe(qth_debug_mode, 'command', function(){
+		if(qth_debug_mode.getAttribute('checked')) {
+			get_globals().debug_log.release = false;
+			config_set('extension.qth_toolbar.is_debug', true);
+		} else {
+			get_globals().debug_log.release = true;
+			config_set('extension.qth_toolbar.is_debug', false);
+		}
+	})
+
+            var qth_cache_enabled = dom_get('qth_cache_enabled');
+        qth_cache_enabled.setAttribute('checked', config_get('extension.qth_toolbar.cache_enabled') ? true : false);
+
+        event_observe(qth_cache_enabled, 'command', function(){
+                          var enabled = qth_cache_enabled.getAttribute('checked') == 'true';
+                          get_globals().cache_enabled = enabled;
+                          config_set('extension.qth_toolbar.cache_enabled', enabled);
+                      });
+
+
+        var txtQTHServer = dom_get('txtQTHServer');
+        txtQTHServer.value = config_get('extension.qth_toolbar.server');
+        var onApply = function() {
+            config_set('extension.qth_toolbar.server', dom_get('txtQTHServer').value);
+        }
+        var dlg = dom_get('dlgToolbarSettings');
+        event_observe(dlg.getButton('accept'), 'command', onApply);
+        event_observe(dlg.getButton('extra1'), 'command', onApply);
+
+	////////////////////////////////////////////////////////////////////////////////
+	} catch(e) {
+		var nsIConsoleService = Components.interfaces.nsIConsoleService;
+		Components.classes['@mozilla.org/consoleservice;1']
+			.getService(nsIConsoleService)
+			.logStringMessage('error' + e);
+	}
+
+	})();
+]]>
+</script>
+
+</dialog>

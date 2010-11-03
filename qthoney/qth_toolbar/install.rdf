@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:mozilla:extension:file:qth_toolbar.jar"
+                   em:package="content/" />
+  <RDF:Description RDF:about="rdf:#$nmAoG"
+                   em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   em:maxVersion="3.6.*"
+                   em:minVersion="3.6" />
+  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+                   em:creator="KYA group Corporation"
+                   em:homepageURL="http://www.kyagroup.com/"
+                   em:id="{199d5ba0-9736-46f8-99d9-424d1cd9ed1a}"
+                   em:name="QT Honey Toolbar"
+                   em:updateURL="http://mew.ntcir.nii.ac.jp/qth_toolbar/update.rdf"
+                   em:updateKey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCVVR2NVd0o3HOOdpHyXz/DFiq0judu4XpczQwxm7oljaXv1gHhMHgZv3pQDex5q6HWis7kT6jbR7rgbaVC//+dHJ+HSRqs3LoRFqXSXNIf4Jckc1cO+dUr6jXP3W/PWizEsv1ieA48SJHLaUjE71SFdTw5h6ojhnajCdcBb2lFQIDAQAB"
+                   em:version="2.1.0"
+                   em:description="A toolbar logging user behavior">
+    <em:file RDF:resource="urn:mozilla:extension:file:qth_toolbar.jar"/>
+    <em:targetApplication RDF:resource="rdf:#$nmAoG"/>
+  </RDF:Description>
+</RDF:RDF>
