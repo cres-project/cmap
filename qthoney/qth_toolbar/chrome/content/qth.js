@@ -1404,6 +1404,8 @@ append_log2 = function (log, tab_id, doc, dum) {
     log['title'] = doc.title;
     log['url']   = doc.location.href;
 
+    log['page_id'] = get_page_id(tab_data, log['url'], doc);
+  
     // ログファイルに書き込み
     var str = [JSON.stringify(log), "\n"].join("");
     var log_text = string_encode(str, null, 'UTF-8');
