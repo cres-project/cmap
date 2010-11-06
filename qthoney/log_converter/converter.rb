@@ -21,6 +21,7 @@ module QTHoney
       end
       def convert
          http_req = {}
+         pre_action = {}
          actions = []
          @data.each do |e|
             # p e[ "eventType" ]
@@ -42,7 +43,31 @@ module QTHoney
                      :page_id => e[ "page_id" ],
                      :url => e[ "url" ],
                      :title => e[ "title" ],
-                     :page_type => url_page_type( e[ "url" ] ),
+                     :page_type => url_page_type( e[ "url" ] )[ :type ],
+                  }
+               when "cmd_quitApplication"
+                  pre_action[ :cmd_quitApplication ] = {
+                     :action => :end,
+                     :timestamp => e[ "timestamp" ],
+                     :tab_id => e[ "tab_id" ],
+                     :page_id => e[ "page_id" ],
+                     :url => e[ "url" ],
+                     :title => e[ "title" ],
+                     :page_type => url_page_type( e[ "url" ] )[ :type ],
+                  }
+               end
+            when "onCloseWindow"
+               if pre_action[ :cmd_quitApplication ]
+                  actions << pre_action[ :cmd_quitApplication ]
+               else
+                  actions << {
+                     :action => :end,
+                     :timestamp => e[ :timestamp ],
+                     :tab_id => e[ "tab_id" ],
+                     :page_id => e[ "page_id" ],
+                     :url => e[ "url" ],
+                     :title => e[ "title" ],
+                     :page_type => url_page_type( e[ "url" ] )[ :type ],
                   }
                end
             when "http_req"
