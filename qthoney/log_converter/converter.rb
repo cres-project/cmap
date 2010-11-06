@@ -14,8 +14,8 @@ module QTHoney
             @data << JSON.parse( line )
          end
       end
-      http_req = {}
       def convert
+         http_req = {}
          actions = []
          @data.each do |e|
             # p e[ "eventType" ]
@@ -25,7 +25,7 @@ module QTHoney
                actions << {
                   :action => :start,
                   :timestamp => e[ "timestamp" ],
-                  # :tab_id => e[ "tab_id" ],
+                  :tab_id => e[ "tab_id" ],
                }
             when "http_req"
                http_req[ ]
