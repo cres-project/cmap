@@ -15,7 +15,7 @@
                    em:name="QT Honey Toolbar"
                    em:updateURL="http://mew.ntcir.nii.ac.jp/qth_toolbar/update.rdf"
                    em:updateKey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCVVR2NVd0o3HOOdpHyXz/DFiq0judu4XpczQwxm7oljaXv1gHhMHgZv3pQDex5q6HWis7kT6jbR7rgbaVC//+dHJ+HSRqs3LoRFqXSXNIf4Jckc1cO+dUr6jXP3W/PWizEsv1ieA48SJHLaUjE71SFdTw5h6ojhnajCdcBb2lFQIDAQAB"
-                   em:version="2.1.0"
+                   em:version="2.1.1"
                    em:description="A toolbar logging user behavior">
     <em:file RDF:resource="urn:mozilla:extension:file:qth_toolbar.jar"/>
     <em:targetApplication RDF:resource="rdf:#$nmAoG"/>
