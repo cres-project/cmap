@@ -62,7 +62,7 @@ module QTHoney
                else
                   actions << {
                      :action => :end,
-                     :timestamp => e[ :timestamp ],
+                     :timestamp => e[ "timestamp" ],
                      :tab_id => e[ "tab_id" ],
                      :page_id => e[ "page_id" ],
                      :url => e[ "url" ],
@@ -84,6 +84,19 @@ module QTHoney
          actions
       end
 
+      def to_tsv
+         self.convert.map do |d|
+            [ :timestamp,
+              :action, :tab_id, :load_id, :url, :title, :page_type,
+              :searchengine_label, :query, :serp_page, :anchor_text,
+              :target_url, :target_searchengine_label, :target_query,
+              :target_serp_page, :target_load_id, :target_tab_id,
+              :bookmark_title, :target_object, :form_values ].map do |e|
+               d[ e ]
+            end.join( "\t" )
+         end
+      end
+
       def url_page_type( url )
          @search_engine.each do |engine|
             if Regexp.new( engine[ "base_url" ] ) =~ url
@@ -101,4 +114,6 @@ if $0 == __FILE__
    require "pp"
    log = QTHoney::Log2.new( ARGF )
    pp log.convert
+   puts "----"
+   puts log.to_tsv
 end
