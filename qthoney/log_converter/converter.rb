@@ -71,9 +71,21 @@ module QTHoney
                   }
                end
             when "http_req"
-               http_req[ ]
+               http_req[ [ e["tab_id"], e["page_id"] ] ] = {
+                  :action => :load,
+                  :timestamp => e[ "timestamp" ],
+                  :tab_id => e[ "tab_id" ],
+                  :page_id => e[ "page_id" ],
+                  :url => e[ "url" ],
+                  :title => e[ "title" ],
+                  :page_type => url_page_type( e[ "url" ] )[ :type ],
+               }
             when "pageshow"
                url = e[ "pageshow_url" ]
+               if http_req[ [ e["tab_id"], e["page_id"] ] ]
+                  actions << http_req[ [ e["tab_id"], e["page_id"] ] ]
+                  http_req.delete( [ e["tab_id"], e["page_id"] ] )
+               end
                actions << {
                   :action => :show,
                   :url => url,
@@ -87,10 +99,10 @@ module QTHoney
       def to_tsv
          self.convert.map do |d|
             [ :timestamp,
-              :action, :tab_id, :load_id, :url, :title, :page_type,
+              :action, :tab_id, :page_id, :url, :title, :page_type,
               :searchengine_label, :query, :serp_page, :anchor_text,
               :target_url, :target_searchengine_label, :target_query,
-              :target_serp_page, :target_load_id, :target_tab_id,
+              :target_serp_page, :target_page_id, :target_tab_id,
               :bookmark_title, :target_object, :form_values ].map do |e|
                d[ e ]
             end.join( "\t" )
