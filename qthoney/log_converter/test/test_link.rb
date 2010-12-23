@@ -22,7 +22,9 @@ module QTHoney
             assert_equal( 1, link_actions.size )
             link_actions.each do |action|
                [ :timestamp, :tab_id, :page_id, :url, :page_type, :title,
-                 :anchor_text ].each do |attr|
+                 :anchor_text, :target_url,
+                 # TODO: :target_page_id, :target_tab_id,
+               ].each do |attr|
                   assert( action.key?( attr ), "no #{ attr } at link action." )
                end
             end
