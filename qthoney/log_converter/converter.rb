@@ -96,6 +96,21 @@ module QTHoney
                   :page_type => url_page_type( url )[ :type ],
                }
             end
+            case e[ "event_label" ]
+            when "click"
+               if not e[ "target" ] =~ /object XULElement/
+                  actions << {
+                     :action => :link,
+                     :timestamp => e[ "timestamp" ],
+                     :tab_id => e[ "tab_id" ],
+                     :page_id => e[ "page_id" ],
+                     :url => url,
+                     :title => e[ "title" ],
+                     :page_type => url_page_type( url )[ :type ],
+                     :anchor_text => anchor_text( e[ "anchor_outerHTML" ] )
+                  }
+               end
+            end
          end
          actions
       end
@@ -122,6 +137,24 @@ module QTHoney
             end
          end
          { :type => :non_serp }
+      end
+      def anchor_text( html )
+         if html.nil?
+            ""
+         else
+            html.gsub( /\A\s*<a[^>]*>(.*)<\/a>\s*\Z/i ){
+               $1
+            }.gsub( /<img([^>]*)>/i ){
+               attrs = $1
+               if attrs =~ /alt\s*=\s*(["']?)(.*?)\1/i
+                  $2
+               elsif attrs =~ /title\s*=\s*(["']?)(.*?)\1/i
+                  $2
+               else
+                  "[img]"
+               end
+            }.gsub( /<\/?\w+[^>]*>/, "" )
+         end
       end
    end
 end
