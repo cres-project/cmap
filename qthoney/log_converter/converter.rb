@@ -107,7 +107,9 @@ module QTHoney
                      :url => url,
                      :title => e[ "title" ],
                      :page_type => url_page_type( url )[ :type ],
-                     :anchor_text => anchor_text( e[ "anchor_outerHTML" ] )
+                     :anchor_text => anchor_text( e[ "anchor_outerHTML" ] ),
+                     :target_url => e[ "target" ],
+                     # TODO: target_page_id, target_tab_id
                   }
                end
             end
