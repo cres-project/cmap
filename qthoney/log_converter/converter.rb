@@ -88,8 +88,12 @@ module QTHoney
                end
                actions << {
                   :action => :show,
+                  :timestamp => e[ "timestamp" ],
+                  :tab_id => e[ "tab_id" ],
+                  :page_id => e[ "page_id" ],
                   :url => url,
-                  :timestamp => e[ "timestamp" ]
+                  :title => e[ "title" ],
+                  :page_type => url_page_type( url )[ :type ],
                }
             end
          end
