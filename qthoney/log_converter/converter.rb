@@ -99,7 +99,7 @@ module QTHoney
             end
             case e[ "event_label" ]
             when "click"
-               if not e[ "target" ] =~ /object XULElement/
+               if not e[ "target" ] =~ /object (XULElement|XPCNativeWrapper)/
                   actions << {
                      :action => :link,
                      :timestamp => e[ "timestamp" ],
