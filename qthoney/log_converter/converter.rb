@@ -141,7 +141,9 @@ module QTHoney
                      :target_url => e[ "target" ],
                      # TODO: target_page_id, target_tab_id
                   }
-                  link_background[ e["target"] ] = true
+                  if e[ "modifiers" ][ "ctrl" ] == true
+                     link_background[ e["target"] ] = true
+                  end
                end
             end
             pre_action[ e[ "tab_id" ] ] << e if e[ "tab_id" ] and not e[ "tab_id" ].empty?
