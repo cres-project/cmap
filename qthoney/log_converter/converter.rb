@@ -21,11 +21,11 @@ module QTHoney
       end
       def convert
          http_req = {}
-         pre_action = {}
+         pre_actions = {}
          link_background = {}
          actions = []
          @data.each do |e|
-            pre_action[ e[ "tab_id" ] ] ||= [] if e[ "tab_id" ] and not e[ "tab_id" ].empty?
+            pre_actions[ e[ "tab_id" ] ] ||= [] if e[ "tab_id" ] and not e[ "tab_id" ].empty?
             # p e[ "eventType" ]
             # p e if e[ "eventType" ].nil? or  e[ "eventType" ] == "error"
             case e[ "eventType" ]
@@ -48,7 +48,7 @@ module QTHoney
                      :page_type => url_page_type( e[ "url" ] )[ :type ],
                   }
                when "cmd_quitApplication"
-                  pre_action[ :cmd_quitApplication ] = {
+                  pre_actions[ :cmd_quitApplication ] = {
                      :action => :end,
                      :timestamp => e[ "timestamp" ],
                      :tab_id => e[ "tab_id" ],
@@ -59,8 +59,8 @@ module QTHoney
                   }
                end
             when "onCloseWindow"
-               if pre_action[ :cmd_quitApplication ]
-                  actions << pre_action[ :cmd_quitApplication ]
+               if pre_actions[ :cmd_quitApplication ]
+                  actions << pre_actions[ :cmd_quitApplication ]
                else
                   actions << {
                      :action => :end,
@@ -84,6 +84,36 @@ module QTHoney
                   :page_type => url_page_type( url )[ :type ],
                }
                http_req[ url ] = load_data
+               if url_page_type( url )[ :type ] == :serp
+                  pre_actions[ e["tab_id"] ].reverse_each do |pre_e|
+                     case pre_e[ "eventType" ]
+                     when "keydown"
+                        if pre_e[ "keycode" ] == 13
+                           actions << {
+                              :action => :search,
+                              :timestamp => pre_e[ "timestamp" ],
+                              :tab_id => pre_e[ "tab_id" ],
+                              :page_id => pre_e[ "page_id" ],
+                              :url => pre_e[ "url" ],
+                              :title => pre_e[ "title" ],
+                              :page_type => url_page_type( pre_e["url"] )[ :type ],
+                           }
+                           break
+                        end
+                     end
+                  end
+                  if actions[ -1 ][ :action ] != :search
+                     actions << {
+                        :action => :search,
+                        :timestamp => e[ "timestamp" ],
+                        :tab_id => e[ "tab_id" ],
+                        :page_id => e[ "page_id" ],
+                        :url => e[ "url" ],
+                        :title => e[ "title" ],
+                        :page_type => url_page_type( e["url"] )[ :type ],
+                     }
+                  end
+               end
             when "pageshow"
                url = e[ "pageshow_url" ]
                next if url == "about:blank"
@@ -146,7 +176,7 @@ module QTHoney
                   end
                end
             end
-            pre_action[ e[ "tab_id" ] ] << e if e[ "tab_id" ] and not e[ "tab_id" ].empty?
+            pre_actions[ e[ "tab_id" ] ] << e if e[ "tab_id" ] and not e[ "tab_id" ].empty?
          end
          actions
       end
