@@ -17,6 +17,7 @@ module QTHoney
             "test-14.log" => 1,
             "test-15.log" => 1,
             "test-16.log" => 1,
+            "test-17.log" => 1,
          }.each do |file, linkcount|
             open( File.join( File.dirname( __FILE__ ), file ) ) do |io|
                logdata = Log2.new( io ).convert
@@ -25,7 +26,8 @@ module QTHoney
                assert( logdata.first )
 
                link_actions = logdata.select{|e| e[ :action ] == :link }
-               assert_equal( linkcount, link_actions.size )
+               assert_equal( linkcount, link_actions.size,
+                             "#{ linkcount } link action[s] should be recorded for #{ file }." )
                link_actions.each do |action|
                   [ :timestamp, :tab_id, :page_id, :url, :page_type, :title,
                     :anchor_text, :target_url,
