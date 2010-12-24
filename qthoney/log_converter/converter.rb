@@ -165,7 +165,24 @@ module QTHoney
             end
             case e[ "event_label" ]
             when "click"
-               if not e[ "target" ] =~ /object (XULElement|XPCNativeWrapper)/
+               if e[ "target" ] =~ /object XULElement/
+               elsif e[ "target" ] =~ /object XPCNativeWrapper/
+                  if e[ "anchor_outerHTML" ] =~ /^<a\s*/
+                     # p [ e[ "url" ], e[ "anchor_href" ] ]
+                     actions << {
+                        :action => :link,
+                        :timestamp => e[ "timestamp" ],
+                        :tab_id => e[ "tab_id" ],
+                        :page_id => e[ "page_id" ],
+                        :url => e[ "url" ],
+                        :title => e[ "title" ],
+                        :page_type => url_page_type( url )[ :type ],
+                        :anchor_text => anchor_text( e[ "anchor_outerHTML" ] ),
+                        :target_url => URI.join( e["url"], e["anchor_href"] ),
+                        # TODO: target_page_id, target_tab_id
+                     }
+                  end
+               else
                   actions << {
                      :action => :link,
                      :timestamp => e[ "timestamp" ],
