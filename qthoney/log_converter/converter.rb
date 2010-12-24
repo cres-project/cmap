@@ -22,8 +22,10 @@ module QTHoney
       def convert
          http_req = {}
          pre_action = {}
+         link_background = {}
          actions = []
          @data.each do |e|
+            pre_action[ e[ "tab_id" ] ] ||= [] if e[ "tab_id" ] and not e[ "tab_id" ].empty?
             # p e[ "eventType" ]
             # p e if e[ "eventType" ].nil? or  e[ "eventType" ] == "error"
             case e[ "eventType" ]
@@ -71,28 +73,55 @@ module QTHoney
                   }
                end
             when "http_req"
-               http_req[ [ e["tab_id"], e["page_id"] ] ] = {
+               url = e[ "requestURI" ]
+               load_data = {
                   :action => :load,
+                  :timestamp => e[ "timestamp" ],
+                  :tab_id => e[ "tab_id" ],
+                  :page_id => e[ "page_id" ],
+                  :url => url,
+                  :title => e[ "title" ],
+                  :page_type => url_page_type( url )[ :type ],
+               }
+               http_req[ url ] = load_data
+            when "pageshow"
+               url = e[ "pageshow_url" ]
+               next if url == "about:blank"
+               if http_req[ url ]
+                  http_req[ url ][ :title ] = e[ "title" ]
+                  http_req[ url ][ :page_id ] = e[ "page_id" ]
+                  actions << http_req[ url ]
+                  http_req.delete( url )
+               end
+               if not link_background[ url ]
+                  actions << {
+                     :action => :show,
+                     :timestamp => e[ "timestamp" ],
+                     :tab_id => e[ "tab_id" ],
+                     :page_id => e[ "page_id" ],
+                     :url => url,
+                     :title => e[ "title" ],
+                     :page_type => url_page_type( url )[ :type ],
+                  }
+               else
+                  link_background.delete( url )
+               end
+            when "TabSelect"
+               actions << {
+                  :action => :change,
                   :timestamp => e[ "timestamp" ],
                   :tab_id => e[ "tab_id" ],
                   :page_id => e[ "page_id" ],
                   :url => e[ "url" ],
                   :title => e[ "title" ],
-                  :page_type => url_page_type( e[ "url" ] )[ :type ],
+                  :page_type => url_page_type( url )[ :type ],
                }
-            when "pageshow"
-               url = e[ "pageshow_url" ]
-               next if url == "about:blank"
-               if http_req[ [ e["tab_id"], e["page_id"] ] ]
-                  actions << http_req[ [ e["tab_id"], e["page_id"] ] ]
-                  http_req.delete( [ e["tab_id"], e["page_id"] ] )
-               end
                actions << {
                   :action => :show,
                   :timestamp => e[ "timestamp" ],
                   :tab_id => e[ "tab_id" ],
                   :page_id => e[ "page_id" ],
-                  :url => url,
+                  :url => e[ "url" ],
                   :title => e[ "title" ],
                   :page_type => url_page_type( url )[ :type ],
                }
@@ -112,8 +141,10 @@ module QTHoney
                      :target_url => e[ "target" ],
                      # TODO: target_page_id, target_tab_id
                   }
+                  link_background[ e["target"] ] = true
                end
             end
+            pre_action[ e[ "tab_id" ] ] << e if e[ "tab_id" ] and not e[ "tab_id" ].empty?
          end
          actions
       end
