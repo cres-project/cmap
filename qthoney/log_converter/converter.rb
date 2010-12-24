@@ -84,11 +84,13 @@ module QTHoney
                   :page_type => url_page_type( url )[ :type ],
                }
                http_req[ url ] = load_data
-               if url_page_type( url )[ :type ] == :serp
+               serp = url_page_type( url )
+               if serp[ :type ] == :serp
                   pre_actions[ e["tab_id"] ].reverse_each do |pre_e|
                      case pre_e[ "eventType" ]
                      when "keydown"
                         if pre_e[ "keycode" ] == 13
+                           searchengine = url_page_type( pre_e["url"] )
                            actions << {
                               :action => :search,
                               :timestamp => pre_e[ "timestamp" ],
@@ -96,7 +98,8 @@ module QTHoney
                               :page_id => pre_e[ "page_id" ],
                               :url => pre_e[ "url" ],
                               :title => pre_e[ "title" ],
-                              :page_type => url_page_type( pre_e["url"] )[ :type ],
+                              :page_type => url_page_type( pre_e[ "url" ] )[ :type ],
+                              :searchengine_label => serp[ :engine ][ "search_label" ],
                            }
                            break
                         end
@@ -110,7 +113,8 @@ module QTHoney
                         :page_id => e[ "page_id" ],
                         :url => e[ "url" ],
                         :title => e[ "title" ],
-                        :page_type => url_page_type( e["url"] )[ :type ],
+                        :page_type => serp[ :type ],
+                        :searchengine_label => serp[ :engine ][ "search_label" ]
                      }
                   end
                end
@@ -199,6 +203,7 @@ module QTHoney
             if Regexp.new( engine[ "base_url" ] ) =~ url
                return {
                   :type => :serp,
+                  :engine => engine,
                }
             end
          end
