@@ -86,11 +86,12 @@ module QTHoney
                http_req[ url ] = load_data
                serp = url_page_type( url )
                if serp[ :type ] == :serp
+                  query = url_parameter_query( url, serp[ :engine ] )
+                  serp_page = url_parameter_page( url, serp[ :engine ] )
                   pre_actions[ e["tab_id"] ].reverse_each do |pre_e|
                      case pre_e[ "eventType" ]
                      when "keydown"
                         if pre_e[ "keycode" ] == 13
-                           searchengine = url_page_type( pre_e["url"] )
                            actions << {
                               :action => :search,
                               :timestamp => pre_e[ "timestamp" ],
@@ -100,6 +101,8 @@ module QTHoney
                               :title => pre_e[ "title" ],
                               :page_type => url_page_type( pre_e[ "url" ] )[ :type ],
                               :searchengine_label => serp[ :engine ][ "search_label" ],
+                              :query => query,
+                              :serp_page => serp_page,
                            }
                            break
                         end
@@ -208,6 +211,20 @@ module QTHoney
             end
          end
          { :type => :non_serp }
+      end
+      def url_parameter_query( url, engine )
+         URI.parse( url ).query.split( /[;&]/ ).each do |e|
+            k, v, = e.split( /\=/ )
+            return v if k == engine[ "keyword_key" ]
+         end
+         nil
+      end
+      def url_parameter_page( url, engine )
+         URI.parse( url ).query.split( /[;&]/ ).each do |e|
+            k, v, = e.split( /\=/ )
+            return v if k == engine[ "index_key" ]
+         end
+         nil
       end
       def anchor_text( html )
          if html.nil?
