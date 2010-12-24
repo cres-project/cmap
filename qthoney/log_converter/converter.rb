@@ -82,6 +82,7 @@ module QTHoney
                }
             when "pageshow"
                url = e[ "pageshow_url" ]
+               next if url == "about:blank"
                if http_req[ [ e["tab_id"], e["page_id"] ] ]
                   actions << http_req[ [ e["tab_id"], e["page_id"] ] ]
                   http_req.delete( [ e["tab_id"], e["page_id"] ] )
