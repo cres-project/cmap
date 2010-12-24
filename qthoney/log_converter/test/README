@@ -1,0 +1,8 @@
+
+
+* Test log files:
+
+- test-12.log: linkアクション（左クリックによるリンククリック）したもの。
+- test-13.log: linkアクション（Enterキー押下によるリンク遷移）したもの。
+- test-14.log: linkアクション（Enterキー+Ctrl押下による）別タブにリンクを開いたもの。
+- test-15.log: link/changeアクション。空タブ（about:blank）を明示的に開いた場合と別タブリンククリック（test-14）との区別のため。
