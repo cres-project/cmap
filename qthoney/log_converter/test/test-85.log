@@ -1,0 +1,38 @@
+{"eventType":"init_qth","startup_page":0,"startup_homepage":"resource:/browserconfig.properties","prev_session":null,"qth_version":"2.1.1","tab_id":"panel1295668794761","timestamp":1295668795095,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XULDocument]","tab_id":"panel1295668794761","timestamp":1295668795249,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object ChromeWindow]","tab_id":"panel1295668794761","timestamp":1295668795256,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XULElement]","tab_id":"panel1295668794761","timestamp":1295668795334,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popupshown","target_toString":"[object XULElement]","tab_id":"panel1295668794761","timestamp":1295668796142,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popuphiding","target_toString":"[object XULElement]","tab_id":"panel1295668794761","timestamp":1295668799125,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popuphidden","target_toString":"[object XULElement]","tab_id":"panel1295668794761","timestamp":1295668799132,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popupshown","target_toString":"[object XULElement]","tab_id":"panel1295668794761","timestamp":1295668801049,"title":"","url":"about:blank","page_id":1}
+{"eventType":"mousedown","button":0,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295668794761","timestamp":1295668801430,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popuphiding","target_toString":"[object XULElement]","tab_id":"panel1295668794761","timestamp":1295668801434,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popuphidden","target_toString":"[object XULElement]","tab_id":"panel1295668794761","timestamp":1295668801441,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XULElement]","tab_id":"panel1295668794761","timestamp":1295668801509,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XULElement]","tab_id":"panel1295668794761","timestamp":1295668801522,"title":"","url":"about:blank","page_id":1}
+{"eventType":"mouseup","button":0,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295668794761","timestamp":1295668801533,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keydown","keycode":78,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295668794761","timestamp":1295668803999,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keyup","keycode":78,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295668794761","timestamp":1295668804132,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popupshown","target_toString":"[object XULElement]","tab_id":"panel1295668794761","timestamp":1295668804369,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keydown","keycode":73,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295668794761","timestamp":1295668804456,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keyup","keycode":73,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295668794761","timestamp":1295668804587,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keydown","keycode":73,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295668794761","timestamp":1295668804746,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keyup","keycode":73,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295668794761","timestamp":1295668804867,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keydown","keycode":13,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295668794761","timestamp":1295668807679,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popuphiding","target_toString":"[object XULElement]","tab_id":"panel1295668794761","timestamp":1295668807686,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popuphidden","target_toString":"[object XULElement]","tab_id":"panel1295668794761","timestamp":1295668807695,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XULElement]","tab_id":"panel1295668794761","timestamp":1295668807820,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XULDocument]","tab_id":"panel1295668794761","timestamp":1295668807825,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object ChromeWindow]","tab_id":"panel1295668794761","timestamp":1295668807829,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object HTMLDocument]]","tab_id":"panel1295668794761","timestamp":1295668807850,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object Window]]","tab_id":"panel1295668794761","timestamp":1295668807855,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keyup","keycode":13,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"target":"[object XPCNativeWrapper [object HTMLHtmlElement]]","tab_id":"panel1295668794761","timestamp":1295668807932,"title":"","url":"about:blank","page_id":1}
+{"eventType":"pagehide","tab_id":"panel1295668794761","timestamp":1295668807948,"title":"","url":"about:blank","page_id":1}
+{"eventType":"onLocationChange","url":"http://www.google.co.jp/search?q=nii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","tab_id":"panel1295668794761","timestamp":1295668807959,"title":"","page_id":2}
+{"eventType":"DOMContentLoaded","tab_id":"panel1295668794761","timestamp":1295668808180,"title":"nii - Google 検索","url":"http://www.google.co.jp/search?q=nii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","page_id":2}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object HTMLDocument]]","tab_id":"panel1295668794761","timestamp":1295668808336,"title":"nii - Google 検索","url":"http://www.google.co.jp/search?q=nii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","page_id":2}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object Window]]","tab_id":"panel1295668794761","timestamp":1295668808341,"title":"nii - Google 検索","url":"http://www.google.co.jp/search?q=nii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","page_id":2}
+{"eventType":"pageshow","pageshow_url":"http://www.google.co.jp/search?q=nii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","tab_id":"panel1295668794761","timestamp":1295668808507,"title":"nii - Google 検索","url":"http://www.google.co.jp/search?q=nii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","page_id":2}
+{"eventType":"onCloseWindow","tab_id":"panel1295668794761","timestamp":1295668811457,"title":"nii - Google 検索","url":"http://www.google.co.jp/search?q=nii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","page_id":2}
+{"event_label":"unload","tab_id":"panel1295668794761","timestamp":1295668811550,"title":"nii - Google 検索","url":"http://www.google.co.jp/search?q=nii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","page_id":2}
