@@ -1,0 +1,37 @@
+{"eventType":"init_qth","startup_page":0,"startup_homepage":"resource:/browserconfig.properties","prev_session":null,"qth_version":"2.1.1","tab_id":"panel1295669372612","timestamp":1295669372932,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XULDocument]","tab_id":"panel1295669372612","timestamp":1295669373089,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object ChromeWindow]","tab_id":"panel1295669372612","timestamp":1295669373096,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XULElement]","tab_id":"panel1295669372612","timestamp":1295669373171,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popupshown","target_toString":"[object XULElement]","tab_id":"panel1295669372612","timestamp":1295669375594,"title":"","url":"about:blank","page_id":1}
+{"eventType":"mousedown","button":0,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295669372612","timestamp":1295669375626,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popuphiding","target_toString":"[object XULElement]","tab_id":"panel1295669372612","timestamp":1295669375630,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popuphidden","target_toString":"[object XULElement]","tab_id":"panel1295669372612","timestamp":1295669375636,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XULElement]","tab_id":"panel1295669372612","timestamp":1295669375704,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XULElement]","tab_id":"panel1295669372612","timestamp":1295669375716,"title":"","url":"about:blank","page_id":1}
+{"eventType":"mouseup","button":0,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295669372612","timestamp":1295669375726,"title":"","url":"about:blank","page_id":1}
+{"event_label":"click","target":"[object XULElement]","target_id":"searchbar","button":0,"outerHTML":"","modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295669372612","timestamp":1295669375730,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keydown","keycode":78,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295669372612","timestamp":1295669376951,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keyup","keycode":78,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295669372612","timestamp":1295669377071,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popupshown","target_toString":"[object XULElement]","tab_id":"panel1295669372612","timestamp":1295669377249,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keydown","keycode":73,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295669372612","timestamp":1295669377742,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keyup","keycode":73,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295669372612","timestamp":1295669377834,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keydown","keycode":73,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295669372612","timestamp":1295669378093,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keyup","keycode":73,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295669372612","timestamp":1295669378242,"title":"","url":"about:blank","page_id":1}
+{"eventType":"mousedown","button":0,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295669372612","timestamp":1295669383558,"title":"","url":"about:blank","page_id":1}
+{"eventType":"mouseup","button":0,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295669372612","timestamp":1295669383619,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popuphiding","target_toString":"[object XULElement]","tab_id":"panel1295669372612","timestamp":1295669383627,"title":"","url":"about:blank","page_id":1}
+{"eventType":"popuphidden","target_toString":"[object XULElement]","tab_id":"panel1295669372612","timestamp":1295669383637,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XULElement]","tab_id":"panel1295669372612","timestamp":1295669383771,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XULDocument]","tab_id":"panel1295669372612","timestamp":1295669383776,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object ChromeWindow]","tab_id":"panel1295669372612","timestamp":1295669383780,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object HTMLDocument]]","tab_id":"panel1295669372612","timestamp":1295669383801,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object Window]]","tab_id":"panel1295669372612","timestamp":1295669383806,"title":"","url":"about:blank","page_id":1}
+{"event_label":"click","target":"[object XULElement]","target_id":"PopupAutoComplete","button":0,"outerHTML":"","modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel1295669372612","timestamp":1295669383872,"title":"","url":"about:blank","page_id":1}
+{"eventType":"pagehide","tab_id":"panel1295669372612","timestamp":1295669383896,"title":"","url":"about:blank","page_id":1}
+{"eventType":"onLocationChange","url":"http://www.google.co.jp/search?q=Cinii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","tab_id":"panel1295669372612","timestamp":1295669383922,"title":"","page_id":2}
+{"eventType":"DOMContentLoaded","tab_id":"panel1295669372612","timestamp":1295669384207,"title":"Cinii - Google 検索","url":"http://www.google.co.jp/search?q=Cinii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","page_id":2}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object HTMLDocument]]","tab_id":"panel1295669372612","timestamp":1295669384257,"title":"Cinii - Google 検索","url":"http://www.google.co.jp/search?q=Cinii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","page_id":2}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object Window]]","tab_id":"panel1295669372612","timestamp":1295669384262,"title":"Cinii - Google 検索","url":"http://www.google.co.jp/search?q=Cinii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","page_id":2}
+{"eventType":"pageshow","pageshow_url":"http://www.google.co.jp/search?q=Cinii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","tab_id":"panel1295669372612","timestamp":1295669384548,"title":"Cinii - Google 検索","url":"http://www.google.co.jp/search?q=Cinii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","page_id":2}
+{"eventType":"onCloseWindow","tab_id":"panel1295669372612","timestamp":1295669386760,"title":"Cinii - Google 検索","url":"http://www.google.co.jp/search?q=Cinii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","page_id":2}
+{"event_label":"unload","tab_id":"panel1295669372612","timestamp":1295669386889,"title":"Cinii - Google 検索","url":"http://www.google.co.jp/search?q=Cinii&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:ja:official&hl=ja&client=firefox-a","page_id":2}
