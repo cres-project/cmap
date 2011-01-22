@@ -13,6 +13,7 @@ module QTHoney
          {  "test-17.log" => 1,
             "test-18.log" => 1,
             "test-19.log" => 1,
+            "test-20.log" => 1,
          }.each do |file, searchcount|
             open( File.join( File.dirname( __FILE__ ), file ) ) do |io|
                logdata = Log2.new( io ).convert
