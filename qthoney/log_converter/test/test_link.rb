@@ -12,12 +12,12 @@ module QTHoney
       LOG_TEST = 
 
       def test_link
-         {  "test-12.log" => 1,
-            "test-13.log" => 3,
-            "test-14.log" => 1,
-            "test-15.log" => 1,
-            "test-16.log" => 1,
-            "test-17.log" => 1,
+         {  "test-012.log" => 1,
+            "test-013.log" => 3,
+            "test-014.log" => 1,
+            "test-015.log" => 1,
+            "test-016.log" => 1,
+            "test-017.log" => 1,
          }.each do |file, linkcount|
             open( File.join( File.dirname( __FILE__ ), file ) ) do |io|
                logdata = Log2.new( io ).convert

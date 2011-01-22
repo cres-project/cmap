@@ -9,7 +9,7 @@ require "converter.rb"
 
 module QTHoney
    class TestEnd < Test::Unit::TestCase
-      LOG_TEST1 = File.join( File.dirname( __FILE__ ), "test-2.log" )
+      LOG_TEST1 = File.join( File.dirname( __FILE__ ), "test-002.log" )
       def test_end1
          open( LOG_TEST1 ) do |io|
             logdata = Log2.new( io ).convert
