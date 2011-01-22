@@ -58,7 +58,7 @@ module QTHoney
                      :page_type => url_page_type( e[ "url" ] )[ :type ],
                   }
                when "context-searchselect"
-                  pre_actions[ :context_searchselect ] = {
+                  pre_actions[ :search ] = {
                      :action => :search,
                      :timestamp => e[ "timestamp" ],
                      :tab_id => e[ "tab_id" ],
@@ -102,38 +102,47 @@ module QTHoney
                   query = url_parameter_query( url, serp[ :engine ] )
                   serp_page = url_parameter_page( url, serp[ :engine ] )
                   if pre_actions[ :search ]
+                     actions << pre_actions[ :search ]
+                     pre_actions.delete( :search )
+                     tmp_action = {
+                        :searchengine_label => serp[ :engine ][ "search_label" ],
+                        :query => query,
+                        :serp_page => serp_page,
+                     }
+                     actions[ -1 ].update( tmp_action )
                   else
-                  pre_actions[ e["tab_id"] ].reverse_each do |pre_e|
-                     case pre_e[ "eventType" ]
-                     when "keydown"
-                        if pre_e[ "keycode" ] == 13
-                           actions << {
-                              :action => :search,
-                              :timestamp => pre_e[ "timestamp" ],
-                              :tab_id => pre_e[ "tab_id" ],
-                              :page_id => pre_e[ "page_id" ],
-                              :url => pre_e[ "url" ],
-                              :title => pre_e[ "title" ],
-                              :page_type => url_page_type( pre_e[ "url" ] )[ :type ],
-                              :searchengine_label => serp[ :engine ][ "search_label" ],
-                              :query => query,
-                              :serp_page => serp_page,
-                           }
-                           break
+                     pre_actions[ e["tab_id"] ].reverse_each do |pre_e|
+                        case pre_e[ "eventType" ]
+                        when "keydown"
+                           if pre_e[ "keycode" ] == 13
+                              actions << {
+                                 :action => :search,
+                                 :timestamp => pre_e[ "timestamp" ],
+                                 :tab_id => pre_e[ "tab_id" ],
+                                 :page_id => pre_e[ "page_id" ],
+                                 :url => pre_e[ "url" ],
+                                 :title => pre_e[ "title" ],
+                                 :page_type => url_page_type( pre_e[ "url" ] )[ :type ],
+                                 :searchengine_label => serp[ :engine ][ "search_label" ],
+                                 :query => query,
+                                 :serp_page => serp_page,
+                              }
+                              break
+                           end
                         end
                      end
-                  end
-                  if actions[ -1 ][ :action ] != :search
-                     actions << {
-                        :action => :search,
-                        :timestamp => e[ "timestamp" ],
-                        :tab_id => e[ "tab_id" ],
-                        :page_id => e[ "page_id" ],
-                        :url => e[ "url" ],
-                        :title => e[ "title" ],
-                        :page_type => serp[ :type ],
-                        :searchengine_label => serp[ :engine ][ "search_label" ]
-                     }
+                     if actions[ -1 ][ :action ] != :search
+                        actions << {
+                           :action => :search,
+                           :timestamp => e[ "timestamp" ],
+                           :tab_id => e[ "tab_id" ],
+                           :page_id => e[ "page_id" ],
+                           :url => e[ "url" ],
+                           :title => e[ "title" ],
+                           :page_type => serp[ :type ],
+                           :searchengine_label => serp[ :engine ][ "search_label" ]
+                        }
+                     end
                   end
                end
             when "pageshow"

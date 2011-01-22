@@ -24,6 +24,7 @@ module QTHoney
                assert_equal( 1, search_actions.size,
                              "one single search action should be recorded." )
                search_actions.each do |action|
+                  #p action
                   [ :timestamp, :tab_id, :page_id, :url, :page_type, :title,
                     :searchengine_label, :query, :serp_page,
                     # TODO: :target_page_id, :target_tab_id,
