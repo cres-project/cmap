@@ -12,7 +12,8 @@ module QTHoney
 
       def test_search
          {  "test-17.log" => 1,
-            "test-18.log" => 1
+            "test-18.log" => 1,
+            "test-19.log" => 1,
          }.each do |file, searchcount|
             open( File.join( File.dirname( __FILE__ ), file ) ) do |io|
                logdata = Log2.new( io ).convert
@@ -27,7 +28,7 @@ module QTHoney
                     :searchengine_label, :query, :serp_page,
                     # TODO: :target_page_id, :target_tab_id,
                   ].each do |attr|
-                     assert( action.key?( attr ), "no #{ attr } at search action." )
+                     assert( action.key?( attr ), "no #{ attr } at search action for #{ file }." )
                   end
                end
             end
