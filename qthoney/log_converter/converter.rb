@@ -57,6 +57,19 @@ module QTHoney
                      :title => e[ "title" ],
                      :page_type => url_page_type( e[ "url" ] )[ :type ],
                   }
+               when "context-searchselect"
+                  pre_actions[ :context_searchselect ] = {
+                     :action => :search,
+                     :timestamp => e[ "timestamp" ],
+                     :tab_id => e[ "tab_id" ],
+                     :page_id => e[ "page_id" ],
+                     :url => e[ "url" ],
+                     :title => e[ "title" ],
+                     :page_type => url_page_type( e[ "url" ] )[ :type ],
+                     # :searchengine_label => serp[ :engine ][ "search_label" ],
+                     # :query => query,
+                     # :serp_page => serp_page,
+                  }
                end
             when "onCloseWindow"
                if pre_actions[ :cmd_quitApplication ]
@@ -88,6 +101,8 @@ module QTHoney
                if serp[ :type ] == :serp
                   query = url_parameter_query( url, serp[ :engine ] )
                   serp_page = url_parameter_page( url, serp[ :engine ] )
+                  if pre_actions[ :search ]
+                  else
                   pre_actions[ e["tab_id"] ].reverse_each do |pre_e|
                      case pre_e[ "eventType" ]
                      when "keydown"
