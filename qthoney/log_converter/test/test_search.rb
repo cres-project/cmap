@@ -9,7 +9,6 @@ require "converter.rb"
 
 module QTHoney
    class TestSearch < Test::Unit::TestCase
-
       def test_search
          {  "test-17.log" => 1,
             "test-18.log" => 1,
@@ -33,6 +32,15 @@ module QTHoney
                   end
                end
             end
+         end
+      end
+
+      def test_search_fromcontextmenu
+         open( File.join( File.dirname( __FILE__ ),  "test-19.log" ) ) do |io|
+            logdata = Log2.new( io ).convert
+            search_action = logdata.find{|e| e[ :action ] == :search }
+            assert( search_action[ :timestamp ] )
+            assert_equal( 1293252665076, search_action[ :timestamp ], "timing of search action should be selection from Context Menu." )
          end
       end
    end
