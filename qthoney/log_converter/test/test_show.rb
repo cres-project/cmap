@@ -9,7 +9,7 @@ require "converter.rb"
 
 module QTHoney
    class TestShow < Test::Unit::TestCase
-      LOG_TEST = File.join( File.dirname( __FILE__ ), "test-12.log" )
+      LOG_TEST = File.join( File.dirname( __FILE__ ), "test-012.log" )
 
       def test_show
          open( LOG_TEST ) do |io|

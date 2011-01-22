@@ -10,10 +10,10 @@ require "converter.rb"
 module QTHoney
    class TestSearch < Test::Unit::TestCase
       def test_search
-         {  "test-17.log" => 1,
-            "test-18.log" => 1,
-            "test-19.log" => 1,
-            "test-20.log" => 1,
+         {  "test-082.log" => 1,
+            "test-084.log" => 1,
+            "test-085.log" => 1,
+            "test-086.log" => 1,
          }.each do |file, searchcount|
             open( File.join( File.dirname( __FILE__ ), file ) ) do |io|
                logdata = Log2.new( io ).convert
@@ -22,7 +22,7 @@ module QTHoney
                assert( logdata.first )
                search_actions = logdata.select{|e| e[ :action ] == :search }
                assert_equal( 1, search_actions.size,
-                             "one single search action should be recorded." )
+                             "one single search action should be recorded. [#{ file }]" )
                search_actions.each do |action|
                   #p action
                   [ :timestamp, :tab_id, :page_id, :url, :page_type, :title,
@@ -37,7 +37,7 @@ module QTHoney
       end
 
       def test_search_fromcontextmenu
-         open( File.join( File.dirname( __FILE__ ),  "test-19.log" ) ) do |io|
+         open( File.join( File.dirname( __FILE__ ),  "test-086.log" ) ) do |io|
             logdata = Log2.new( io ).convert
             search_action = logdata.find{|e| e[ :action ] == :search }
             assert( search_action[ :timestamp ] )

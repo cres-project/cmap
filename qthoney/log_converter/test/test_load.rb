@@ -10,8 +10,8 @@ require "converter.rb"
 module QTHoney
    class TestLoad < Test::Unit::TestCase
       def test_load
-         {  "test-12.log" => 1,
-            "test-14.log" => 1,
+         {  "test-012.log" => 1,
+            "test-014.log" => 1,
          }.each do |file, linkcount|
             open( File.join( File.dirname( __FILE__ ), file ) ) do |io|
                logdata = Log2.new( io ).convert
