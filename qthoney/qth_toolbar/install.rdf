@@ -9,8 +9,8 @@
                    em:maxVersion="3.6.*"
                    em:minVersion="3.6" />
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
-                   em:creator="KYA group Corporation"
-                   em:homepageURL="http://www.kyagroup.com/"
+                   em:creator="CRES Project"
+                   em:homepageURL="http://cres.jpn.org/"
                    em:id="{199d5ba0-9736-46f8-99d9-424d1cd9ed1a}"
                    em:name="QT Honey Toolbar"
                    em:updateURL="http://mew.ntcir.nii.ac.jp/qth_toolbar/update.rdf"
