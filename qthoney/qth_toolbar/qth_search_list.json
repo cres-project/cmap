@@ -60,5 +60,13 @@
 		"keyword_type": "parameter",
 		"keyword_key": "MT",
 		"index_key": "FR"
+	},
+	{
+		"search_label": "bing",
+		"base_url": "http://www.bing.com/search",
+		"keyword_type": "parameter",
+		"keyword_key": "q",
+		"index_key": "first"
 	}
+	
 ]
