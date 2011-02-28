@@ -10,7 +10,7 @@ $KCODE = "u"
 
 module QTHoney
    class Log2
-      SEARCH_ENGINE_LIST_URL = "http://mew.ntcir.nii.ac.jp/qth_toolbar/qth_search_list.json"
+      SEARCH_ENGINE_LIST_URL = "http://sourceforge.jp/projects/cres/svn/view/qthoney/qth_toolbar/qth_search_list.json?view=co"
       def initialize( io )
          cont = open( SEARCH_ENGINE_LIST_URL ){|http| http.read }
          @search_engine = JSON.parse( cont )
