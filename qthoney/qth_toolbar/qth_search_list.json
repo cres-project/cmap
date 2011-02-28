@@ -1,0 +1,58 @@
+[
+	{
+		"search_label": "google-jp",
+		"base_url": "http://www.google.co.jp/search",
+		"keyword_type": "parameter",
+		"keyword_key": "q",
+		"index_key": "start"
+	},
+	{
+		"search_label": "google-image",
+		"base_url": "http://images.google.com/images",
+		"keyword_type": "parameter",
+		"keyword_key": "q",
+		"index_key": "start"
+	},
+	{
+		"search_label": "google-web",
+		"base_url": "http://www.google.com/search",
+		"keyword_type": "parameter",
+		"keyword_key": "q",
+		"index_key": "start"
+	},
+	{
+		"search_label": "kakaku.com",
+		"base_url": "http://kakaku.com/search_results/([^/]+)/",
+		"keyword_type": "in_url",
+		"keyword_index": 1,
+		"index_key": "page"
+	},
+	{
+		"search_label": "alc",
+		"base_url": "http://eow.alc.co.jp/([^/]+)/UTF-8/",
+		"keyword_type": "in_url",
+		"keyword_index": 1,
+		"index_key": "pg"
+	},
+	{
+		"search_label": "yahoo",
+		"base_url": "http://search.yahoo.co.jp/search",
+		"keyword_type": "parameter",
+		"keyword_key": "p",
+		"index_key": "b"
+	},
+	{
+		"search_label": "goo-mix",
+		"base_url": "http://mix.search.goo.ne.jp/#web,oshiete/([^/]+)",
+		"keyword_type": "in_url",
+		"keyword_index": 1,
+		"index_key": ""
+	},
+	{
+		"search_label": "goo",
+		"base_url": "http://search.goo.ne.jp/web.jsp",
+		"keyword_type": "parameter",
+		"keyword_key": "MT",
+		"index_key": "FR"
+	}
+]
