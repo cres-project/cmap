@@ -1,5 +1,11 @@
 [
 	{
+		"search_label": "MEW",
+		"base_url": "http://mew.ntcir.nii.ac.jp/.+#q=(.+)",
+		"keyword_type": "in_url",
+		"keyword_index": 1
+	},
+	{
 		"search_label": "google-jp",
 		"base_url": "http://www.google.co.jp/search",
 		"keyword_type": "parameter",
