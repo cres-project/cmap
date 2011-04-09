@@ -1,0 +1,18 @@
+digraph G {
+  id0 [label="Effect of a change of government"]
+  id0 -> "change in government" [label="is caused by"]
+  "change in government" -> "Democratic Party" [label="makes"]
+  "Democratic Party" -> Hatoyama [label="with"]
+  Hatoyama -> "Mrs. Miyuki Hatoyama" [label="with"]
+  voters -> "change in government" [label="desire"]
+  voters -> "rights to vote" [label="have"]
+  id0 -> "Hall of Fame in Animation" [label="drops the plan of"]
+  Akihabara -> "electric city" [label="is"]
+  Akihabara -> Otaku [label="attracts"]
+  Otaku -> "Aso, former PM" [label="supports"]
+  "Aso, former PM" -> "Hall of Fame in Animation" [label="planned"]
+  id0 -> "politicians initiative" [label="consists-of"]
+  "politicians initiative" -> "bureaucratic initiative" [label="is counterpart of"]
+  id0 -> "Yamba Dam" [label="consists-of"]
+  "Yamba Dam" -> anxiety [label="with"]
+}
