@@ -1,3 +1,10 @@
+* Utility to analyze
+
+- attr.rb: Output attribute values of a single concept map (dot format).
+
+- diff.rb: Output metrics of attribute values between two concept maps (dot formats).
+
+- merge.rb: Output an integrated concept map from two concept maps (dot format).
 
 ** One-liner for conversion from old format to new format **
 
