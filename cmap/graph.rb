@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
-# -*- coding: euc-jp -*-
-# $Id: graph.rb,v 1.8 2010/06/08 09:09:33 masao Exp $
+# -*- coding: utf-8 -*-
 
+require "open3"
 require "set"
 require "shellwords"
 require "nkf"
@@ -95,7 +95,7 @@ class Graph
    def size
       @nodes.size
    end
-   alias :node_count :size 
+   alias :node_count :size
 
    def edges_set
       set = Set[]
@@ -283,8 +283,8 @@ class DirectedGraph < Graph
    def initialize
       @nodes = Set.new
       @edges = {}
-      @edges_from = {}	# ÀÜÂ³¸µ¥Î¡¼¥É
-      @edges_to = {}	# ÀÜÂ³Àè¥Î¡¼¥É
+      @edges_from = {}	# æŽ¥ç¶šå…ƒãƒŽãƒ¼ãƒ‰
+      @edges_to = {}	# æŽ¥ç¶šå…ˆãƒŽãƒ¼ãƒ‰
       @node_labels = {}
       @edge_labels = {}
       #STDERR.puts @nodes.inspect
