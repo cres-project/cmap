@@ -28,11 +28,13 @@ module CMapUtils
       result[ :links ] = links
 
       link_labels = {}
-      link_labels[ :common ] = links[ :common ].select{|e| pre.link_labels[ e ] and post.link_labels[ e ] }
+      link_labels[ :common ] = links[ :common ].select{|e| pre.link_labels[ e ] and post.link_labels[ e ] and pre.link_labels[ e ] == post.link_labels[ e ] }
       link_labels[ :lost ] = links[ :lost ].select{|e| pre.link_labels[ e ] }
       link_labels[ :lost ] += links[ :common ].select{|e| pre.link_labels[ e ] and not post.link_labels[ e ] }
+      link_labels[ :lost ] += links[ :common ].select{|e| pre.link_labels[ e ] and post.link_labels[ e ] and pre.link_labels[ e ] != post.link_labels[ e ]  }
       link_labels[ :new ] = links[ :new ].select{|e| post.link_labels[ e ] }
       link_labels[ :new ] += links[ :common ].select{|e| post.link_labels[ e ] and not pre.link_labels[ e ] }
+      link_labels[ :new ] += links[ :common ].select{|e| post.link_labels[ e ] and pre.link_labels[ e ] and post.link_labels[ e ] != pre.link_labels[ e ]  }
       result[ :link_labels ] = link_labels
 
       result
