@@ -24,6 +24,46 @@
 <img src="./vizcmap.cgi?id=<%=h @md5 %>&amp;format=png" />
 </a>
 </div>
+<hr>
+<h2>統合グラフの属性</h2>
+<div class="analysis">
+<h3>事前コンセプトマップ</h3>
+<ul>
+  <li>ノード数: <%=h @statistics[ :pre ].node_count %>
+  <li>リンク数: <%=h @statistics[ :pre ].edge_count %>
+  <li>リンクラベル数: <%=h @statistics[ :pre ].edge_labels.size %>
+</ul>
+<h3>事後コンセプトマップ</h3>
+<ul>
+  <li>ノード数: <%=h @statistics[ :post ].node_count %>
+  <li>リンク数: <%=h @statistics[ :post ].edge_count %>
+  <li>リンクラベル数: <%=h @statistics[ :post ].edge_labels.size %>
+</ul>
+</div>
+<div class="analysis">
+<h3>統合グラフ</h3>
+<ul>
+  <li>ノード数:
+  <ul>
+    <li>共通ノード: <%=h @statistics[:nodes][:common].size %>
+    <li>新規ノード: <%=h @statistics[:nodes][:new].size %>
+    <li>消失ノード: <%=h @statistics[:nodes][:lost].size %>
+  </ul>
+  <li>リンク数:
+  <ul>
+    <li>共通リンク: <%=h @statistics[:links][:common].size %>
+    <li>新規リンク: <%=h @statistics[:links][:new].size %>
+    <li>消失リンク: <%=h @statistics[:links][:lost].size %>
+  </ul>
+  <li>リンクラベル数:
+  <ul>
+    <li>共通リンクラベル: <%=h @statistics[:link_labels][:common].size %>
+    <li>新規リンクラベル: <%=h @statistics[:link_labels][:new].size %>
+    <li>消失リンクラベル: <%=h @statistics[:link_labels][:lost].size %>
+  </ul>
+</ul>
+</div>
+<hr>
 <% end %>
 <form action="./vizcmap.cgi" method="POST">
 <div class="form">

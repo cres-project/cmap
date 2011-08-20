@@ -11,6 +11,7 @@ require "digest/md5"
 
 require "graph.rb"
 require "merge.rb"
+require "diff.rb"
 
 class VizCMapApp
    attr_accessor :pre_dot, :post_dot
@@ -28,19 +29,12 @@ class VizCMapApp
 
    include CMapUtils
    def merge_dot( opts = [] )
-      return @merged_dot if @merged_dot
       @merged_dot = to_merged_dot( StringIO.new( pre_dot ), StringIO.new( post_dot ) )
       if @merged_dot.size > 0
          dot_output_png( @merged_dot )
       end
+      @statistics = statistics_merged_cmaps( StringIO.new( pre_dot ), StringIO.new( post_dot ) )
       @merged_dot
-   end
-
-   def statistics
-      data = statistics_merged_cmaps( pre_dot, post_dot )
-      buf = StringIO.new
-      print_statistics( data, buf )
-      buf.rewind.read
    end
 
    def dot_output_png( dot, dot_opts = [] )

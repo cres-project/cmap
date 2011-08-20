@@ -24,6 +24,40 @@
 <img src="./vizcmap.cgi?id=<%=h @md5 %>&amp;format=png" />
 </a>
 </div>
+<hr>
+<h2>Properties of Mixed CMap</h2>
+<div class="analysis">
+<h3>Pre-CMap:</h3>
+<ul>
+  <li>Number of Nodes: <%=h @statistics[ :pre ].node_count %>
+  <li>Number of Links: <%=h @statistics[ :pre ].edge_count %>
+</ul>
+</div>
+<div class="analysis">
+<h3>Post-CMap:</h3>
+<ul>
+  <li>Number of Nodes: <%=h @statistics[ :post ].node_count %>
+  <li>Number of Links: <%=h @statistics[ :post ].edge_count %>
+</ul>
+</div>
+<div class="analysis">
+<h3>Mixed CMap:</h3>
+<ul>
+  <li>Number of Nodes:
+  <ul>
+    <li>Common nodes: <%=h @statistics[:nodes][:common].size %>
+    <li>New nodes: <%=h @statistics[:nodes][:new].size %>
+    <li>Lost nodes: <%=h @statistics[:nodes][:lost].size %>
+  </ul>
+  <li>Number of Links:
+  <ul>
+    <li>Common links: <%=h @statistics[:links][:common].size %>
+    <li>New links: <%=h @statistics[:links][:new].size %>
+    <li>Lost links: <%=h @statistics[:links][:lost].size %>
+  </ul>
+</ul>
+</div>
+<hr>
 <% end %>
 <form action="./vizcmap.cgi" method="POST">
 <div class="form">

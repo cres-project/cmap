@@ -11,6 +11,7 @@ textarea {
   float: left;
   overflow: scroll;
   height: 50ex;
+  margin-top: 0px;
 }
 #result_img {
   width: 45%;
@@ -23,7 +24,13 @@ textarea {
   width: 100%;
 }
 
-div.form {
+div.analysis {
+  width: 45%;
+  padding: 10px;
+  float: left;
+}
+
+hr {
   clear: both;
 }
 
