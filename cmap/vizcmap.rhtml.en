@@ -25,7 +25,7 @@
 </a>
 </div>
 <hr>
-<h2>Properties of Mixed CMap</h2>
+<h2>Properties of Unified CMap</h2>
 <div class="analysis">
 <h3>Pre-CMap:</h3>
 <ul>
@@ -41,7 +41,7 @@
 </ul>
 </div>
 <div class="analysis">
-<h3>Mixed CMap:</h3>
+<h3>Unified CMap:</h3>
 <ul>
   <li>Number of Nodes:
   <ul>
@@ -82,7 +82,7 @@
   <option>html</option>
   <option>png</option>
 </select><br>
-<input type="submit" value="Generate a mixed CMap">
+<input type="submit" value="Generate a Unified CMap">
 <input type="hidden" name="lang" value="en">
 </div>
 </form>
