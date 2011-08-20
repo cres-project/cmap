@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="http://cres.jpn.org/skin/pukiwiki.css.php" type="text/css">
+<link rel="stylesheet" href="vizcmap.css" type="text/css">
+<link rev="made" href="mailto:tmasao@acm.org">
+<title>VizCMap</title>
+</head>
+<body>
+<div class="lang-switch">[ <strong>Japanese</strong> | <a href="index.html.en">English</a> ]</div>
+<div class="last-update">初版公開日: 2010年08月21日</div>
+<!-- hhmts start -->
+<div class="last-update">最終更新日: 2010年12月19日</div>
+<!-- hhmts end -->
+<h1>VizCMap</h1>
+<form action="./vizcmap.cgi" method="POST">
+<div class="form">
+<label for="pre_cmap">Pre-CMap:</label><br>
+<textarea name="pre_cmap" rows="10" cols="80">
+digraph G {
+  id0 [label=&quot;Effect of a change of government&quot;]
+  id0 -&gt; &quot;change in government&quot; [label=&quot;is caused by&quot;]
+  &quot;change in government&quot; -&gt; &quot;Democratic Party&quot; [label=&quot;makes&quot;]
+  &quot;Democratic Party&quot; -&gt; Hatoyama [label=&quot;with&quot;]
+  Hatoyama -&gt; &quot;Mrs. Miyuki Hatoyama&quot; [label=&quot;with&quot;]
+  voters -&gt; &quot;change in government&quot; [label=&quot;desire&quot;]
+  voters -&gt; &quot;rights to vote&quot; [label=&quot;have&quot;]
+  id0 -&gt; &quot;Hall of Fame in Animation&quot; [label=&quot;drops the plan of&quot;]
+  Akihabara -&gt; &quot;electric city&quot; [label=&quot;is&quot;]
+  Akihabara -&gt; Otaku [label=&quot;attracts&quot;]
+  Otaku -&gt; &quot;Aso, former PM&quot; [label=&quot;supports&quot;]
+  &quot;Aso, former PM&quot; -&gt; &quot;Hall of Fame in Animation&quot; [label=&quot;planned&quot;]
+  id0 -&gt; &quot;politicians initiative&quot; [label=&quot;consists-of&quot;]
+  &quot;politicians initiative&quot; -&gt; &quot;bureaucratic initiative&quot; [label=&quot;is counterpart of&quot;]
+  id0 -&gt; &quot;Yamba Dam&quot; [label=&quot;consists-of&quot;]
+  &quot;Yamba Dam&quot; -&gt; anxiety [label=&quot;with&quot;]
+}
+</textarea>
+<label for="post_cmap">Post-CMap:</label><br>
+<textarea name="post_cmap" rows="10" cols="80">
+digraph G {
+  id0 [label=&quot;Effect of a change of government&quot;]
+  &quot;Democratic Party&quot; -&gt; id0 [label=&quot;make&quot;]
+  &quot;Democratic Party&quot; -&gt; Hatoyama [label=&quot;conduct&quot;]
+  Hatoyama -&gt; &quot;Mrs. Miyuki Hatoyama&quot; [label=&quot;with&quot;]
+  &quot;Mrs. Miyuki Hatoyama&quot; -&gt; &quot;Media attention&quot; [label=&quot;collect&quot;]
+  Hatoyama -&gt; Yuai [label=&quot;sing&quot;]
+  Yuai -&gt; id0 [label=&quot;make&quot;]
+  id0 -&gt; &quot;to free of expressway&quot; [label=&quot;one of the&quot;]
+  &quot;to free of expressway&quot; -&gt; &quot;heavily-trafficked&quot; [label=&quot;As the result of&quot;]
+  &quot;heavily-trafficked&quot; -&gt; &quot;CO2 UP&quot; [label=&quot;As thee result of&quot;]
+  id0 -&gt; &quot;stop wastful spending&quot; [label=&quot;one of the&quot;]
+  &quot;stop wastful spending&quot; -&gt; &quot;revieing public works&quot; [label=&quot;one of the&quot;]
+  &quot;revieing public works&quot; -&gt; &quot;Yamba Dam&quot; [label=&quot;one of the&quot;]
+  &quot;Yamba Dam&quot; -&gt; anxiety [label=&quot;make&quot;]
+  id0 -&gt; &quot;children allowance&quot; [label=&quot;one of the&quot;]
+  &quot;children allowance&quot; -&gt; &quot;raise in birth&quot; [label=&quot;As the result of&quot;]
+  &quot;children allowance&quot; -&gt; &quot;a better working&quot; [label=&quot;As the result of&quot;]
+  id0 -&gt; &quot;Yuai foreign diplomacy&quot; [label=&quot;one of the&quot;]
+  &quot;Yuai foreign diplomacy&quot; -&gt; &quot;East Asian Community&quot; [label=&quot;one of the&quot;]
+}
+</textarea>
+<label for="format">表示形式</label>
+<select name="format">
+  <option>html</option>
+  <option>png</option>
+</select><br>
+<input type="submit" value="事前・事後コンセプトマップの統合結果を出力する">
+</div>
+</form>
+<hr>
+<h2>概要</h2>
+<p>
+VizCMapは、探索の前・後の「コンセプトマップ」を融合し表示するツールです。
+GraphVizの dot 形式を読み込むと、グラフのノード・ラベルの違いを以下のような可視化表現をつうじて、すぐに確認できます。
+</p>
+<ul>
+  <li>両者に出現する「Common node」は2重丸の枠線で囲まれます。
+  <li>事前コンセプトマップにのみ出現し、事後コンセプトマップに現れなかった「Lost node」「Lost link」「Lost link label」は、グレー色で表現されます。
+  <li>それ以外の実線で囲まれたノード、黒文字で表現されているものは、事後コンセプトマップにのみ出現する「New node」「New link」「New link label」です。
+</ul>
+<p>
+可視化の概要については以下の論文をご覧ください:
+</p>
+<ul>
+  <li>Yuka Egusa, Hitomi Saito, Masao Takaku, Hitoshi Terai, Makiko Miwa, Noriko Kando: "Using a Concept Map to Evaluate Exploratory Search". The 3rd Information Interaction in Context Symposium (IIiX 2010); New Brunswick, NJ, USA; pp.175-184 (2010-08)
+  <a href="http://dx.doi.org/10.1145/1840784.1840810">http://dx.doi.org/10.1145/1840784.1840810</a>
+</ul>
+<h2>ソースコード</h2>
+<p>
+本ツール（VizCMap）はオープンソースソフトウェアとして公開しています。
+<p>
+ソースファイルは以下のURLから閲覧できます: <a href="http://en.sourceforge.jp/projects/cres/svn/view/cmap/">http://en.sourceforge.jp/projects/cres/svn/view/cmap/</a>.
+<p>また、バージョン管理ツールSubversion経由でもダウンロードできます。ダウンロード方法の詳細は下記ページをご覧ください: 
+<a href="http://sourceforge.jp/projects/cres/cvs/">http://sourceforge.jp/projects/cres/cvs/</a>
+</p>
+<h2>謝辞</h2>
+<p>
+このツールは<a href="http://cres.jpn.org/">CRESプロジェクト</a>による成果です。
+本研究プロジェクトは、文部科学省科学研究費補助金特定領域研究「探索・学習を支援する情報アクセス技術」(研究代表者:神門典子, A01-38, 課題番号19024068) および，国立情報学研究所共同研究「情報探索行動の認知モデルの構築とその応用に関する研究」による支援を受けました。ここに記して謝意を表します。
+</p>
+<h2>連絡先</h2>
+<p>
+質問・コメントなどありましたら、以下のアドレスまでお願いいたします。
+</p>
+<p>
+<img src="http://cres.jpn.org/?plugin=attach&amp;refer=Files&amp;openfile=mail.gif" alt="cres [_at_] nii.ac.jp">
+</p>
+<hr>
+<div id="footer">
+<address>
+<a href="http://cres.jpn.org/">CRES Project</a>
+</address>
+<div class="id">$Id: vizcmap.rhtml.ja,v 1.3 2011/07/03 08:00:28 masao Exp $</div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-389547-3");
+pageTracker._trackPageview();
+</script>
+</body>
+</html>
