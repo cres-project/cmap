@@ -1,0 +1,29 @@
+.lang-switch { text-align: right }
+.last-update { text-align: right }
+textarea {
+  margin: auto;
+  display: block;
+  width: 90%
+}
+
+#result pre {
+  width: 45%;
+  float: left;
+  overflow: scroll;
+  height: 50ex;
+}
+#result_img {
+  width: 45%;
+  float: left;
+  padding: 10px;
+  background-color: #F0F8FF;
+  border: #DDDDEE #888899 #888899 #DDDDEE solid 1px;
+}
+#result_img img {
+  width: 100%;
+}
+
+div.form {
+  clear: both;
+}
+
