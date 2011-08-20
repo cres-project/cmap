@@ -11,13 +11,18 @@
 <body>
 <div class="lang-switch">[ <a href="index.html.ja">Japanese</a> | <strong>English</strong> ]</div>
 <div class="last-update">Created on: 2010-08-21</div>
-<!-- hhmts start -->
-Last modified: 2011-07-03
+<!-- hhmts start --> 
+<div class="last-update">Last modified: 2011-08-20</div>
 <!-- hhmts end -->
 <h1>VizCMap</h1>
-<% if @merge_dot %>
+<% if @merged_dot %>
 <div id="result">
-<pre id="merge_dot"><%=h @merge_dot %></pre>
+<pre id="merged_dot"><%=h @merged_dot %></pre>
+</div>
+<div id="result_img">
+<a href="./vizcmap.cgi?id=<%=h @md5 %>&amp;format=png" title="Click to enlarge">
+<img src="./vizcmap.cgi?id=<%=h @md5 %>&amp;format=png" />
+</a>
 </div>
 <% end %>
 <form action="./vizcmap.cgi" method="POST">
@@ -44,6 +49,7 @@ Last modified: 2011-07-03
   <option>png</option>
 </select><br>
 <input type="submit" value="Generate a mixed CMap">
+<input type="hidden" name="lang" value="en">
 </div>
 </form>
 <hr>
@@ -92,10 +98,18 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 var pageTracker = _gat._getTracker("UA-389547-3");
 pageTracker._trackPageview();
 </script>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-389547-3");
+pageTracker._trackPageview();
+</script>
 </body>
 </html>
 <!--
 Local Variables:
-html-helper-timestamp-template: "<div class=\"last-update\">Last modified: %Y-%m-%d</div>\n"
+html-helper-timestamp-template: "\n<div class=\"last-update\">Last modified: %Y-%m-%d</div>\n"
 end:
 -->
