@@ -1,55 +1,88 @@
 #!/usr/bin/env ruby
-# $Id: ext-graph-diff.rb,v 1.8 2010/06/08 09:08:44 masao Exp $
+# $Id: cmap-diff.rb,v 1.3 2010/12/19 08:40:43 masao Exp $
 
-require "graph"
-require "open3"
 require "pp"
+require "./graph.rb"
 
-# Usage: ./ext-graph-diff.rb <___pre.dot> <___post.dot>
-# ex. ./ext-graph-diff.rb tsub032_politics_2_pre.dot tsub032_politics_2_post.dot | nkf
+module CMapUtils
+   def statistics_merged_cmaps( io_pre, io_post )
+      result = {}
+      pre  = DirectedGraph.load_dot2( io_pre, true )
+      post = DirectedGraph.load_dot2( io_post, true )
 
-pre  = Graph.load_dot2( open( ARGV[0] ), true )
-post = Graph.load_dot2( open( ARGV[1] ), true )
+      result[ :pre ] = pre
+      result[ :post ] = post
 
-puts "Pre-nodes\t#{ pre.size }"
-puts "Post-nodes\t#{ post.size }"
+      nodes = {}
+      nodes[ :common ]  = pre.nodes & post.nodes
+      nodes[ :lost ] = pre.nodes - post.nodes
+      nodes[ :new ]   = post.nodes - pre.nodes
+      result[ :nodes ] = nodes
 
-nodes = {}
-nodes[ :common ]  = pre.nodes & post.nodes
-nodes[ :lost ] = pre.nodes - post.nodes
-nodes[ :new ]   = post.nodes - pre.nodes
+      pre_e = pre.links_set
+      post_e = post.links_set
+      links = {}
+      links[ :common ] = pre_e & post_e
+      links[ :lost ] = pre_e - post_e
+      links[ :new ]   = post_e - pre_e
+      result[ :links ] = links
 
-pre_e = pre.links_set
-post_e = post.links_set
-links = {}
-links[ :common ] = pre_e & post_e
-links[ :lost ] = pre_e - post_e
-links[ :new ]   = post_e - pre_e
-[ :common, :lost, :new ].each do |c|
-   # for Nodes:
-   puts [ "#{ c } nodes".capitalize,
-          nodes[c].size,
-          nodes[c].to_a.sort.join(", ") ].join("\t")
+      link_labels = {}
+      link_labels[ :common ] = links[ :common ].select{|e| pre.link_labels[ e ] and post.link_labels[ e ] }
+      link_labels[ :lost ] = links[ :lost ].select{|e| pre.link_labels[ e ] }
+      link_labels[ :lost ] += links[ :common ].select{|e| pre.link_labels[ e ] and not post.link_labels[ e ] }
+      link_labels[ :new ] = links[ :new ].select{|e| post.link_labels[ e ] }
+      link_labels[ :new ] += links[ :common ].select{|e| post.link_labels[ e ] and not pre.link_labels[ e ] }
+      result[ :link_labels ] = link_labels
+
+      result
+   end
+
+   def print_statistics( data, out = STDOUT )
+      out.puts "Pre-nodes\t#{  data[ :pre  ].size }"
+      out.puts "Post-nodes\t#{ data[ :post ].size }"
+      [ :common, :lost, :new ].each do |c|
+         # for Nodes:
+         out.puts [ "#{ c } nodes".capitalize,
+                    data[:nodes][c].size,
+                    data[:nodes][c].to_a.sort.join(", ") ].join("\t")
+      end
+
+      out.puts "Pre-links\t#{  data[ :pre  ].link_count }"
+      out.puts "Post-links\t#{ data[ :post ].link_count }"
+      [ :common, :lost, :new ].each do |c|
+         # for Links:
+         out.puts [ "#{ c } links".capitalize,
+                data[:links][c].size,
+                data[:links][c].to_a.map{|e| "{#{e.to_a.sort.join(",")}}" }.sort.join(", ") ].join("\t")
+      end
+
+      out.puts "Pre-link-labels\t#{  data[ :pre  ].link_labels.size }"
+      out.puts "Post-link-labels\t#{ data[ :post ].link_labels.size }"
+      [ :common, :lost, :new ].each do |c|
+         target = case c
+                  when :common, :new
+                     target = :post
+                  when :lost
+                     target = :pre
+                  end
+         # for Link labels:
+         out.puts [ "#{ c } link labels".capitalize,
+                data[ :link_labels ][c].size,
+                data[ :link_labels ][c].map{|e|
+                   "#{ data[ target ].link_labels[e] }:#{ e.to_a.join(",") }"
+                }.sort.join(", ")
+              ].join("\t")
+      end
+   end
 end
 
-puts "Pre-links\t#{ pre.link_count }"
-puts "Post-links\t#{ post.link_count }"
-[ :common, :lost, :new ].each do |c|
-   # for Links:
-   puts [ "#{ c } links".capitalize,
-          links[c].size,
-          links[c].to_a.map{|e| "{#{e.to_a.sort.join(",")}}" }.sort.join(", ") ].join("\t")
+if $0 == __FILE__
+   if ARGV[0].nil? or ARGV[1].nil?
+      puts "  Usage:  #{ $0 } pre.dot post.dot"
+      exit
+   end
+   include CMapUtils
+   data = statistics_merged_cmaps( open( ARGV[0] ), open( ARGV[1] ) )
+   print_statistics( data )
 end
-
-puts "Pre-link-labels\t#{ pre.link_labels.size }"
-puts "Post-link-labels\t#{ post.link_labels.size }"
-common_link_labels = links[ :common ].select{|e| pre.link_labels[ e ] and post.link_labels[ e ] }
-lost_link_labels = links[ :lost ].select{|e| pre.link_labels[ e ] }
-lost_link_labels += links[ :common ].select{|e| pre.link_labels[ e ] and not post.link_labels[ e ] }
-new_link_labels = links[ :new ].select{|e| post.link_labels[ e ] }
-new_link_labels += links[ :common ].select{|e| post.link_labels[ e ] and not pre.link_labels[ e ] }
-#p new_link_labels
-#p links[ :common ].select{|e| post.link_labels[ e ] and not pre.link_labels[ e ] }
-puts "Common-link-labels\t#{ common_link_labels.size }\t#{ common_link_labels.map{|e| "#{post.link_labels[e]}:{#{e.to_a.join(",")}}" }.to_a.sort.join(", ") }"
-puts "Lost-link-labels\t#{ lost_link_labels.size }\t#{ lost_link_labels.map{|e| "#{pre.link_labels[e]}:{#{e.to_a.join(",")}}" }.to_a.sort.join(", ") }"
-puts "New-link-labels\t#{ new_link_labels.size }\t#{ new_link_labels.map{|e| "#{post.link_labels[e]}:{#{e.to_a.join(",")}}" }.to_a.sort.join(", ") }"
