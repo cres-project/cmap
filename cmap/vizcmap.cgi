@@ -31,13 +31,14 @@ class VizCMapApp
    def merge_dot( opts = [] )
       @merged_dot = to_merged_dot( StringIO.new( pre_dot ), StringIO.new( post_dot ) )
       if @merged_dot.size > 0
-         dot_output_png( @merged_dot )
+         dot_output_png( @merged_dot, opts )
       end
       @statistics = statistics_merged_cmaps( StringIO.new( pre_dot ), StringIO.new( post_dot ) )
       @merged_dot
    end
 
    def dot_output_png( dot, dot_opts = [] )
+      STDERR.puts "dot_opts: #{dot_opts.inspect}"
       png = nil
       @md5 = Digest::MD5.hexdigest( dot )
       dot_tmpfile = File.join( "/tmp", "vizcmap#{ @md5 }.dot" )
@@ -88,7 +89,8 @@ begin
       ENV["DOTFONTPATH"] = "/home/etk2/.fonts"
       dot_opts = %w[-Nfontname=ipamp -Efontname=ipamp]
    end
-   #STDERR.puts dot_opts.inspect
+   STDERR.puts cgi.host.inspect
+   STDERR.puts dot_opts.inspect
 
    if vizcmap.md5_id and vizcmap.format == "png"
       print cgi.header( "image/png" )
