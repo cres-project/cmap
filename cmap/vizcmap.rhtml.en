@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="http://cres.jpn.org/skin/pukiwiki.css.php" type="text/css">
+<link rel="stylesheet" href="vizcmap.css" type="text/css">
+<link rev="made" href="mailto:tmasao@acm.org">
+<title>VizCMap</title>
+</head>
+<body>
+<div class="lang-switch">[ <a href="index.html.ja">Japanese</a> | <strong>English</strong> ]</div>
+<div class="last-update">Created on: 2010-08-21</div>
+<!-- hhmts start -->
+Last modified: 2011-07-03
+<!-- hhmts end -->
+<h1>VizCMap</h1>
+<% if @merge_dot %>
+<div id="result">
+<pre id="merge_dot"><%=h @merge_dot %></pre>
+</div>
+<% end %>
+<form action="./vizcmap.cgi" method="POST">
+<div class="form">
+<label for="pre_cmap">Pre-CMap:</label><br>
+<textarea name="pre_cmap" rows="10" cols="80">
+<% if pre_dot.nil? or pre_dot.empty? %>
+<%=h DEFAULT_PRE_DOT %>
+<% else %>
+<%=h @pre_dot %>
+<% end %>
+</textarea>
+<label for="post_cmap">Post-CMap:</label><br>
+<textarea name="post_cmap" rows="10" cols="80">
+<% if post_dot.nil? or post_dot.empty? %>
+<%=h DEFAULT_POST_DOT %>
+<% else %>
+<%=h @post_dot %>
+<% end %>
+</textarea>
+<label for="format">Select output format</label>
+<select name="format">
+  <option>html</option>
+  <option>png</option>
+</select><br>
+<input type="submit" value="Generate a mixed CMap">
+</div>
+</form>
+<hr>
+<h2>What's this?</h2>
+<p>
+VizCMAP is a analysis tool for comparing CMaps between pre-search and post-search.
+</p>
+<p>
+Once you transcribe concept maps into GraphViz (dot) format, this tool allows you to you can easily check what was changed between two concept maps, as follows.
+</p>
+<ul>
+  <li>The nodes encircled with double lines represent <em>the common nodes</em>. The links drawn with double lines with large arrows represent <em>the common links</em>.
+  <li>The nodes encircled by a dashed line represent <em>the lost nodes</em>, and the links drawn with a dashed line are <em>the lost links</em>.
+  <li>The nodes encircled by a solid line represent <em>the new nodes</em>, and the links drawn with a solid line are <em>the new links</em>.
+</ul>
+<p>
+Please refer to the following paper for an overview of analysis methods on pre- and post-search concept maps:
+</p>
+<ul>
+  <li>Yuka Egusa, Hitomi Saito, Masao Takaku, Hitoshi Terai, Makiko Miwa, Noriko Kando: "Using a Concept Map to Evaluate Exploratory Search". The 3rd Information Interaction in Context Symposium (IIiX 2010); New Brunswick, NJ, USA; 10p. (2010-08)
+</ul>
+<h2>Acknowledgments</h2>
+<p>
+This tool is an outcome of <a href="http://cres.jpn.org/">the CRES Project</a>.
+This project was partially supported by the Ministry of Education, Science, Sports and Culture, Grant-in-Aid for Scientific Research on Priority Areas A01-38 titled "Information Access Technologies Supporting Exploration and Learning" (19024068) and by a National Institute of Informatics Joint Research Grant titled "Study on Construction of Cognitive Models for Information Seeking Behavior and Its Applications".
+</p>
+<h2>Contact</h2>
+<p>
+If you have any questions or comments, please send an email to the following address:
+</p>
+<p>
+<img src="http://cres.jpn.org/?plugin=attach&amp;refer=Files&amp;openfile=mail.gif" alt="cres [_at_] nii.ac.jp">
+</p>
+<hr>
+<div id="footer">
+<address>
+<a href="http://cres.jpn.org/">CRES Project</a>
+</address>
+<div class="id">$Id: vizcmap.rhtml.en,v 1.1 2011/07/03 08:19:14 masao Exp $</div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-389547-3");
+pageTracker._trackPageview();
+</script>
+</body>
+</html>
+<!--
+Local Variables:
+html-helper-timestamp-template: "<div class=\"last-update\">Last modified: %Y-%m-%d</div>\n"
+end:
+-->
