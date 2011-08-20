@@ -46,20 +46,20 @@
   <li>Number of Nodes:
   <ul>
     <li>Common nodes: <%=h @statistics[:nodes][:common].size %>
-    <li>New nodes: <%=h @statistics[:nodes][:new].size %>
     <li>Lost nodes: <%=h @statistics[:nodes][:lost].size %>
+    <li>New nodes: <%=h @statistics[:nodes][:new].size %>
   </ul>
   <li>Number of Links:
   <ul>
     <li>Common links: <%=h @statistics[:links][:common].size %>
-    <li>New links: <%=h @statistics[:links][:new].size %>
     <li>Lost links: <%=h @statistics[:links][:lost].size %>
+    <li>New links: <%=h @statistics[:links][:new].size %>
   </ul>
   <li>Number of Link Labels:
   <ul>
     <li>Common link labels: <%=h @statistics[:link_labels][:common].size %>
-    <li>New link labels: <%=h @statistics[:link_labels][:new].size %>
     <li>Lost link labels: <%=h @statistics[:link_labels][:lost].size %>
+    <li>New link labels: <%=h @statistics[:link_labels][:new].size %>
   </ul>
 </ul>
 </div>

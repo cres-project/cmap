@@ -46,20 +46,20 @@
   <li>ノード数:
   <ul>
     <li>共通ノード: <%=h @statistics[:nodes][:common].size %>
-    <li>新規ノード: <%=h @statistics[:nodes][:new].size %>
     <li>消失ノード: <%=h @statistics[:nodes][:lost].size %>
+    <li>新規ノード: <%=h @statistics[:nodes][:new].size %>
   </ul>
   <li>リンク数:
   <ul>
     <li>共通リンク: <%=h @statistics[:links][:common].size %>
-    <li>新規リンク: <%=h @statistics[:links][:new].size %>
     <li>消失リンク: <%=h @statistics[:links][:lost].size %>
+    <li>新規リンク: <%=h @statistics[:links][:new].size %>
   </ul>
   <li>リンクラベル数:
   <ul>
     <li>共通リンクラベル: <%=h @statistics[:link_labels][:common].size %>
-    <li>新規リンクラベル: <%=h @statistics[:link_labels][:new].size %>
     <li>消失リンクラベル: <%=h @statistics[:link_labels][:lost].size %>
+    <li>新規リンクラベル: <%=h @statistics[:link_labels][:new].size %>
   </ul>
 </ul>
 </div>
