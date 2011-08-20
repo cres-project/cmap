@@ -109,8 +109,19 @@ Once you transcribe concept maps into GraphViz (dot) format, this tool allows yo
 Please refer to the following paper for an overview of analysis methods on pre- and post-search concept maps:
 </p>
 <ul>
-  <li>Yuka Egusa, Hitomi Saito, Masao Takaku, Hitoshi Terai, Makiko Miwa, Noriko Kando: "Using a Concept Map to Evaluate Exploratory Search". The 3rd Information Interaction in Context Symposium (IIiX 2010); New Brunswick, NJ, USA; 10p. (2010-08)
+  <li>Yuka Egusa, Hitomi Saito, Masao Takaku, Hitoshi Terai, Makiko Miwa, Noriko Kando: "Using a Concept Map to Evaluate Exploratory Search". The 3rd Information Interaction in Context Symposium (IIiX 2010); New Brunswick, NJ, USA; pp.175-184 (2010-08)
+  <a href="http://dx.doi.org/10.1145/1840784.1840810">http://dx.doi.org/10.1145/1840784.1840810</a>
 </ul>
+<h2>Development</h2>
+<p>
+The VizCMap tool is available as Open Source Software.
+<p>
+You can browse source files under <a href="http://en.sourceforge.jp/projects/cres/svn/view/cmap/">http://en.sourceforge.jp/projects/cres/svn/view/cmap/</a>.
+<p>
+You can download the latest codes via Subversion.
+Please refer to the guide for Subversion repository at:
+<a href="http://en.sourceforge.jp/projects/cres/cvs/">http://en.sourceforge.jp/projects/cres/cvs/</a>  
+</p>
 <h2>Acknowledgments</h2>
 <p>
 This tool is an outcome of <a href="http://cres.jpn.org/">the CRES Project</a>.

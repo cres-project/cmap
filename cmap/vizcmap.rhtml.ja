@@ -106,8 +106,17 @@ GraphVizの dot 形式を読み込むと、グラフのノード・ラベルの�
 可視化の概要については以下の論文をご覧ください:
 </p>
 <ul>
-  <li>Yuka Egusa, Hitomi Saito, Masao Takaku, Hitoshi Terai, Makiko Miwa, Noriko Kando: "Using a Concept Map to Evaluate Exploratory Search". The 3rd Information Interaction in Context Symposium (IIiX 2010); New Brunswick, NJ, USA; 10p. (2010-08)
+  <li>Yuka Egusa, Hitomi Saito, Masao Takaku, Hitoshi Terai, Makiko Miwa, Noriko Kando: "Using a Concept Map to Evaluate Exploratory Search". The 3rd Information Interaction in Context Symposium (IIiX 2010); New Brunswick, NJ, USA; pp.175-184 (2010-08)
+  <a href="http://dx.doi.org/10.1145/1840784.1840810">http://dx.doi.org/10.1145/1840784.1840810</a>
 </ul>
+<h2>ソースコード</h2>
+<p>
+本ツール（VizCMap）はオープンソースソフトウェアとして公開しています。
+<p>
+ソースファイルは以下のURLから閲覧できます: <a href="http://en.sourceforge.jp/projects/cres/svn/view/cmap/">http://en.sourceforge.jp/projects/cres/svn/view/cmap/</a>.
+<p>また、バージョン管理ツールSubversion経由でもダウンロードできます。ダウンロード方法の詳細は下記ページをご覧ください: 
+<a href="http://sourceforge.jp/projects/cres/cvs/">http://sourceforge.jp/projects/cres/cvs/</a>
+</p>
 <h2>謝辞</h2>
 <p>
 このツールは<a href="http://cres.jpn.org/">CRESプロジェクト</a>による成果です。
