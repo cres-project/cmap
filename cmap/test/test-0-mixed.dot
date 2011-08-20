@@ -1,0 +1,70 @@
+﻿digraph G {
+//graph [rankdir=LR]
+id0 [label="Effect of a change of government"]
+id0 [peripheries = 2]
+anxiety [peripheries = 2]
+"Yamba dam" [peripheries = 2]
+"Mrs. Sachi Hatoyama" [peripheries = 2]
+"Democratic Party" [peripheries = 2]
+Hatoyama [peripheries = 2]
+"Hall of Fame in Animation" [style = dotted]
+Otaku [style = dotted]
+"bureaucrat initiative" [style = dotted]
+"change of the government" [style = dotted]
+"politicians initiative" [style = dotted]
+voters [style = dotted]
+Akihabara [style = dotted]
+"rights to vote" [style = dotted]
+"electric city" [style = dotted]
+"Aso, Former PM" [style = dotted]
+"increase CO2"
+"Stop wasteful budget"
+"attentions in mass-media"
+"increase traffics"
+"comfortable work environment"
+"reconstruction of public projects"
+"increase birth rate"
+Friendships
+"Friendship diplomacy"
+"child allowance"
+"East Asian Initiative"
+"freeway planning"
+
+
+id0 -> "change of the government" [label="is caused by" style = dotted]
+"change of the government" -> "Democratic Party" [label="makes" style = dotted]
+
+voters -> "change of the government" [label="desire" style = dotted]
+voters -> "rights to vote" [label="have" style = dotted]
+id0 -> "Hall of Fame in Animation" [label="drops the plan of" style = dotted]
+Akihabara -> "electric city" [label="have" style = dotted]
+Akihabara -> Otaku [label="attracts" style = dotted]
+Otaku -> "Aso, Former PM" [label="support" style = dotted]
+"Aso, Former PM" -> "Hall of Fame in Animation" [label="planed" style = dotted]
+id0 -> "politicians initiative" [label="consists-of" style = dotted]
+"politicians initiative" -> "bureaucrat initiative" [label="is counterpart of" style = dotted]
+id0 -> "Yamba dam" [label="consists-of" style = dotted]
+
+
+"Democratic Party" -> id0 [label="makes"]
+
+"Mrs. Sachi Hatoyama" -> "attentions in mass-media" [label="attracts"]
+Hatoyama -> Friendships [label="claims"]
+Friendships -> id0 [label="makes"]
+id0 -> "freeway planning" [label="consists-of"]
+"freeway planning" -> "increase traffics" [label="result-in"]
+"increase traffics" -> "increase CO2" [label="result-in"]
+id0 -> "Stop wasteful budget" [label="consists-of"]
+"Stop wasteful budget" -> "reconstruction of public projects" [label="consists-of"]
+"reconstruction of public projects" -> "Yamba dam" [label="consists-of"]
+
+id0 -> "child allowance" [label="consists-of"]
+"child allowance" -> "increase birth rate" [label="result-in"]
+"child allowance" -> "comfortable work environment" [label="result-in"]
+id0 -> "Friendship diplomacy" [label="consists-of"]
+"Friendship diplomacy" -> "East Asian Initiative" [label="consists-of"]
+
+"Democratic Party" -> Hatoyama [label="with\nled by"  style=bold arrowsize = 2]
+Hatoyama -> "Mrs. Sachi Hatoyama" [label="with\nwith"  style=bold arrowsize = 2]
+"Yamba dam" -> anxiety [label="with\nmakes" style=bold arrowsize = 2]
+}
