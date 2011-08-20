@@ -31,13 +31,13 @@
 <ul>
   <li>Number of Nodes: <%=h @statistics[ :pre ].node_count %>
   <li>Number of Links: <%=h @statistics[ :pre ].edge_count %>
+  <li>Number of Link Labels: <%=h @statistics[ :pre ].edge_labels.size %>
 </ul>
-</div>
-<div class="analysis">
 <h3>Post-CMap:</h3>
 <ul>
   <li>Number of Nodes: <%=h @statistics[ :post ].node_count %>
   <li>Number of Links: <%=h @statistics[ :post ].edge_count %>
+  <li>Number of Link Labels: <%=h @statistics[ :post ].edge_labels.size %>
 </ul>
 </div>
 <div class="analysis">
@@ -54,6 +54,12 @@
     <li>Common links: <%=h @statistics[:links][:common].size %>
     <li>New links: <%=h @statistics[:links][:new].size %>
     <li>Lost links: <%=h @statistics[:links][:lost].size %>
+  </ul>
+  <li>Number of Link Labels:
+  <ul>
+    <li>Common link labels: <%=h @statistics[:link_labels][:common].size %>
+    <li>New link labels: <%=h @statistics[:link_labels][:new].size %>
+    <li>Lost link labels: <%=h @statistics[:link_labels][:lost].size %>
   </ul>
 </ul>
 </div>
