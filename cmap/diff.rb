@@ -15,13 +15,16 @@ module CMapUtils
 
       nodes = {}
 
-      nodes[ :common ]  = pre.nodes & post.nodes
-      nodes[ :lost ] = pre.nodes - post.nodes
-      nodes[ :new ]   = post.nodes - pre.nodes
+      pre_cnodes  = pre.canonical_node_labels
+      post_cnodes = post.canonical_node_labels
+      nodes[ :common ] =  pre_cnodes & post_cnodes
+      #nodes[ :common ]  = pre.nodes & post.nodes
+      nodes[ :lost ] = pre_cnodes - post_cnodes
+      nodes[ :new ]   = post_cnodes - pre_cnodes
       result[ :nodes ] = nodes
 
-      pre_e = pre.links_set
-      post_e = post.links_set
+      pre_e  = pre.canonical_links_set
+      post_e = post.canonical_links_set
       links = {}
       links[ :common ] = pre_e & post_e
       links[ :lost ] = pre_e - post_e
@@ -29,13 +32,13 @@ module CMapUtils
       result[ :links ] = links
 
       link_labels = {}
-      link_labels[ :common ] = links[ :common ].select{|e| pre.link_labels[ e ] and post.link_labels[ e ] and pre.link_labels[ e ] == post.link_labels[ e ] }
-      link_labels[ :lost ] = links[ :lost ].select{|e| pre.link_labels[ e ] }
-      link_labels[ :lost ] += links[ :common ].select{|e| pre.link_labels[ e ] and not post.link_labels[ e ] }
-      link_labels[ :lost ] += links[ :common ].select{|e| pre.link_labels[ e ] and post.link_labels[ e ] and pre.link_labels[ e ] != post.link_labels[ e ]  }
-      link_labels[ :new ] = links[ :new ].select{|e| post.link_labels[ e ] }
-      link_labels[ :new ] += links[ :common ].select{|e| post.link_labels[ e ] and not pre.link_labels[ e ] }
-      link_labels[ :new ] += links[ :common ].select{|e| post.link_labels[ e ] and pre.link_labels[ e ] and post.link_labels[ e ] != pre.link_labels[ e ]  }
+      link_labels[ :common ] = links[ :common ].select{|e| pre.canonical_link_labels[ e ] and post.canonical_link_labels[ e ] and pre.canonical_link_labels[ e ] == post.canonical_link_labels[ e ] }
+      link_labels[ :lost ] = links[ :lost ].select{|e| pre.canonical_link_labels[ e ] }
+      link_labels[ :lost ] += links[ :common ].select{|e| pre.canonical_link_labels[ e ] and not post.canonical_link_labels[ e ] }
+      link_labels[ :lost ] += links[ :common ].select{|e| pre.canonical_link_labels[ e ] and post.canonical_link_labels[ e ] and pre.canonical_link_labels[ e ] != post.canonical_link_labels[ e ]  }
+      link_labels[ :new ] = links[ :new ].select{|e| post.canonical_link_labels[ e ] }
+      link_labels[ :new ] += links[ :common ].select{|e| post.canonical_link_labels[ e ] and not pre.canonical_link_labels[ e ] }
+      link_labels[ :new ] += links[ :common ].select{|e| post.canonical_link_labels[ e ] and pre.canonical_link_labels[ e ] and post.link_labels[ e ] != pre.canonical_link_labels[ e ]  }
       result[ :link_labels ] = link_labels
 
       result
@@ -44,11 +47,26 @@ module CMapUtils
    def print_statistics( data, out = STDOUT )
       out.puts "Pre-nodes\t#{  data[ :pre  ].size }"
       out.puts "Post-nodes\t#{ data[ :post ].size }"
+      label_target = {
+         :common => :pre,
+         :lost   => :pre,
+         :new    => :post,
+      }
       [ :common, :lost, :new ].each do |c|
          # for Nodes:
-         out.puts [ "#{ c } nodes".capitalize,
-                    data[:nodes][c].size,
-                    data[:nodes][c].to_a.sort.join(", ") ].join("\t")
+         #p label_target[ c ]
+         #p data[label_target[c]].node_labels["id0"]
+         out.puts [
+             "#{ c } nodes".capitalize,
+             data[:nodes][c].size,
+             data[:nodes][c].to_a.sort.map{|e|
+                      if data[label_target[c]].canonical_label_mapping[e]
+                         "{#{e}}:#{ data[label_target[c]].canonical_label_mapping[e] }"
+                      else
+                         e
+                      end
+                   }.join(", ")
+         ].join("\t")
       end
 
       out.puts "Pre-links\t#{  data[ :pre  ].link_count }"

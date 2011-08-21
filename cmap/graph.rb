@@ -47,23 +47,36 @@ class Graph
    alias :each :each_node
    include Enumerable
 
-   def canonical_node_labels( unified = true )
+   def canonical_node_label( n, unified = true )
       @canonical_label_mapping ||= {}
+      label = n
+      if @node_labels[ n ]
+         label = @node_labels[ n ]
+         if unified and label =~ /\A(\w+):(.*)\Z/
+            label = $1
+            @canonical_label_mapping[ $1 ] = $2
+         end
+      end
+      label
+   end
+   def canonical_node_labels( unified = true )
       labels = Set.new
       @nodes.each do |e|
-         label = e
-         if @node_labels[ e ]
-            label = @node_labels[ e ]
-            if unified and label =~ /\A(\w+):(.*)\Z/
-               label = $1
-               @canonical_label_mapping[ $1 ] = $2
-            end
-         end
-         labels << label
+         labels << canonical_node_label( e, unified )
       end
       labels
    end
    attr_reader :canonical_label_mapping
+
+   def canonical_edge_labels( unified = true )
+      labels = {}
+      @edge_labels.each do |set, label|
+         set_new = Set.new( set.to_a.map{|e| canonical_node_label( e, unified ) } )
+         labels[ set_new ] = label
+      end
+      labels
+   end
+   alias :canonical_link_labels :canonical_edge_labels
 
    def neighbors( node )
       @edges[node] - Set[ node ]
@@ -124,7 +137,20 @@ class Graph
       end
       set
    end
+   def canonical_edges_set( unified = true )
+      set = Set[]
+      each_node do |node|
+         @edges[ node ].each do |n1|
+            set << Set[
+                   canonical_node_label( node, unified ),
+                   canonical_node_label( n1, unified )
+               ]
+         end
+      end
+      set
+   end
    alias :links_set :edges_set
+   alias :canonical_links_set :canonical_edges_set
 
    def edge_count
       edges_set.size
