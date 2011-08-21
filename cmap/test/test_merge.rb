@@ -23,5 +23,7 @@ class TestMerge < Test::Unit::TestCase
          g = DirectedGraph.load_dot2( dot_io )
          #p g.nodes
       end
+      dot_io.rewind
+      dot_io
    end
 end
