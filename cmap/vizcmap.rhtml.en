@@ -6,13 +6,21 @@
 <link rel="stylesheet" href="http://cres.jpn.org/skin/pukiwiki.css.php" type="text/css">
 <link rel="stylesheet" href="vizcmap.css" type="text/css">
 <link rev="made" href="mailto:tmasao@acm.org">
+<link rel="shortcut icon" href="http://cres.jpn.org/favicon.ico">
 <title>VizCMap</title>
 </head>
 <body>
-<div class="lang-switch">[ <a href="index.html.ja">Japanese</a> | <strong>English</strong> ]</div>
+<div class="breadcrumb">
+  <a href="http://cres.jpn.org">CRES Project</a>
+  &gt;
+  <a href="http://cres.jpn.org/?VizCMap">VizCMap</a>
+  &gt;
+  <strong>VizCMap demo</strong>
+</div>
+<div class="lang-switch">[ <a href="./">Japanese</a> | <strong>English</strong> ]</div>
 <div class="last-update">Created on: 2010-08-21</div>
 <!-- hhmts start --> 
-<div class="last-update">Last modified: 2011-08-20</div>
+<div class="last-update">Last modified: 2011-08-21</div>
 <!-- hhmts end -->
 <h1>VizCMap</h1>
 <% if @merged_dot %>
@@ -93,53 +101,12 @@
 </div>
 </form>
 <hr>
-<h2>What's this?</h2>
-<p>
-VizCMAP is a analysis tool for comparing CMaps between pre-search and post-search.
-</p>
-<p>
-Once you transcribe concept maps into GraphViz (dot) format, this tool allows you to you can easily check what was changed between two concept maps, as follows.
-</p>
-<ul>
-  <li>The nodes encircled with double lines represent <em>the common nodes</em>. The links drawn with double lines with large arrows represent <em>the common links</em>.
-  <li>The nodes encircled by a dashed line represent <em>the lost nodes</em>, and the links drawn with a dashed line are <em>the lost links</em>.
-  <li>The nodes encircled by a solid line represent <em>the new nodes</em>, and the links drawn with a solid line are <em>the new links</em>.
-</ul>
-<p>
-Please refer to the following paper for an overview of analysis methods on pre- and post-search concept maps:
-</p>
-<ul>
-  <li>Yuka Egusa, Hitomi Saito, Masao Takaku, Hitoshi Terai, Makiko Miwa, Noriko Kando: "Using a Concept Map to Evaluate Exploratory Search". The 3rd Information Interaction in Context Symposium (IIiX 2010); New Brunswick, NJ, USA; pp.175-184 (2010-08)
-  <a href="http://dx.doi.org/10.1145/1840784.1840810">http://dx.doi.org/10.1145/1840784.1840810</a>
-</ul>
-<h2>Development</h2>
-<p>
-The VizCMap tool is available as Open Source Software.
-<p>
-You can browse source files under <a href="http://en.sourceforge.jp/projects/cres/svn/view/cmap/">http://en.sourceforge.jp/projects/cres/svn/view/cmap/</a>.
-<p>
-You can download the latest codes via Subversion.
-Please refer to the guide for Subversion repository at:
-<a href="http://en.sourceforge.jp/projects/cres/cvs/">http://en.sourceforge.jp/projects/cres/cvs/</a>  
-</p>
-<h2>Acknowledgments</h2>
-<p>
-This tool is an outcome of <a href="http://cres.jpn.org/">the CRES Project</a>.
-This project was partially supported by the Ministry of Education, Science, Sports and Culture, Grant-in-Aid for Scientific Research on Priority Areas A01-38 titled "Information Access Technologies Supporting Exploration and Learning" (19024068) and by a National Institute of Informatics Joint Research Grant titled "Study on Construction of Cognitive Models for Information Seeking Behavior and Its Applications".
-</p>
-<h2>Contact</h2>
-<p>
-If you have any questions or comments, please send an email to the following address:
-</p>
-<p>
-<img src="http://cres.jpn.org/?plugin=attach&amp;refer=Files&amp;openfile=mail.gif" alt="cres [_at_] nii.ac.jp">
-</p>
-<hr>
-<div id="footer">
-<address>
-<a href="http://cres.jpn.org/">CRES Project</a>
-</address>
-<div class="id">$Id: vizcmap.rhtml.en,v 1.1 2011/07/03 08:19:14 masao Exp $</div>
+<div class="breadcrumb">
+  <a href="http://cres.jpn.org">CRES Project</a>
+  &gt;
+  <a href="http://cres.jpn.org/?VizCMap">VizCMap</a>
+  &gt;
+  <strong>VizCMap demo</strong>
 </div>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
