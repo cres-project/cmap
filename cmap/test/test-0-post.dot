@@ -8,7 +8,7 @@ digraph G {
   Yuai -> id0 [label="make"]
   id0 -> "to free of expressway" [label="one of the"]
   "to free of expressway" -> "heavily-trafficked" [label="As the result of"]
-  "heavily-trafficked" -> "CO2 UP" [label="As thee result of"]
+  "heavily-trafficked" -> "CO2 UP" [label="As the result of"]
   id0 -> "stop wastful spending" [label="one of the"]
   "stop wastful spending" -> "revieing public works" [label="one of the"]
   "revieing public works" -> "Yamba Dam" [label="one of the"]
