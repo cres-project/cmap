@@ -34,3 +34,6 @@ hr {
   clear: both;
 }
 
+div.breadcrumb {
+  float: left;
+}
