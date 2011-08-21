@@ -27,7 +27,7 @@
 <pre id="merged_dot"><%=h @merged_dot %></pre>
 </div>
 <div id="result_img">
-<a href="./vizcmap.cgi?id=<%=h @md5 %>&amp;format=png" title="拡大して表示">
+<a target="_blank" href="./vizcmap.cgi?id=<%=h @md5 %>&amp;format=png" title="拡大して表示">
 <img src="./vizcmap.cgi?id=<%=h @md5 %>&amp;format=png" />
 </a>
 </div>
