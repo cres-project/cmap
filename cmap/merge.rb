@@ -57,14 +57,19 @@ module CMapUtils
       ( pre_e & post_e ).each do |link|
          result << link.map{|e| "\"#{ e }\"" }.join( "->" )
          label = ""
-         label << "<FONT COLOR=\"gray\" POINT-SIZE=\"12\">#{ pre.canonical_link_labels[ link ]}</FONT>" if pre.canonical_link_labels[ link ]
+         if post.canonical_link_labels[ link ] and pre.canonical_link_labels[ link ] and pre.canonical_link_labels[ link ] ==  post.canonical_link_labels[ link ]
+            label << "<U>#{ pre.canonical_link_labels[ link ]}</U>"
+         else
+            label << "<FONT COLOR=\"gray\" POINT-SIZE=\"12\">#{ pre.canonical_link_labels[ link ]}</FONT><BR/>" if pre.canonical_link_labels[ link ]
+            label << " " + post.canonical_link_labels[ link ] if post.canonical_link_labels[ link ]
+         end
          result << " [ label=<#{ label }>, fontsize=12, arrowsize=2, color=\"#000000:#ffffff:#ffffff:#000000\" ];\n"
       end
       # Lost links:
       ( pre_e - post_e ).each do |link|
          result << link.map{|e| "\"#{ e }\"" }.join( "->" )
          label = ""
-         label << "<FONT COLOR=\"gray\" POINT-SIZE=\"12\">#{ pre.canonical_link_labels[ link ] }</FONT><BR/>" if pre.canonical_link_labels[ link ]
+         label << "<FONT COLOR=\"gray\" POINT-SIZE=\"12\">#{ pre.canonical_link_labels[ link ] }</FONT>" if pre.canonical_link_labels[ link ]
          result << " [ label=<#{ label }>, fontsize=12, style=dotted ];\n"
       end
       # New links:
