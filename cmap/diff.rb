@@ -38,7 +38,7 @@ module CMapUtils
       link_labels[ :lost ] += links[ :common ].select{|e| pre.canonical_link_labels[ e ] and post.canonical_link_labels[ e ] and pre.canonical_link_labels[ e ] != post.canonical_link_labels[ e ]  }
       link_labels[ :new ] = links[ :new ].select{|e| post.canonical_link_labels[ e ] }
       link_labels[ :new ] += links[ :common ].select{|e| post.canonical_link_labels[ e ] and not pre.canonical_link_labels[ e ] }
-      link_labels[ :new ] += links[ :common ].select{|e| post.canonical_link_labels[ e ] and pre.canonical_link_labels[ e ] and post.link_labels[ e ] != pre.canonical_link_labels[ e ]  }
+      link_labels[ :new ] += links[ :common ].select{|e| post.canonical_link_labels[ e ] and pre.canonical_link_labels[ e ] and post.canonical_link_labels[ e ] != pre.canonical_link_labels[ e ]  }
       result[ :link_labels ] = link_labels
 
       result

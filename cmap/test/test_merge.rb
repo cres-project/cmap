@@ -11,7 +11,7 @@ require "merge.rb"
 
 class TestMerge < Test::Unit::TestCase
    include CMapUtils
-   def test_to_merged_dot
+   def test_to_merged_dot0
       pre_fname  = File.join( File.dirname( $0 ), "test", "test-0-pre.dot")
       post_fname = File.join( File.dirname( $0 ), "test", "test-0-post.dot")
       dot = to_merged_dot( open(pre_fname), open(post_fname) )
@@ -25,5 +25,22 @@ class TestMerge < Test::Unit::TestCase
       end
       dot_io.rewind
       dot_io
+   end
+
+   def test_to_merged_dot1
+      pre_fname  = File.join( File.dirname( $0 ), "test", "test-1-pre.dot")
+      post_fname = File.join( File.dirname( $0 ), "test", "test-1-post.dot")
+      dot = to_merged_dot( open(pre_fname), open(post_fname) )
+      #p dot
+      assert( dot )
+      assert_not_equal( dot, "" )
+      dot_io = StringIO.new( dot )
+      assert_nothing_raised do
+         g = DirectedGraph.load_dot2( dot_io )
+         # FIXME:
+         assert_equal( 42, g.node_count )
+      end
+      #dot_io.rewind
+      #dot_io
    end
 end
