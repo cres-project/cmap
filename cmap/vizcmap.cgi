@@ -105,8 +105,8 @@ begin
          print vizcmap.expand_rhtml
       end
    else
-      DEFAULT_PRE_DOT  = open("test/test-0-pre.dot"){|io|  io.read }
-      DEFAULT_POST_DOT = open("test/test-0-post.dot"){|io| io.read }
+      DEFAULT_PRE_DOT  = open("test/test-1-pre.dot"){|io|  io.read }
+      DEFAULT_POST_DOT = open("test/test-1-post.dot"){|io| io.read }
       print cgi.header( "text/html; charset=utf-8" )
       print vizcmap.expand_rhtml
    end
