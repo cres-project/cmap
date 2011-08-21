@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
-# $Id: ext-graph-merge.rb,v 1.1 2010/04/25 06:29:29 masao Exp $
 
 require "./graph.rb"
 
@@ -8,8 +7,8 @@ module CMapUtils
    DEFAULT_NODE_ATTR = " POINT-SIZE=\"9\" FACE=\"times\""
    def to_merged_dot( io_pre, io_post, style = {} )
       result = ""
-      pre  = DirectedGraph.load_dot2( io_pre, true )
-      post = DirectedGraph.load_dot2( io_post, true )
+      pre  = DirectedGraph.load_dot2( io_pre, true, true )
+      post = DirectedGraph.load_dot2( io_post, true, true )
 
       node_attr = DEFAULT_NODE_ATTR
       node_attr = style[ :node_attr ] if style[ :node_attr ]
@@ -34,13 +33,21 @@ module CMapUtils
       # Common nodes:
       ( pre_cnodes & post_cnodes ).each do |node|
          label = node
+         user_attr = ""
+         if pre.canonical_label_mapping[ node ] and post.canonical_label_mapping[ node ]
+            if node == "root"
+               user_attr = ", shape=box, color=\"blue\""
+            else
+               user_attr = ", penwidth=3, color=\"red\""
+            end
+         end
          if pre.canonical_label_mapping[ node ] and post.canonical_label_mapping[ node ] and pre.canonical_label_mapping[ node ] == post.canonical_label_mapping[ node ]
             label = pre.canonical_label_mapping[ node ]
          else
             label = "<FONT COLOR=\"gray\">#{ pre.canonical_label_mapping[ node ]}</FONT><BR/>"
             label << " " + post.canonical_label_mapping[ node ] if post.canonical_label_mapping[ node ]
          end
-         result << "\"#{ node }\" [ label=<<FONT#{ node_attr }>#{ node_hash[node].join(",") }</FONT> #{ label }>, margin=\"0,0\", peripheries=2];\n"
+         result << "\"#{ node }\" [ label=<<FONT#{ node_attr }>#{ node_hash[node].join(",") }</FONT> #{ label }>, margin=\"0,0\", peripheries=2#{ user_attr }];\n"
       end
       # Lost nodes:
       ( pre_cnodes - post_cnodes ).each do |node|

@@ -201,8 +201,9 @@ class Graph
       g
    end
    # Graph#load_dot2 requires "dot" command.
-   def self.load_dot2( io, normalize = false )
+   def self.load_dot2( io, normalize = false, root = false )
       # STDERR.puts f
+      root_node = true
       pin, pout, perr = *Open3.popen3( "dot", "-Tplain" )
       pin.print io.read
       pin.close
@@ -215,6 +216,10 @@ class Graph
             node = node.normalize_ja if normalize
             label = Shellwords.shellwords( line.chomp )[6]
             label = label.normalize_ja if normalize
+            if root and root_node
+               label = "root:" + label
+               root_node = false
+            end
             g.add_node( node, label )
          when /\Aedge /
             data = Shellwords.shellwords( line.chomp )
@@ -354,8 +359,9 @@ class DirectedGraph < Graph
       @edges_to[ n1 ] << n2
    end
    # Graph#load_dot2 requires "dot" command.
-   def self.load_dot2( io, normalize = false )
+   def self.load_dot2( io, normalize = false, root = false )
       # STDERR.puts f
+      root_node = true
       pin, pout, perr = *Open3.popen3( "dot", "-Tplain" )
       pin.print io.read
       pin.close
@@ -368,6 +374,10 @@ class DirectedGraph < Graph
             node = node.normalize_ja if normalize
             label = Shellwords.shellwords( line.chomp )[6]
             label = label.normalize_ja if normalize
+            if root and root_node
+               label = "root:" + label
+               root_node = false
+            end
             g.add_node( node, label )
          when /\Aedge /
             data = Shellwords.shellwords( line.chomp )
