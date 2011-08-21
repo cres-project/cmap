@@ -57,7 +57,7 @@ module CMapUtils
       ( pre_e & post_e ).each do |link|
          result << link.map{|e| "\"#{ e }\"" }.join( "->" )
          label = ""
-         label << "<FONT COLOR=\"gray\" POINT-SIZE=\"12\">#{ pre.canonical_link_labels[ link ]}</FONT>"
+         label << "<FONT COLOR=\"gray\" POINT-SIZE=\"12\">#{ pre.canonical_link_labels[ link ]}</FONT>" if pre.canonical_link_labels[ link ]
          result << " [ label=<#{ label }>, fontsize=12, arrowsize=2, color=\"#000000:#ffffff:#ffffff:#000000\" ];\n"
       end
       # Lost links:

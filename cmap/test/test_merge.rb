@@ -38,7 +38,11 @@ class TestMerge < Test::Unit::TestCase
       assert_nothing_raised do
          g = DirectedGraph.load_dot2( dot_io )
          # FIXME:
-         assert_equal( 42, g.node_count )
+         assert_equal( 41, g.node_count )
+         #p g.nodes
+         #p g.edges[ "n4" ]
+         #p g.edge_labels[ Set["n4","n5"] ]
+         #p g.edge_labels
       end
       #dot_io.rewind
       #dot_io
