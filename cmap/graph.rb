@@ -47,6 +47,24 @@ class Graph
    alias :each :each_node
    include Enumerable
 
+   def canonical_node_labels( unified = true )
+      @canonical_label_mapping ||= {}
+      labels = Set.new
+      @nodes.each do |e|
+         label = e
+         if @node_labels[ e ]
+            label = @node_labels[ e ]
+            if unified and label =~ /\A(\w+):(.*)\Z/
+               label = $1
+               @canonical_label_mapping[ $1 ] = $2
+            end
+         end
+         labels << label
+      end
+      labels
+   end
+   attr_reader :canonical_label_mapping
+
    def neighbors( node )
       @edges[node] - Set[ node ]
    end

@@ -16,6 +16,17 @@ class TestGraph < Test::Unit::TestCase
       assert_equal( 16, g.node_count )
       assert_equal( 15, g.edge_count )
    end
+   def test_canonical_node_labels
+      pre1_fname = File.join( File.dirname( $0 ), "test", "test-1-pre.dot")
+      g = Graph.load_dot2( open(pre1_fname) )
+      nlabels = g.canonical_node_labels
+      assert( nlabels )
+      assert( nlabels.member?( "environmental issues" ) )
+      assert( nlabels.member?( "n2" ) )
+      #assert( nlabels.member?( "climate change" ) )
+      assert( g.canonical_label_mapping )
+      assert_equal( g.canonical_label_mapping[ "n2" ], "climate change" )
+   end
 end
 
 class TestDirectedGraph < Test::Unit::TestCase
@@ -26,5 +37,16 @@ class TestDirectedGraph < Test::Unit::TestCase
       assert( g )
       assert_equal( 16, g.node_count )
       assert_equal( 15, g.edge_count )
+   end
+   def test_canonical_node_labels
+      pre1_fname = File.join( File.dirname( $0 ), "test", "test-1-pre.dot")
+      g = DirectedGraph.load_dot2( open(pre1_fname) )
+      nlabels = g.canonical_node_labels
+      assert( nlabels )
+      assert( nlabels.member?( "environmental issues" ) )
+      assert( nlabels.member?( "n2" ) )
+      #assert( nlabels.member?( "climate change" ) )
+      assert( g.canonical_label_mapping )
+      assert_equal( g.canonical_label_mapping[ "n2" ], "climate change" )
    end
 end
