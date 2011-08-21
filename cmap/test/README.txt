@@ -23,6 +23,6 @@ Common_Link	3
 Lost_Link	12
 New_Link	15
 
-Common_LLabel	1    (3?)
-Lost_Llabel	14  (12?)
-New_LLabel	17  (15?)
+Common_LLabel	1
+Lost_Llabel	14
+New_LLabel	17

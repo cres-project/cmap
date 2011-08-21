@@ -44,7 +44,7 @@ class TestDiff < Test::Unit::TestCase
       pre_fname  = File.join( File.dirname( $0 ), "test", "test-1-pre.dot")
       post_fname = File.join( File.dirname( $0 ), "test", "test-1-post.dot")
       stat = statistics_merged_cmaps( open(pre_fname), open(post_fname) )
-      p stat
+      #p stat
       assert( stat )
       assert( stat[ :nodes ] )
       assert( stat[ :links ] )
