@@ -6,9 +6,5 @@
 
 - merge.rb: Output an integrated concept map from two concept maps (dot format).
 
-** One-liner for conversion from old format to new format **
-
-  ruby -nle 'puts $_.gsub(/label=\"(.+)\"/){|e|l=$1;l=l.sub(/^n\d+:/,"");%Q[label="#{l}"]}' csub001_k_plan_1_pre.dot
-
 (Last argument should be "filename" of Dot format.)
 
