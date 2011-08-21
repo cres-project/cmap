@@ -14,6 +14,7 @@ module CMapUtils
       result[ :post ] = post
 
       nodes = {}
+
       nodes[ :common ]  = pre.nodes & post.nodes
       nodes[ :lost ] = pre.nodes - post.nodes
       nodes[ :new ]   = post.nodes - pre.nodes
