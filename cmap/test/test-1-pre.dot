@@ -1,0 +1,55 @@
+/* csub018_s_en_1_pre  */
+digraph G {
+id0 [label="environmental issues"]
+
+id1 [label="n2:climate change"] [color="#FF0000"]
+id2 [label="n3:carbon dioxide"] [color="#FF0000"]
+id3 [label="n1:elevation of sea level"] [color="#FF0000"]
+id4 [label="acid rain"]
+id5 [label="car exhaust"]
+id6 [label="n4:automobile"] [color="#FF0000"]
+id7 [label="diesel"]
+id8 [label="n5:hybrid"] [color="#FF0000"]
+id9 [label="Alphard"]
+id10 [label="Prius"]
+id11 [label="Insight"]
+id12 [label="n6:grant money"] [color="#FF0000"]
+id13 [label="forest destruction"]
+id14 [label="Germany"]
+id0 -> id1 [label="is one of"]
+id1 -> id2 [label="is caused by"]
+id1 -> id3 [label="caueses"]
+id0 -> id4 [label="is one of"]
+id4 -> id5
+id5 -> id6
+id6 -> id7
+id6 -> id8
+id8 -> id9
+id8 -> id10
+id8 -> id11
+id9 -> id12
+id10 -> id12
+id11 -> id12
+id4 -> id13
+id13 -> id14
+
+id15 [label="desertization"]
+id16 [label="Africa"]
+id17 [label="Kenya"]
+id18 [label="ozone depletion"]
+id19 [label="freon gas"]
+id20 [label="refrigerator"]
+id21 [label="air-conditioner"]
+id22 [label="ultraviolet"]
+id23 [label="skin cancer"]
+id0 -> id15 [label="is one of"]
+id15 -> id16
+id16 -> id17
+id0 -> id18
+id18 -> id19 [label="is caused by"]
+id19 -> id20 [label="is caused by"]
+id19 -> id21 [label="is caused by"]
+id18 -> id22 [label="exposes"]
+id22 -> id23 [label="causes"]
+
+}
