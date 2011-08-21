@@ -14,34 +14,37 @@ module CMapUtils
       node_attr = DEFAULT_NODE_ATTR
       node_attr = style[ :node_attr ] if style[ :node_attr ]
 
+      result << "digraph G{\n"
+
+      nodes = {}
+      pre_cnodes = pre.canonical_node_labels
+      post_cnodes = post.canonical_node_labels
+
       # ノードIDとラベルのハッシュ
       node_hash = {}
-      pre.each_with_index do |node, i|
-         key = pre.node_labels[ node ]
+      pre_cnodes.each_with_index do |key, i|
          node_hash[ key ] ||= []
          node_hash[ key ] << "a#{i}"
       end
-      post.each_with_index do |node, i|
-         key = post.node_labels[ node ]
+      post_cnodes.each_with_index do |key, i|
          node_hash[ key ] ||= []
          node_hash[ key ] << "b#{i}"
       end
 
-      result << "digraph G{\n"
-
-      nodes = {}
-      pre_nodes = Set[ *pre.node_labels.values ]
-      post_nodes = Set[ *post.node_labels.values ]
       # Common nodes:
-      ( pre_nodes & post_nodes ).each do |node|
-         result << "\"#{ node }\" [ label=<<FONT#{ node_attr }>#{ node_hash[node].join(",") }</FONT> #{ node }>, margin=\"0,0\", peripheries=2];\n"
+      ( pre_cnodes & post_cnodes ).each do |node|
+         label = node
+         if pre.canonical_label_mapping[ node ]
+            label = pre.canonical_label_mapping[ node ]
+         end
+         result << "\"#{ node }\" [ label=<<FONT#{ node_attr }>#{ node_hash[node].join(",") }</FONT> #{ label }>, margin=\"0,0\", peripheries=2];\n"
       end
       # Lost nodes:
-      ( pre_nodes - post_nodes ).each do |node|
+      ( pre_cnodes - post_cnodes ).each do |node|
          result << "\"#{ node }\" [ label=<<FONT#{ node_attr }>#{ node_hash[node].join(",") }</FONT> #{ node }>, margin=\"0,0\", style=dotted];\n"
       end
       # New nodes:
-      ( post_nodes - pre_nodes ).each do |node|
+      ( post_cnodes - pre_cnodes ).each do |node|
          result << "\"#{ node }\" [ label=<<FONT#{ node_attr }>#{ node_hash[node].join(",") }</FONT> #{ node }>, margin=\"0,0\"];\n"
       end
 

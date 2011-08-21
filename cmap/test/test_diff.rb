@@ -57,16 +57,17 @@ class TestDiff < Test::Unit::TestCase
       assert_equal( 23, stat[ :post ].edge_count )
       assert_equal( 9, stat[ :post ].edge_labels.size )
 
-      assert_equal( 6, stat[ :nodes ][ :common ].size )
-      assert_equal( 10, stat[ :nodes ][ :lost ].size )
-      assert_equal( 12, stat[ :nodes ][ :new ].size )
+      #p stat[ :nodes ][ :common ]
+      assert_equal( 7, stat[ :nodes ][ :common ].size )
+      assert_equal( 17, stat[ :nodes ][ :lost ].size )
+      assert_equal( 17, stat[ :nodes ][ :new ].size )
 
-      assert_equal( 3, stat[ :links ][ :common ].size )
-      assert_equal( 12, stat[ :links ][ :lost ].size )
-      assert_equal( 15, stat[ :links ][ :new ].size )
+      assert_equal( 4, stat[ :links ][ :common ].size )
+      assert_equal( 21, stat[ :links ][ :lost ].size )
+      assert_equal( 19, stat[ :links ][ :new ].size )
 
       assert_equal( 1, stat[ :link_labels ][ :common ].size )
-      assert_equal( 14, stat[ :link_labels ][ :lost ].size )
-      assert_equal( 17, stat[ :link_labels ][ :new ].size )
+      assert_equal( 9, stat[ :link_labels ][ :lost ].size )
+      assert_equal( 8, stat[ :link_labels ][ :new ].size )
    end
 end
