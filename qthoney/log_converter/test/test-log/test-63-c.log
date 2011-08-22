@@ -1,0 +1,11 @@
+{"eventType":"init_qth","startup_page":1,"startup_homepage":"http://www.nii.ac.jp/","prev_session":null,"qth_version":"2.1.1","tab_id":"panel1298729445808","timestamp":1298729446101,"title":"","url":"about:blank","page_id":1}
+{"eventType":"pagehide","tab_id":"panel1298729445808","timestamp":1298729447183,"title":"","url":"about:blank","page_id":1}
+{"eventType":"onLocationChange","url":"http://www.nii.ac.jp/","tab_id":"panel1298729445808","timestamp":1298729447192,"title":"","page_id":2}
+{"eventType":"DOMContentLoaded","tab_id":"panel1298729445808","timestamp":1298729447446,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"error","tab_id":"panel1298729445808","timestamp":1298729447469,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"error","tab_id":"panel1298729445808","timestamp":1298729447477,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object HTMLDocument]]","tab_id":"panel1298729445808","timestamp":1298729447508,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object Window]]","tab_id":"panel1298729445808","timestamp":1298729447510,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"pageshow","pageshow_url":"http://www.nii.ac.jp/","tab_id":"panel1298729445808","timestamp":1298729447565,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"onCloseWindow","tab_id":"panel1298729445808","timestamp":1298729449924,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"event_label":"unload","tab_id":"panel1298729445808","timestamp":1298729449949,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
