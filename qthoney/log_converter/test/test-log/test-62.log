@@ -1,0 +1,26 @@
+{"eventType":"init_qth","startup_page":1,"startup_homepage":"http://www.nii.ac.jp/","prev_session":null,"qth_version":"2.1.1","tab_id":"panel1298729315252","timestamp":1298729315542,"title":"","url":"about:blank","page_id":1}
+{"eventType":"pagehide","tab_id":"panel1298729315252","timestamp":1298729316581,"title":"","url":"about:blank","page_id":1}
+{"eventType":"onLocationChange","url":"http://www.nii.ac.jp/","tab_id":"panel1298729315252","timestamp":1298729316591,"title":"","page_id":2}
+{"eventType":"error","tab_id":"panel1298729315252","timestamp":1298729317004,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"error","tab_id":"panel1298729315252","timestamp":1298729317013,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object HTMLDocument]]","tab_id":"panel1298729315252","timestamp":1298729317170,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object Window]]","tab_id":"panel1298729315252","timestamp":1298729317171,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"blur","target_toString":"[object XPCNativeWrapper [object HTMLDocument]]","tab_id":"panel1298729315252","timestamp":1298729319428,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"blur","target_toString":"[object XPCNativeWrapper [object Window]]","tab_id":"panel1298729315252","timestamp":1298729319430,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"DOMContentLoaded","tab_id":"panel1298729315252","timestamp":1298729319540,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"pageshow","pageshow_url":"http://www.nii.ac.jp/","tab_id":"panel1298729315252","timestamp":1298729319565,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object HTMLDocument]]","tab_id":"panel1298729315252","timestamp":1298729319829,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object Window]]","tab_id":"panel1298729315252","timestamp":1298729319831,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"drop","drop_toString":"[object XPCNativeWrapper [object HTMLHeadingElement]]","target_toString":"[object DOMStringList]","tab_id":"panel1298729315252","timestamp":1298729320893,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"pagehide","tab_id":"panel1298729315252","timestamp":1298729321722,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"error","tab_id":"panel1298729315252","timestamp":1298729321734,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"OnHistoryNewEntry","tab_id":"panel1298729315252","timestamp":1298729321736,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"onLocationChange","url":"http://www.nii.ac.jp/about/","tab_id":"panel1298729315252","timestamp":1298729321742,"title":"","page_id":3}
+{"eventType":"DOMContentLoaded","tab_id":"panel1298729315252","timestamp":1298729322131,"title":"NIIについて - 国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/about/","page_id":3}
+{"eventType":"error","tab_id":"panel1298729315252","timestamp":1298729322133,"title":"NIIについて - 国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/about/","page_id":3}
+{"eventType":"error","tab_id":"panel1298729315252","timestamp":1298729322141,"title":"NIIについて - 国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/about/","page_id":3}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object HTMLDocument]]","tab_id":"panel1298729315252","timestamp":1298729322266,"title":"NIIについて - 国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/about/","page_id":3}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object Window]]","tab_id":"panel1298729315252","timestamp":1298729322268,"title":"NIIについて - 国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/about/","page_id":3}
+{"eventType":"pageshow","pageshow_url":"http://www.nii.ac.jp/about/","tab_id":"panel1298729315252","timestamp":1298729322288,"title":"NIIについて - 国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/about/","page_id":3}
+{"eventType":"onCloseWindow","tab_id":"panel1298729315252","timestamp":1298729324830,"title":"NIIについて - 国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/about/","page_id":3}
+{"event_label":"unload","tab_id":"panel1298729315252","timestamp":1298729324856,"title":"NIIについて - 国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/about/","page_id":3}

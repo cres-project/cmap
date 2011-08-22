@@ -1,0 +1,54 @@
+{"eventType":"init_qth","startup_page":1,"startup_homepage":"http://www.nii.ac.jp/","prev_session":null,"qth_version":"2.1.1","tab_id":"panel1298777987415","timestamp":1298777987717,"title":"","url":"about:blank","page_id":1}
+{"eventType":"pagehide","tab_id":"panel1298777987415","timestamp":1298777988763,"title":"","url":"about:blank","page_id":1}
+{"eventType":"onLocationChange","url":"http://www.nii.ac.jp/","tab_id":"panel1298777987415","timestamp":1298777988773,"title":"","page_id":2}
+{"eventType":"DOMContentLoaded","tab_id":"panel1298777987415","timestamp":1298777989017,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"error","tab_id":"panel1298777987415","timestamp":1298777989040,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"error","tab_id":"panel1298777987415","timestamp":1298777989048,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object HTMLDocument]]","tab_id":"panel1298777987415","timestamp":1298777989082,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object Window]]","tab_id":"panel1298777987415","timestamp":1298777989083,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"pageshow","pageshow_url":"http://www.nii.ac.jp/","tab_id":"panel1298777987415","timestamp":1298777989261,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"keydown","keycode":17,"modifiers":{"alt":false,"ctrl":true,"shift":false,"meta":false},"target":"[object XPCNativeWrapper [object HTMLHtmlElement]]","tab_id":"panel1298777987415","timestamp":1298777990477,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"keydown","keycode":17,"modifiers":{"alt":false,"ctrl":true,"shift":false,"meta":false},"target":"[object XPCNativeWrapper [object HTMLHtmlElement]]","tab_id":"panel1298777987415","timestamp":1298777990975,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"keydown","keycode":17,"modifiers":{"alt":false,"ctrl":true,"shift":false,"meta":false},"target":"[object XPCNativeWrapper [object HTMLHtmlElement]]","tab_id":"panel1298777987415","timestamp":1298777991008,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"keydown","keycode":17,"modifiers":{"alt":false,"ctrl":true,"shift":false,"meta":false},"target":"[object XPCNativeWrapper [object HTMLHtmlElement]]","tab_id":"panel1298777987415","timestamp":1298777991041,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"keydown","keycode":17,"modifiers":{"alt":false,"ctrl":true,"shift":false,"meta":false},"target":"[object XPCNativeWrapper [object HTMLHtmlElement]]","tab_id":"panel1298777987415","timestamp":1298777991075,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"keydown","keycode":17,"modifiers":{"alt":false,"ctrl":true,"shift":false,"meta":false},"target":"[object XPCNativeWrapper [object HTMLHtmlElement]]","tab_id":"panel1298777987415","timestamp":1298777991107,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"keydown","keycode":17,"modifiers":{"alt":false,"ctrl":true,"shift":false,"meta":false},"target":"[object XPCNativeWrapper [object HTMLHtmlElement]]","tab_id":"panel1298777987415","timestamp":1298777991140,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"keydown","keycode":17,"modifiers":{"alt":false,"ctrl":true,"shift":false,"meta":false},"target":"[object XPCNativeWrapper [object HTMLHtmlElement]]","tab_id":"panel1298777987415","timestamp":1298777991173,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"keydown","keycode":84,"modifiers":{"alt":false,"ctrl":true,"shift":false,"meta":false},"target":"[object XPCNativeWrapper [object HTMLHtmlElement]]","tab_id":"panel1298777987415","timestamp":1298777991180,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"command","target_id":"cmd_newNavigatorTab","original_target_id":"cmd_newNavigatorTab","tab_id":"panel1298777987415","timestamp":1298777991183,"title":"国立情報学研究所/National Institute of Informatics","url":"http://www.nii.ac.jp/","page_id":2}
+{"eventType":"TabSelect","tab_url":"about:blank","tab_id":"panel12987779911871","timestamp":1298777991223,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XPCNativeWrapper [object HTMLDocument]]","tab_id":"panel12987779911871","timestamp":1298777991233,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XPCNativeWrapper [object Window]]","tab_id":"panel12987779911871","timestamp":1298777991235,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object HTMLDocument]]","tab_id":"panel12987779911871","timestamp":1298777991243,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XPCNativeWrapper [object Window]]","tab_id":"panel12987779911871","timestamp":1298777991245,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XPCNativeWrapper [object HTMLDocument]]","tab_id":"panel12987779911871","timestamp":1298777991247,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XPCNativeWrapper [object Window]]","tab_id":"panel12987779911871","timestamp":1298777991248,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XULDocument]","tab_id":"panel12987779911871","timestamp":1298777991254,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object ChromeWindow]","tab_id":"panel12987779911871","timestamp":1298777991256,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XULElement]","tab_id":"panel12987779911871","timestamp":1298777991258,"title":"","url":"about:blank","page_id":1}
+{"eventType":"pagehide","tab_id":"panel12987779911871","timestamp":1298777991271,"title":"","url":"about:blank","page_id":1}
+{"eventType":"DOMContentLoaded","tab_id":"panel12987779911871","timestamp":1298777991279,"title":"","url":"about:blank","page_id":1}
+{"eventType":"pageshow","pageshow_url":"about:blank","tab_id":"panel12987779911871","timestamp":1298777991289,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keyup","keycode":84,"modifiers":{"alt":false,"ctrl":true,"shift":false,"meta":false},"tab_id":"panel12987779911871","timestamp":1298777991341,"title":"","url":"about:blank","page_id":1}
+{"eventType":"keyup","keycode":17,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel12987779911871","timestamp":1298777991365,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XULElement]","tab_id":"panel12987779911871","timestamp":1298777993434,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XULDocument]","tab_id":"panel12987779911871","timestamp":1298777993442,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object ChromeWindow]","tab_id":"panel12987779911871","timestamp":1298777993445,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XULDocument]","tab_id":"panel12987779911871","timestamp":1298777993448,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object ChromeWindow]","tab_id":"panel12987779911871","timestamp":1298777993450,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XULElement]","tab_id":"panel12987779911871","timestamp":1298777993452,"title":"","url":"about:blank","page_id":1}
+{"eventType":"mousedown","button":0,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel12987779911871","timestamp":1298777994660,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XULElement]","tab_id":"panel12987779911871","timestamp":1298777994663,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XULElement]","tab_id":"panel12987779911871","timestamp":1298777994665,"title":"","url":"about:blank","page_id":1}
+{"eventType":"mouseup","button":0,"modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel12987779911871","timestamp":1298777994772,"title":"","url":"about:blank","page_id":1}
+{"event_label":"click","target":"[object XULElement]","target_id":"commonDialog","button":0,"outerHTML":"","modifiers":{"alt":false,"ctrl":false,"shift":false,"meta":false},"tab_id":"panel12987779911871","timestamp":1298777994775,"title":"","url":"about:blank","page_id":1}
+{"eventType":"command","target_id":"commonDialog","original_target_id":"","original_target_label":"終了","tab_id":"panel12987779911871","timestamp":1298777994777,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XULElement]","tab_id":"panel12987779911871","timestamp":1298777994782,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object XULDocument]","tab_id":"panel12987779911871","timestamp":1298777994784,"title":"","url":"about:blank","page_id":1}
+{"eventType":"blur","target_toString":"[object ChromeWindow]","tab_id":"panel12987779911871","timestamp":1298777994785,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XULDocument]","tab_id":"panel12987779911871","timestamp":1298777994790,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object ChromeWindow]","tab_id":"panel12987779911871","timestamp":1298777994792,"title":"","url":"about:blank","page_id":1}
+{"eventType":"focus","target_toString":"[object XULElement]","tab_id":"panel12987779911871","timestamp":1298777994796,"title":"","url":"about:blank","page_id":1}
+{"eventType":"onCloseWindow","tab_id":"panel12987779911871","timestamp":1298777994807,"title":"","url":"about:blank","page_id":1}
+{"event_label":"unload","tab_id":"panel12987779911871","timestamp":1298777994819,"title":"","url":"about:blank","page_id":1}
