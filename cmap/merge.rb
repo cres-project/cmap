@@ -44,8 +44,12 @@ module CMapUtils
          if pre.canonical_label_mapping[ node ] and post.canonical_label_mapping[ node ] and pre.canonical_label_mapping[ node ] == post.canonical_label_mapping[ node ]
             label = pre.canonical_label_mapping[ node ]
          else
-            label = "<FONT COLOR=\"gray\">#{ pre.canonical_label_mapping[ node ]}</FONT><BR/>"
-            label << " " + post.canonical_label_mapping[ node ] if post.canonical_label_mapping[ node ]
+            if pre.canonical_label_mapping[ node ] or post.canonical_label_mapping[ node ]
+               label = "<FONT COLOR=\"gray\">#{ pre.canonical_label_mapping[ node ]}</FONT><BR/>"
+               label << " " + post.canonical_label_mapping[ node ]
+            else
+               label = node
+            end
          end
          result << "\"#{ node }\" [ label=<<FONT#{ node_attr }>#{ node_hash[node].join(",") }</FONT> #{ label }>, margin=\"0,0\", peripheries=2#{ user_attr }];\n"
       end
