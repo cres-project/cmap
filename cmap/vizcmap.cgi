@@ -89,8 +89,6 @@ begin
       ENV["DOTFONTPATH"] = "/home/etk2/.fonts"
       dot_opts = %w[-Nfontname=ipamp -Efontname=ipamp]
    end
-   STDERR.puts cgi.host.inspect
-   STDERR.puts dot_opts.inspect
 
    if vizcmap.md5_id and vizcmap.format == "png"
       print cgi.header( "image/png" )
