@@ -117,16 +117,17 @@ module QTHoney
                   query = url_parameter_query( url, serp[ :engine ] )
                   serp_page = url_parameter_page( url, serp[ :engine ] )
                   if pre_actions[ :search ]
-                     # STDERR.puts :pre_actions
+                     # p :pre_actions
                      actions << pre_actions[ :search ]
                      pre_actions.delete( :search )
                      tmp_action = {
                         :searchengine_label => serp[ :engine ][ "search_label" ],
                         :query => query,
+                        :serp_page => serp_page,
                      }
                      actions[ -1 ].update( tmp_action )
                   else
-                     if actions[ -1 ][ :action ] != :search
+                     if actions[ -1 ].nil? or actions[ -1 ][ :action ] != :search
                         actions << {
                            :action => :search,
                            :timestamp => e[ "timestamp" ],
@@ -135,7 +136,9 @@ module QTHoney
                            :url => e[ "url" ],
                            :title => e[ "title" ],
                            :page_type => serp[ :type ],
-                           :searchengine_label => serp[ :engine ][ "search_label" ]
+                           :searchengine_label => serp[ :engine ][ "search_label" ],
+                           :query => query,
+                           :serp_page => serp_page,
                         }
                      end
                   end
@@ -185,7 +188,7 @@ module QTHoney
             case e[ "event_label" ]
             when "click"
                if e[ "target" ] =~ /object XULElement/
-                  if e[ "target_id" ] == "searchbar" and e[ "button"] == 0
+                  if e[ "target_id" ] =~ /\A(searchbar|PopupAutoComplete)\Z/ and e[ "button" ] == 0
                      pre_actions[ :search ] = {
                         :action => :search,
                         :timestamp => e[ "timestamp" ],
@@ -277,7 +280,7 @@ module QTHoney
                return v if k == engine[ "index_key" ]
             end
          end
-         nil
+         1
       end
       def anchor_text( html )
          if html.nil?
