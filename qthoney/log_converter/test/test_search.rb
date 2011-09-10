@@ -26,7 +26,7 @@ module QTHoney
                search_actions.each do |action|
                   #p action
                   [ :timestamp, :tab_id, :page_id, :url, :page_type, :title,
-                    :searchengine_label, :query, :serp_page,
+                     :searchengine_label, :query, :serp_page,
                     # TODO: :target_page_id, :target_tab_id,
                   ].each do |attr|
                      assert( action.key?( attr ), "no #{ attr } at search action for #{ file }." )
