@@ -300,7 +300,7 @@ class Graph
 
    # warshal-floyd
    # cf. http://www.astahost.com/Floyd-Warshall-Shortest-Path-Graphs-t17498.html
-   # Infinity = 1.0 / 0.0
+   Infinity = 1.0 / 0.0
    def warshal_floyd_shortest_paths
       dists = {}
       nodes.each do |n1|
