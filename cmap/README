@@ -8,3 +8,8 @@
 
 (Last argument should be "filename" of Dot format.)
 
+
+The following commands are required:
+
+- ruby (Ruby 1.8.7 or later)
+- dot (Graphviz)
