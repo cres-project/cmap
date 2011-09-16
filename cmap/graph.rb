@@ -54,7 +54,11 @@ class Graph
          label = @node_labels[ n ]
          if unified and label =~ /\A(\w+):(.*)\Z/
             label = $1
-            @canonical_label_mapping[ $1 ] = $2
+            if @canonical_label_mapping[ $1 ]
+               @canonical_label_mapping[ $1 ] << "\t"+ $2
+            else
+               @canonical_label_mapping[ $1 ] = $2
+            end
          end
       end
       label
