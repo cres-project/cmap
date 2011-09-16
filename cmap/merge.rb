@@ -69,7 +69,7 @@ module CMapUtils
 
       # Common links:
       ( pre_e & post_e ).each do |link|
-         result << link.map{|e| "\"#{ e }\"" }.join( "->" )
+         result << link_to_dot( link )
          label = ""
          if post.canonical_link_labels[ link ] and pre.canonical_link_labels[ link ] and pre.canonical_link_labels[ link ] ==  post.canonical_link_labels[ link ]
             label << "<U>#{ pre.canonical_link_labels[ link ]}</U>"
@@ -81,14 +81,14 @@ module CMapUtils
       end
       # Lost links:
       ( pre_e - post_e ).each do |link|
-         result << link.map{|e| "\"#{ e }\"" }.join( "->" )
+         result << link_to_dot( link )
          label = ""
          label << "<FONT COLOR=\"gray\" POINT-SIZE=\"12\">#{ pre.canonical_link_labels[ link ] }</FONT>" if pre.canonical_link_labels[ link ]
          result << " [ label=<#{ label }>, fontsize=12, style=dotted ];\n"
       end
       # New links:
       ( post_e - pre_e ).each do |link|
-         result << link.map{|e| "\"#{ e }\"" }.join( "->" )
+         result << link_to_dot( link )
          label = ""
          label << post.canonical_link_labels[ link ] if post.canonical_link_labels[ link ]
          result << " [ label=\"#{ label }\", fontsize=12 ];\n"
@@ -96,6 +96,19 @@ module CMapUtils
 
       result << "}"
       result
+   end
+
+   # Formatting a link in Dot format.
+   def link_to_dot( link_set )
+      case link_set.size
+      when 2
+         link_set.map{|e| "\"#{ e }\"" }.join( "->" )
+      when 1
+         member = link_set.to_a[0]
+         "\"#{ member }\"->\"#{ member }\""
+      else
+         nil
+      end
    end
 end
 

@@ -58,12 +58,18 @@ class TestDirectedGraph < Test::Unit::TestCase
 
       # for multiple identical nodes on a single cmap.
       pre3_fname = File.join( File.dirname( $0 ), "test", "test-3-pre.dot")
+      post3_fname = File.join( File.dirname( $0 ), "test", "test-3-pre.dot")
       g = DirectedGraph.load_dot2( open(pre3_fname) )
+      g2 = DirectedGraph.load_dot2( open(post3_fname) )
       nlabels = g.canonical_node_labels
       assert( nlabels )
       assert( nlabels.member?( "n6" ) )
       assert_equal( 33, nlabels.size )
-      #p nlabels
+      nlabels2 = g2.canonical_node_labels
+      assert( nlabels.member?( "n6" ) )
+
+      elabels = g.canonical_edge_labels
+      elabels2 = g2.canonical_edge_labels
    end
    def test_link_lables_size
       fname = File.join( File.dirname($0), "test", "test-2-pre.dot" )
