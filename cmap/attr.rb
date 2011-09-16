@@ -9,10 +9,12 @@ ARGV.each do |f|
    STDERR.puts f
    g = nil
    open( f ) do |io|
-      g = Graph.load_dot2( io )
+      g = DirectedGraph.load_dot2( io )
    end
    puts "Nodes: #{ g.node_count }"
    puts "Edges: #{ g.edge_count }"
+   puts "Edge labels: #{ g.edge_labels.size }"
+   #p g.edge_labels
    #puts "Clustering coefficience: #{ g.clustering_coefficient }"
    #puts "Average shortest path: #{ g.mean_average_shortest_path }"
    root = "id0"
@@ -27,6 +29,4 @@ ARGV.each do |f|
    count.keys.sort.each do |i|
       puts [ "dist#{i}", count[i].size, count[i].join(", ") ].join( "\t" )
    end
-   puts "Edge labels: #{ g.edge_labels.size }"
-   #p g.edge_labels
 end
