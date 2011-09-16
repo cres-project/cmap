@@ -56,4 +56,10 @@ class TestDirectedGraph < Test::Unit::TestCase
       assert( g.canonical_label_mapping )
       assert_equal( g.canonical_label_mapping[ "n2" ], "climate change" )
    end
+   def test_link_lables_size
+      fname = File.join( File.dirname($0), "test", "test-2-pre.dot" )
+      g = DirectedGraph.load_dot2( open(fname) )
+      assert( g )
+      assert_equal( 13, g.link_labels.size )
+   end
 end

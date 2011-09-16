@@ -223,7 +223,10 @@ class Graph
             g.add_node( node, label )
          when /\Aedge /
             data = Shellwords.shellwords( line.chomp )
-            label = if data.size == 17 or data.size == 23
+            num = data[3].to_i
+            # cf. http://graphviz.org/content/output-formats#dplain
+            ## ( 6 == "edge", head, tail, n, style, and color )
+            label = if data.size > ( 6 + 2*num )
                        data[-5]
                     else
                        nil
@@ -381,7 +384,10 @@ class DirectedGraph < Graph
             g.add_node( node, label )
          when /\Aedge /
             data = Shellwords.shellwords( line.chomp )
-            label = if data.size == 17 or data.size == 23
+            num = data[3].to_i
+            # cf. http://graphviz.org/content/output-formats#dplain
+            ## ( 6 == "edge", head, tail, n, style, and color )
+            label = if data.size > ( 6 + 2*num )
                        data[-5]
                     else
                        nil
