@@ -1,0 +1,76 @@
+﻿digraph G {
+id0 [label="日帰り旅行"]
+id1 [label="スキー・スノボ"]
+id2 [label="GALA"]
+id3 [label="山形ザオウ山"]
+id0 -> id1
+id1 -> id2
+id1 -> id3
+
+id4 [label="n1:温泉"] [color="#FF0000"]
+id5 [label="n2:栃木"] [color="#FF0000"]
+id6 [label="鬼怒しい"]
+id7 [label="n3:静岡"] [color="#FF0000"]
+id8 [label="アタミ"]
+id9 [label="群馬"]
+id10 [label="n4:マッサージ"] [color="#FF0000"]
+id11 [label="ヘッドスパ"]
+id12 [label="フットスパ"]
+id13 [label="n5:リラクゼーション"] [color="#FF0000"]
+id14 [label="岩盤浴"]
+id15 [label="サウナ"]
+id99 [label="高齢者向け"]
+id0 -> id4 [label="ある"]
+id4 -> id5 [label="ある"]
+id5 -> id6
+id4 -> id7 [label="ある"]
+id7 -> id8
+id4 -> id9 [label="ある"]
+id4 -> id10 [label="ある"]
+id10 -> id11
+id10 -> id12
+id4 -> id13 [label="ある"]
+id13 -> id14
+id14 -> id15
+id99 -> id4
+id0 -> id99
+
+id16 [label="n6:果物狩り"] [color="#FF0000"]
+id17 [label="n7:りんご"] [color="#FF0000"]
+id18 [label="家族連れ"]
+id19 [label="ぶどう"]
+id20 [label="n8:いちご"] [color="#FF0000"]
+id0 -> id16 [label="ある"]
+id16 -> id17
+id16 -> id18
+id16 -> id19
+id16 -> id20
+
+id21 [label="交通機関"]
+id22 [label="自家用車"]
+id23 [label="交通渋滞"]
+id24 [label="大型観光バス"]
+id0 -> id21
+id21 -> id22
+id22 -> id23
+id21 -> id24
+
+id25 [label="n12:遊園地・テーマパーク"] [color="#FF0000"]
+id26 [label="n14:ディズニーランド"] [color="#FF0000"]
+id27 [label="n13:富士急ハイランド"] [color="#FF0000"]
+id28 [label="n15:日光江戸村"] [color="#FF0000"]
+id0 -> id25 [label="ある"]
+id25 -> id26 [label="ある"]
+id25 -> id27 [label="ある"]
+id25 -> id28 [label="ある"]
+
+id29 [label="n9:神社・寺院"] [color="#FF0000"]
+id30 [label="n11:浅草寺"] [color="#FF0000"]
+id31 [label="n10:日光"] [color="#FF0000"]
+id32 [label="n10:東照宮"] [color="#FF0000"]
+id0 -> id29 [label="ある"]
+id29 -> id30
+id29 -> id31
+id31 -> id32
+
+}

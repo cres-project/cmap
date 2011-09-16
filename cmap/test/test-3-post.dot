@@ -1,0 +1,89 @@
+﻿digraph G {
+id0 [label="日帰り旅行"]
+id1 [label="n12:テーマパーク"] [color="#FF0000"]
+id2 [label="n12:遊園地"] [color="#FF0000"]
+id3 [label="n14:ディズニーランド"] [color="#FF0000"]
+id4 [label="n13:富士急"] [color="#FF0000"]
+id5 [label="n15:江戸村"] [color="#FF0000"]
+id6 [label="動物園"]
+id7 [label="上野動物園"]
+id39 [label="水族館"]
+id0 -> id1 [label="ある"]
+id1 -> id2 [label="ある"]
+id2 -> id3
+id2 -> id4
+id2 -> id5
+id1 -> id6 [label="ある"]
+id6 -> id7
+id1 -> id39 [label="ある"]
+
+id8 [label="n1:温泉"] [color="#FF0000"]
+id9 [label="スパ"]
+id10 [label="n5:リラクゼーション"] [color="#FF0000"]
+id11 [label="n4:マッサージ"] [color="#FF0000"]
+id12 [label="山梨"]
+id13 [label="バイキング"]
+id14 [label="n2:栃木"] [color="#FF0000"]
+id15 [label="n3:静岡"] [color="#FF0000"]
+id0 -> id8 [label="ある"]
+id8 -> id9
+id8 -> id10
+id10 ->id11
+id8 -> id12
+id8 -> id13
+id8 -> id14
+id8 -> id15
+
+id16 [label="水上バス観光"]
+id0 -> id16 [label="ある"]
+
+id17 [label="食べ歩き"]
+id18 [label="中華街"]
+id19 [label="横浜"]
+id20 [label="山下公園"]
+id21 [label="下町"]
+id22 [label="上野"]
+id23 [label="浅草"]
+id0 -> id17 [label="行く"]
+id17 -> id18
+id18 -> id19
+id19 -> id20
+id17 -> id21
+id21 -> id22
+id21 -> id23
+
+id24 [label="n9:神社・寺院"] [color="#FF0000"]
+id25 [label="n11:浅草寺"] [color="#FF0000"]
+id26 [label="浅草"]
+id27 [label="n10:東照宮"] [color="#FF0000"]
+id28 [label="善光寺"]
+id0 -> id24 [label="ある"]
+id24 -> id25 [label="ある"]
+id26 -> id25
+id21 -> id26
+id24 -> id27 [label="ある"]
+id24 -> id28 [label="ある"]
+
+id29 [label="登山ハイキング"]
+id30 [label="高尾山"]
+id31 [label="尾瀬"]
+id32 [label="もみじ狩り"]
+id0 -> id29 [label="行く"]
+id29 -> id30 [label="ある"]
+id29 -> id31 [label="ある"]
+id29 -> id32 [label="行く"]
+
+id33 [label="n6:味覚狩り"] [color="#FF0000"]
+id34 [label="n6:果物狩り"] [color="#FF0000"]
+id35 [label="n7:りんご"] [color="#FF0000"]
+id36 [label="n8:いちご"] [color="#FF0000"]
+id37 [label="さくらんぼ"]
+id38 [label="栗"]
+id0 -> id33 [label="行く"]
+id33 -> id34
+id34 -> id35
+id34 -> id36
+id34 -> id37
+id33 -> id38
+
+}
