@@ -410,6 +410,32 @@ class DirectedGraph < Graph
       perr.close
       g
    end
+
+
+   def to_dot( attr = {} )
+      done = {}
+      str = "digraph {\n"
+      each_node do |n|
+         # node_attr = { :label => @node_labels[ n ] }
+         if attr[n]
+            attr_s = attr[n].keys.sort.map{|e| %Q|#{e}="#{attr[n][e]}"| }.join(",")
+            str << "#{ n } [ #{attr_s} ]\n"
+         end
+         if edges_to[ n ]
+            edges_to[ n ].each do |n2|
+               pair = Set[ n, n2 ]
+               if attr[ pair ]
+                  attr_s = attr[ pair ].keys.sort.map{|e| %Q|#{e}="#{attr[pair][e]}"| }.join(",")
+                  str << "#{ n } -> #{ n2 } [ #{attr_s} ]\n"
+               else
+                  str << "#{ n } -> #{ n2 }\n"
+               end
+            end
+         end
+      end
+      str << "}"
+      str
+   end
 end
 
 if $0 == __FILE__
