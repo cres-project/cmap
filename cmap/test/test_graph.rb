@@ -82,11 +82,11 @@ class TestDirectedGraph < Test::Unit::TestCase
       g = DirectedGraph.load_dot2( open(fname) )
       assert( g.edges_from["id2"].include?( "id1" ) )
       dot = g.to_dot
-      p dot
+      #p dot
       assert( dot )
       dot_io = StringIO.new( dot )
       g2 = DirectedGraph.load_dot2( dot_io )
-      p g2
+      #p g2
       assert_equal( g2.nodes, g.nodes )
       assert( g2.edges_from[ "id2" ] )
       assert( g2.edges_from[ "id2" ].include?( "id1" ) )
