@@ -170,7 +170,7 @@ class Graph
 
    def to_dot( attr = {} )
       done = {}
-      str = ""
+      str = "graph {\n"
       self.each_node do |n|
          if attr[n]
             attr_s = attr[n].keys.sort.map{|e| %Q|#{e}="#{attr[n][e]}"| }.join(",")
@@ -189,6 +189,7 @@ class Graph
             end
          end
       end
+      str << "}"
       str
    end
 
