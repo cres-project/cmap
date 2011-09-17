@@ -77,4 +77,18 @@ class TestDirectedGraph < Test::Unit::TestCase
       assert( g )
       assert_equal( 13, g.link_labels.size )
    end
+   def test_direction_of_links
+      fname = File.join( File.dirname($0), "test", "test-3-pre.dot" )
+      g = DirectedGraph.load_dot2( open(fname) )
+      assert( g.edges_from["id2"].include?( "id1" ) )
+      dot = g.to_dot
+      p dot
+      assert( dot )
+      dot_io = StringIO.new( dot )
+      g2 = DirectedGraph.load_dot2( dot_io )
+      p g2
+      assert_equal( g2.nodes, g.nodes )
+      assert( g2.edges_from[ "id2" ] )
+      assert( g2.edges_from[ "id2" ].include?( "id1" ) )
+   end
 end
