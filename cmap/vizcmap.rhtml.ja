@@ -19,7 +19,7 @@
 </div>
 <div class="lang-switch">[ <strong>Japanese</strong> | <a href="./?lang=en">English</a> ]</div>
 <div class="last-update">初版公開日: 2010年08月21日</div>
-<!-- hhmts start --> <div class="last-update">最終更新日: 2011年08月21日</div>
+<!-- hhmts start --> <div class="last-update">最終更新日: 2011年09月22日</div>
 <!-- hhmts end -->
 <h1>VizCMap</h1>
 <% if @merged_dot %>
@@ -96,6 +96,7 @@
   <option>png</option>
 </select><br>
 <input type="submit" value="事前・事後コンセプトマップの統合結果を出力する">
+<input type="reset" value="クリア">
 </div>
 </form>
 <hr>

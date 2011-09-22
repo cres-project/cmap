@@ -20,7 +20,7 @@
 <div class="lang-switch">[ <a href="./">Japanese</a> | <strong>English</strong> ]</div>
 <div class="last-update">Created on: 2010-08-21</div>
 <!-- hhmts start --> 
-<div class="last-update">Last modified: 2011-08-21</div>
+<div class="last-update">Last modified: 2011-09-22</div>
 <!-- hhmts end -->
 <h1>VizCMap</h1>
 <% if @merged_dot %>
@@ -97,6 +97,7 @@
   <option>png</option>
 </select><br>
 <input type="submit" value="Generate a Unified CMap">
+<input type="reset" value="Clear">
 <input type="hidden" name="lang" value="en">
 </div>
 </form>
