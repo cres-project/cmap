@@ -2,7 +2,8 @@
 # $Id: cmap-diff.rb,v 1.3 2010/12/19 08:40:43 masao Exp $
 
 require "pp"
-require "./graph.rb"
+$:.unshift File.dirname( $0 )
+require "graph.rb"
 
 module CMapUtils
    def statistics_merged_cmaps( io_pre, io_post )
