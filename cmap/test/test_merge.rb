@@ -53,6 +53,7 @@ class TestMerge < Test::Unit::TestCase
       dot = to_merged_dot( open(pre_fname), open(post_fname) )
       dot_io = StringIO.new( dot )
       g = DirectedGraph.load_dot2( dot_io )
+      puts g.to_dot
       assert( g.node_labels[ "n6" ] )
       assert_not_equal( "",  g.node_labels[ "n6" ] )
    end
