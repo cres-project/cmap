@@ -90,6 +90,8 @@ class TestDirectedGraph < Test::Unit::TestCase
       dot_io = StringIO.new( dot )
       g2 = DirectedGraph.load_dot2( dot_io )
       #p g2
+      #p g2.edges_to[ "id2" ]
+      #p g2.edges_to[ "id1" ]
       assert_equal( g2.nodes, g.nodes )
       assert( g2.edges_to[ "id2" ] )
       assert( g2.edges_to[ "id2" ].include?( "id1" ) )

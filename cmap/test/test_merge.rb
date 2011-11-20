@@ -10,10 +10,11 @@ $:.unshift File.join( File.dirname( $0 ), ".." )
 require "merge.rb"
 
 class TestMerge < Test::Unit::TestCase
+   BASEDIR = File.dirname( __FILE__ )
    include CMapUtils
    def test_to_merged_dot0
-      pre_fname  = File.join( File.dirname( $0 ), "test", "test-0-pre.dot")
-      post_fname = File.join( File.dirname( $0 ), "test", "test-0-post.dot")
+      pre_fname  = File.join( BASEDIR, "test-0-pre.dot")
+      post_fname = File.join( BASEDIR, "test-0-post.dot")
       dot = to_merged_dot( open(pre_fname), open(post_fname) )
       #p dot
       assert( dot )
@@ -28,8 +29,8 @@ class TestMerge < Test::Unit::TestCase
    end
 
    def test_to_merged_dot1
-      pre_fname  = File.join( File.dirname( $0 ), "test", "test-1-pre.dot")
-      post_fname = File.join( File.dirname( $0 ), "test", "test-1-post.dot")
+      pre_fname  = File.join( BASEDIR, "test-1-pre.dot")
+      post_fname = File.join( BASEDIR, "test-1-post.dot")
       dot = to_merged_dot( open(pre_fname), open(post_fname) )
       #p dot
       assert( dot )
@@ -48,8 +49,8 @@ class TestMerge < Test::Unit::TestCase
       #dot_io
    end
    def test_to_merged_dot3
-      pre_fname  = File.join( File.dirname( $0 ), "test", "test-3-pre.dot")
-      post_fname = File.join( File.dirname( $0 ), "test", "test-3-post.dot")
+      pre_fname  = File.join( BASEDIR, "test-3-pre.dot")
+      post_fname = File.join( BASEDIR, "test-3-post.dot")
       dot = to_merged_dot( open(pre_fname), open(post_fname) )
       dot_io = StringIO.new( dot )
       g = DirectedGraph.load_dot2( dot_io )
