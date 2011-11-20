@@ -9,10 +9,11 @@ require "graph.rb"
 require "diff.rb"
 
 class TestDiff < Test::Unit::TestCase
+   BASEDIR = File.dirname( __FILE__ )
    include CMapUtils
    def test_statistics_merged_cmaps0
-      pre_fname  = File.join( File.dirname( $0 ), "test", "test-0-pre.dot")
-      post_fname = File.join( File.dirname( $0 ), "test", "test-0-post.dot")
+      pre_fname  = File.join( BASEDIR, "test-0-pre.dot")
+      post_fname = File.join( BASEDIR, "test-0-post.dot")
       stat = statistics_merged_cmaps( open(pre_fname), open(post_fname) )
       #p stat
       assert( stat )
@@ -41,8 +42,8 @@ class TestDiff < Test::Unit::TestCase
    end
 
    def test_statistics_merged_cmaps1
-      pre_fname  = File.join( File.dirname( $0 ), "test", "test-1-pre.dot")
-      post_fname = File.join( File.dirname( $0 ), "test", "test-1-post.dot")
+      pre_fname  = File.join( BASEDIR, "test-1-pre.dot")
+      post_fname = File.join( BASEDIR, "test-1-post.dot")
       stat = statistics_merged_cmaps( open(pre_fname), open(post_fname) )
       #p stat
       assert( stat )
