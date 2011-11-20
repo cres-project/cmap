@@ -17,6 +17,7 @@ class Graph
    attr_reader :node_labels
    attr_reader :edges
    attr_reader :edge_labels
+   attr_accessor :root_node
    alias :link_labels :edge_labels
    def initialize
       @nodes = Set[]
@@ -208,7 +209,7 @@ class Graph
    # Graph#load_dot2 requires "dot" command.
    def self.load_dot2( io, normalize = false, root = false )
       # STDERR.puts f
-      root_node = true
+      root_node = false
       pin, pout, perr = *Open3.popen3( "dot", "-Tplain" )
       pin.print io.read
       pin.close
@@ -221,9 +222,11 @@ class Graph
             node = node.normalize_ja if normalize
             label = Shellwords.shellwords( line.chomp )[6]
             label = label.normalize_ja if normalize
-            if root and root_node
+            if root and not root_node
                label = "root:" + label
-               root_node = false
+               root_node = node
+               g.root_node = root_node
+               #p "root_node:" + root_node
             end
             g.add_node( node, label )
          when /\Aedge /
@@ -369,7 +372,7 @@ class DirectedGraph < Graph
    # Graph#load_dot2 requires "dot" command.
    def self.load_dot2( io, normalize = false, root = false )
       # STDERR.puts f
-      root_node = true
+      root_node = false
       pin, pout, perr = *Open3.popen3( "dot", "-Tplain" )
       pin.print io.read
       pin.close
@@ -382,9 +385,11 @@ class DirectedGraph < Graph
             node = node.normalize_ja if normalize
             label = Shellwords.shellwords( line.chomp )[6]
             label = label.normalize_ja if normalize
-            if root and root_node
+            if root and not root_node
                label = "root:" + label
-               root_node = false
+               root_node = node
+               g.root_node = node
+               #p "root_node:"+root_node
             end
             g.add_node( node, label )
          when /\Aedge /

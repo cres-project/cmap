@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
 
-require "./graph.rb"
+$:.unshift File.join( File.dirname( __FILE__ ) )
+require "graph.rb"
 
 module CMapUtils
    DEFAULT_NODE_ATTR = " POINT-SIZE=\"9\" FACE=\"times\""
@@ -9,6 +10,7 @@ module CMapUtils
       result = ""
       pre  = DirectedGraph.load_dot2( io_pre, true, true )
       post = DirectedGraph.load_dot2( io_post, true, true )
+      #puts pre.root_node
 
       node_attr = DEFAULT_NODE_ATTR
       node_attr = style[ :node_attr ] if style[ :node_attr ]
@@ -69,7 +71,7 @@ module CMapUtils
 
       # Common links:
       ( pre_e & post_e ).each do |link|
-         result << link_to_dot( link )
+         result << link_to_dot( link, pre )
          label = ""
          if post.canonical_link_labels[ link ] and pre.canonical_link_labels[ link ] and pre.canonical_link_labels[ link ] ==  post.canonical_link_labels[ link ]
             label << "<U>#{ pre.canonical_link_labels[ link ]}</U>"
@@ -81,14 +83,14 @@ module CMapUtils
       end
       # Lost links:
       ( pre_e - post_e ).each do |link|
-         result << link_to_dot( link )
+         result << link_to_dot( link, pre )
          label = ""
          label << "<FONT COLOR=\"gray\" POINT-SIZE=\"12\">#{ pre.canonical_link_labels[ link ] }</FONT>" if pre.canonical_link_labels[ link ]
          result << " [ label=<#{ label }>, fontsize=12, style=dotted ];\n"
       end
       # New links:
       ( post_e - pre_e ).each do |link|
-         result << link_to_dot( link )
+         result << link_to_dot( link, post )
          label = ""
          label << post.canonical_link_labels[ link ] if post.canonical_link_labels[ link ]
          result << " [ label=\"#{ label }\", fontsize=12 ];\n"
@@ -99,10 +101,42 @@ module CMapUtils
    end
 
    # Formatting a link in Dot format.
-   def link_to_dot( link_set )
+   def link_to_dot( link_set, g = nil )
       case link_set.size
       when 2
-         link_set.map{|e| "\"#{ e }\"" }.join( "->" )
+         if g
+            n1, n2, = link_set.to_a
+            n1_original = n1
+            n2_original = n2
+            inv_label_mapping = g.canonical_label_mapping.invert
+            g.canonical_label_mapping.each do |k, v|
+               case k
+               when n1
+                  alt_label = "#{n1}:#{v}"
+                  n1_original = g.node_labels.invert[ alt_label ]
+               when n2
+                  alt_label = "#{n2}:#{v}"
+                  n2_original = g.node_labels.invert[ alt_label ]
+               end
+            end
+            n1_original = g.node_labels.invert[ n1 ] if n1 == n1_original
+            n2_original = g.node_labels.invert[ n2 ] if n2 == n2_original
+            n1_original = g.root_node if n1 == "root"
+            n2_original = g.root_node if n2 == "root"
+            #if n1 == "n5" or n2 == "n5"
+               #p inv_label_mapping
+               #p g.edges_to
+               #p [ n1, n1_original, g.edges_to[n1], g.edges_to[n1_original] ]
+               #p [ n2, n2_original, g.edges_to[n2], g.edges_to[n2_original] ]
+            #end
+            if g.edges_to[ n1_original ] and g.edges_to[ n1_original ].include?( n2_original )
+               "\"#{ n1 }\" -> \"#{ n2 }\""
+            else
+               "\"#{ n2 }\" -> \"#{ n1 }\""
+            end
+         else
+            link_set.map{|e| "\"#{ e }\"" }.join( "->" )
+         end
       when 1
          member = link_set.to_a[0]
          "\"#{ member }\"->\"#{ member }\""
