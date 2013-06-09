@@ -6,6 +6,8 @@
 
 - merge.rb: Output an integrated concept map from two concept maps (dot format).
 
+- merge-simple.rb: Output an integrated cnocept map from more than one participant (dot format).
+
 (Last argument should be "filename" of Dot format.)
 
 
