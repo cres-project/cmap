@@ -416,29 +416,39 @@ class DirectedGraph < Graph
       g
    end
 
-
    def to_dot( attr = {} )
       done = {}
       str = "digraph {\n"
       each_node do |n|
+         escaped_n = escape( n )
          # node_attr = { :label => @node_labels[ n ] }
          if attr[n]
             attr_s = attr[n].keys.sort.map{|e| %Q|#{e}="#{attr[n][e]}"| }.join(",")
-            str << "#{ n } [ #{attr_s} ]\n"
+            str << "#{ escaped_n } [ #{attr_s} ]\n"
          end
          if edges_to[ n ]
             edges_to[ n ].each do |n2|
+               escaped_n2 = escape( n2 )
                pair = Set[ n, n2 ]
                if attr[ pair ]
                   attr_s = attr[ pair ].keys.sort.map{|e| %Q|#{e}="#{attr[pair][e]}"| }.join(",")
-                  str << "#{ n } -> #{ n2 } [ #{attr_s} ]\n"
+                  str << "#{ escaped_n } -> #{ escaped_n2 } [ #{attr_s} ]\n"
                else
-                  str << "#{ n } -> #{ n2 }\n"
+                  str << "#{ escaped_n } -> #{ escaped_n2 }\n"
                end
             end
          end
       end
       str << "}"
+      str
+   end
+
+   private
+   def escape( str )
+      case str
+      when /[\(\)\&\?\-\%\.]/, /\A\d/
+         str = %Q["#{ str }"]
+      end
       str
    end
 end
