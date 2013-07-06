@@ -323,6 +323,7 @@ class Graph
       nodes.each do |n1|
          nodes.each do |n2|
             dists[ Set[n1, n2] ] = ( n1 == n2 ) ? 0 : ( edges[n1].include?(n2) ) ? 1 : Infinity
+            #pp dists
          end
       end
       nodes.each do |k|
@@ -337,7 +338,7 @@ class Graph
                   dists[ Set[i,j] ] = dist_ik+dist_kj
                end
             end
-            #p dists
+            #pp dists
          end
       end
       dists
@@ -379,7 +380,7 @@ class DirectedGraph < Graph
    def self.load_dot2( io, normalize = false, root = false )
       #STDERR.puts f
       root_node = false
-      pin, pout, perr = *Open3.popen3( "dot", "-Tplain" )
+      pin, pout, perr, = *Open3.popen3( "dot", "-Tplain" )
       cont = io.read
       if cont[ 0, 3 ] == "\xEF\xBB\xBF"
          STDERR.puts "BOM detected."
@@ -387,10 +388,6 @@ class DirectedGraph < Graph
       end
       pin.print cont
       pin.close
-      err_msg = perr.read
-      if not err_msg.empty?
-         STDERR.puts err_msg
-      end
       g = self.new
       pout.each do |line|
          # p line
@@ -427,6 +424,10 @@ class DirectedGraph < Graph
          end
       end
       pout.close
+      err_msg = perr.read
+      if not err_msg.empty?
+         STDERR.puts err_msg
+      end
       perr.close
       g
    end
