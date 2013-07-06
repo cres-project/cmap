@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
 # $Id: ext-graph-attr.rb,v 1.4 2010/01/13 20:57:17 masao Exp $
 
-require "graph"
 require "open3"
 require "pp"
+
+$:.push( File.dirname( __FILE__ ) )
+require "graph"
 
 ARGV.each do |f|
    STDERR.puts f
