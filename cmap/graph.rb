@@ -5,6 +5,7 @@ require "open3"
 require "set"
 require "shellwords"
 require "nkf"
+require "stringio"
 
 class String
    def normalize_ja
@@ -211,7 +212,12 @@ class Graph
       # STDERR.puts f
       root_node = false
       pin, pout, perr = *Open3.popen3( "dot", "-Tplain" )
-      pin.print io.read
+      cont = io.read
+      if cont[ 0, 3 ] == "\xEF\xBB\xBF"
+         STDERR.puts "BOM detected."
+         cont = cont[ 3..-1 ]
+      end
+      pin.print cont
       pin.close
       g = Graph.new
       pout.each do |line|
@@ -371,11 +377,20 @@ class DirectedGraph < Graph
    end
    # Graph#load_dot2 requires "dot" command.
    def self.load_dot2( io, normalize = false, root = false )
-      # STDERR.puts f
+      #STDERR.puts f
       root_node = false
       pin, pout, perr = *Open3.popen3( "dot", "-Tplain" )
-      pin.print io.read
+      cont = io.read
+      if cont[ 0, 3 ] == "\xEF\xBB\xBF"
+         STDERR.puts "BOM detected."
+         cont = cont[ 3..-1 ]
+      end
+      pin.print cont
       pin.close
+      err_msg = perr.read
+      if not err_msg.empty?
+         STDERR.puts err_msg
+      end
       g = self.new
       pout.each do |line|
          # p line
@@ -446,7 +461,7 @@ class DirectedGraph < Graph
    private
    def escape( str )
       case str
-      when /[\(\)\&\?\-\%\.]/, /\A\d/
+      when /[\(\)\&\?\-\%\.\/]/, /\A\d/
          str = %Q["#{ str }"]
       end
       str
