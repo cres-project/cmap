@@ -6,7 +6,7 @@ $:.unshift File.dirname( $0 )
 require "graph.rb"
 
 module CMapUtils
-   def statistics_merged_cmaps( io_pre, io_post )
+   def statistics_merged_cmaps( io_pre, io_post, options = { :unified => true } )
       result = {}
       pre  = DirectedGraph.load_dot2( io_pre, true )
       post = DirectedGraph.load_dot2( io_post, true )
@@ -16,16 +16,16 @@ module CMapUtils
 
       nodes = {}
 
-      pre_cnodes  = pre.canonical_node_labels
-      post_cnodes = post.canonical_node_labels
+      pre_cnodes  = pre.canonical_node_labels( options[ :unified ] )
+      post_cnodes = post.canonical_node_labels( options[ :unified ] )
       nodes[ :common ] =  pre_cnodes & post_cnodes
       #nodes[ :common ]  = pre.nodes & post.nodes
       nodes[ :lost ] = pre_cnodes - post_cnodes
       nodes[ :new ]   = post_cnodes - pre_cnodes
       result[ :nodes ] = nodes
 
-      pre_e  = pre.canonical_links_set
-      post_e = post.canonical_links_set
+      pre_e  = pre.canonical_links_set( options[ :unified ] )
+      post_e = post.canonical_links_set( options[ :unified ] )
       links = {}
       links[ :common ] = pre_e & post_e
       links[ :lost ] = pre_e - post_e
@@ -100,11 +100,18 @@ module CMapUtils
 end
 
 if $0 == __FILE__
+   unified = nil
+   if ARGV[0] =~ /\A-+unify/
+      unified = true
+      ARGV.shift
+      p ARGV
+   end
    if ARGV[0].nil? or ARGV[1].nil?
       puts "  Usage:  #{ $0 } pre.dot post.dot"
       exit
    end
    include CMapUtils
-   data = statistics_merged_cmaps( open( ARGV[0] ), open( ARGV[1] ) )
+   data = statistics_merged_cmaps( open( ARGV[0] ), open( ARGV[1] ),
+                                   { :unified => unified } )
    print_statistics( data )
 end
