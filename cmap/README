@@ -4,6 +4,13 @@
 
 - diff.rb: Output metrics of attribute values between two concept maps (dot formats).
 
+  Usage: ./diff.rb [-unify=[all|id|str]] sub001_eb_pre.dot sub001_eb_post.dot
+
+  Node unification method: 
+    Using only string matching: --unify=str
+    Using only ID matching:     --unify=id
+    Using both matching:        --unify=all (default)
+
 - merge.rb: Output an integrated concept map from two concept maps (dot format).
 
 - merge-simple.rb: Output an integrated cnocept map from more than one participant (dot format).
