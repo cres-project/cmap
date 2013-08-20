@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- coding: utf-8 -*-
+# -*- coding: ascii-8bit -*-
 
 require "open3"
 require "set"
@@ -54,12 +54,16 @@ class Graph
       label = n
       if @node_labels[ n ]
          label = @node_labels[ n ]
-         if unified and label =~ /\A(\w+):(.*)\Z/
-            label = $1
-            if @canonical_label_mapping[ $1 ] and @canonical_label_mapping[ $1 ] != $2
-               @canonical_label_mapping[ $1 ] << "\t"+ $2
+         if label =~ /\A(\w+):(.*)\Z/
+            if unified
+               label = $1
+               if @canonical_label_mapping[ $1 ] and @canonical_label_mapping[ $1 ] != $2
+                  @canonical_label_mapping[ $1 ] << "\t"+ $2
+               else
+                  @canonical_label_mapping[ $1 ] = $2
+               end
             else
-               @canonical_label_mapping[ $1 ] = $2
+               label = $2
             end
          end
       end
@@ -381,7 +385,9 @@ class DirectedGraph < Graph
       #STDERR.puts f
       root_node = false
       pin, pout, perr, = *Open3.popen3( "dot", "-Tplain" )
+      io.set_encoding( "ASCII-8BIT" )
       cont = io.read
+      #STDERR.puts cont[ 0, 3 ].inspect
       if cont[ 0, 3 ] == "\xEF\xBB\xBF"
          STDERR.puts "BOM detected."
          cont = cont[ 3..-1 ]
