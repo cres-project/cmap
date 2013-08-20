@@ -100,11 +100,19 @@ module CMapUtils
 end
 
 if $0 == __FILE__
-   unified = nil
-   if ARGV[0] =~ /\A-+unify/
-      unified = true
+   opt_unify = :all
+   if ARGV[0] =~ /\A--?unify=(\w+)\b/
+      case $1
+      when "all"
+         opt_unify = :all
+      when "id"
+         opt_unify = :id
+      when "str", "string"
+         opt_unify = :str
+      else
+         raise ArgumentError( "unknown unify option: #{ $1 }" )
+      end
       ARGV.shift
-      p ARGV
    end
    if ARGV[0].nil? or ARGV[1].nil?
       puts "  Usage:  #{ $0 } pre.dot post.dot"
@@ -112,6 +120,6 @@ if $0 == __FILE__
    end
    include CMapUtils
    data = statistics_merged_cmaps( open( ARGV[0] ), open( ARGV[1] ),
-                                   { :unified => unified } )
+                                   { :unified => opt_unify } )
    print_statistics( data )
 end

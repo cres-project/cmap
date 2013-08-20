@@ -49,25 +49,37 @@ class Graph
    alias :each :each_node
    include Enumerable
 
-   def canonical_node_label( n, unified = true )
+   def canonical_node_label( n, unified = :all )
       @canonical_label_mapping ||= {}
       label = n
       if @node_labels[ n ]
          label = @node_labels[ n ]
+	 label_id = label.object_id.to_s
+	 label_str = label.dup
+	 label_unify_id = nil
          if label =~ /\A(\w+):(.*)\Z/
-            if unified
-               label = $1
-               if @canonical_label_mapping[ $1 ] and @canonical_label_mapping[ $1 ] != $2
-                  @canonical_label_mapping[ $1 ] << "\t"+ $2
-               else
-                  @canonical_label_mapping[ $1 ] = $2
-               end
-            else
-               label = $2
-            end
+	    label_unify_id = $1
+	    label_str = $2
+	 end
+	 case unified
+	 when :str
+	    label_id = label_str
+	 when :id
+	    label_id = label_unify_id if label_unify_id
+	 when :all
+	    if label_unify_id
+	       label_id = label_unify_id
+	    else
+	       label_id = label_str
+	    end
+	 end
+         if @canonical_label_mapping[ label_id ] and @canonical_label_mapping[ label_id ] != label_str
+            @canonical_label_mapping[ label_id ] << "\t"+ label_str
+         else
+            @canonical_label_mapping[ label_id ] = label_str
          end
       end
-      label
+      label_id
    end
    def canonical_node_labels( unified = true )
       labels = Set.new
