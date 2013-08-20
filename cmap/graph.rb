@@ -385,7 +385,7 @@ class DirectedGraph < Graph
       #STDERR.puts f
       root_node = false
       pin, pout, perr, = *Open3.popen3( "dot", "-Tplain" )
-      io.set_encoding( "ASCII-8BIT" )
+      io.set_encoding( "ASCII-8BIT" ) if io.respond_to? :set_encoding
       cont = io.read
       #STDERR.puts cont[ 0, 3 ].inspect
       if cont[ 0, 3 ] == "\xEF\xBB\xBF"
