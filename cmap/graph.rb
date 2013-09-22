@@ -81,7 +81,7 @@ class Graph
       end
       label_id
    end
-   def canonical_node_labels( unified = true )
+   def canonical_node_labels( unified = :all )
       labels = Set.new
       @nodes.each do |e|
          labels << canonical_node_label( e, unified )
@@ -159,7 +159,7 @@ class Graph
       end
       set
    end
-   def canonical_edges_set( unified = true )
+   def canonical_edges_set( unified = :all )
       set = Set[]
       each_node do |node|
          @edges[ node ].each do |n1|
