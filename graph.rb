@@ -376,8 +376,8 @@ class DirectedGraph < Graph
       @nodes << n
       @node_labels[ n ] = label
       @edges[n] ||= Set.new
-      @edges_from ||= Set.new
-      @edges_to ||= Set.new
+      #@edges_from ||= Set.new
+      #@edges_to ||= Set.new
    end
    def add_edge( n1, n2, label = nil )
       @nodes << n1

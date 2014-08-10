@@ -67,6 +67,6 @@ class TestMerge < Test::Unit::TestCase
       #puts g.to_dot
       #p g.edges_from[ "root" ]
       assert( g.edges[ "root" ] )
-      assert_nil( g.edges_from[ "root" ] )
+      #assert_nil( g.edges_from[ "root" ] )
    end
 end
