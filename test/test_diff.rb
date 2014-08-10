@@ -36,6 +36,8 @@ class TestDiff < Test::Unit::TestCase
       assert_equal( 12, stat[ :links ][ :lost ].size )
       assert_equal( 15, stat[ :links ][ :new ].size )
 
+      #pp stat[ :link_labels ]
+      #pp stat[ :links ]
       assert_equal( 1, stat[ :link_labels ][ :common ].size )
       assert_equal( 14, stat[ :link_labels ][ :lost ].size )
       assert_equal( 17, stat[ :link_labels ][ :new ].size )

@@ -90,7 +90,7 @@ class Graph
    end
    attr_reader :canonical_label_mapping
 
-   def canonical_edge_labels( unified = true )
+   def canonical_edge_labels( unified = :all )
       labels = {}
       @edge_labels.each do |set, label|
          set_new = Set.new( set.to_a.map{|e| canonical_node_label( e, unified ) } )

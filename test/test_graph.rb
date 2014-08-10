@@ -3,6 +3,7 @@
 require 'test/unit'
 require 'ftools'
 require "stringio"
+require "pp"
 
 $:.unshift File.join( File.dirname( $0 ) )
 $:.unshift File.join( File.dirname( $0 ), ".." )
@@ -79,6 +80,11 @@ class TestDirectedGraph < Test::Unit::TestCase
       g = DirectedGraph.load_dot2( open(fname) )
       assert( g )
       assert_equal( 13, g.link_labels.size )
+
+      fname = File.join( BASEDIR, "test-0-pre.dot" )
+      g = DirectedGraph.load_dot2( open(fname) )
+      #pp g.link_labels
+      assert_equal( 15, g.link_labels.size )
    end
    def test_direction_of_links
       fname = File.join( BASEDIR, "test-2-pre.dot" )

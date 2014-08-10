@@ -6,7 +6,7 @@ $:.unshift File.dirname( $0 )
 require "graph.rb"
 
 module CMapUtils
-   def statistics_merged_cmaps( io_pre, io_post, options = { :unified => true } )
+   def statistics_merged_cmaps( io_pre, io_post, options = { :unified => :all } )
       result = {}
       pre  = DirectedGraph.load_dot2( io_pre, true )
       post = DirectedGraph.load_dot2( io_post, true )
