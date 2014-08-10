@@ -19,7 +19,7 @@
 </div>
 <div class="lang-switch">[ <strong>Japanese</strong> | <a href="./?lang=en">English</a> ]</div>
 <div class="last-update">初版公開日: 2010年08月21日</div>
-<!-- hhmts start --> <div class="last-update">最終更新日: 2011年09月22日</div>
+<!-- hhmts start --> <div class="last-update">最終更新日: 2014年08月10日</div>
 <!-- hhmts end -->
 <h1>VizCMap</h1>
 <% if @merged_dot %>
@@ -39,12 +39,26 @@
   <li>ノード数: <%=h @statistics[ :pre ].node_count %>
   <li>リンク数: <%=h @statistics[ :pre ].edge_count %>
   <li>リンクラベル数: <%=h @statistics[ :pre ].edge_labels.size %>
+  <li>中心ノードからの距離ごとのノード数 （平均: <%=h "%.3f" % @statistics[ :pre ].distance_average %>）:
+  <ul>
+    <% dists = @statistics[ :pre ].distance_count
+       dists.keys.sort.each do |i| %>
+    <li>距離<%=h i %>: <%=h dists[ i ].size %>
+    <% end %>
+  </ul>
 </ul>
 <h3>事後コンセプトマップ</h3>
 <ul>
   <li>ノード数: <%=h @statistics[ :post ].node_count %>
   <li>リンク数: <%=h @statistics[ :post ].edge_count %>
   <li>リンクラベル数: <%=h @statistics[ :post ].edge_labels.size %>
+  <li>中心ノードからの距離ごとのノード数 （平均: <%=h "%.3f" % @statistics[ :post ].distance_average %>）:
+  <ul>
+    <% dists = @statistics[ :post ].distance_count
+       dists.keys.sort.each do |i| %>
+    <li>距離<%=h i %>: <%=h dists[ i ].size %>
+    <% end %>
+  </ul>
 </ul>
 </div>
 <div class="analysis">

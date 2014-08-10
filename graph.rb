@@ -359,6 +359,24 @@ class Graph
       end
       dists
    end
+   def distance_average( root = "id0" )
+      sum = 0
+      counts = distance_count( root )
+      counts.each do |k, v|
+         sum += k * v.size
+      end
+      sum.to_f / ( nodes.size - 1 )
+   end
+   def distance_count( root = "id0" )
+      @dists = warshal_floyd_shortest_paths unless @dists
+      count = {}
+      nodes.each do |n|
+         next if n == root
+         count[ @dists[ Set[root,n] ] ] ||= []
+	 count[ @dists[ Set[root,n] ] ] << n
+      end
+      count
+   end
 end
 
 class DirectedGraph < Graph

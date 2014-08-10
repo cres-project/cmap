@@ -20,7 +20,7 @@
 <div class="lang-switch">[ <a href="./">Japanese</a> | <strong>English</strong> ]</div>
 <div class="last-update">Created on: 2010-08-21</div>
 <!-- hhmts start --> 
-<div class="last-update">Last modified: 2011-09-22</div>
+<div class="last-update">Last modified: 2014-08-10</div>
 <!-- hhmts end -->
 <h1>VizCMap</h1>
 <% if @merged_dot %>
@@ -40,12 +40,26 @@
   <li>Number of Nodes: <%=h @statistics[ :pre ].node_count %>
   <li>Number of Links: <%=h @statistics[ :pre ].edge_count %>
   <li>Number of Link Labels: <%=h @statistics[ :pre ].edge_labels.size %>
+  <li>Number of nodes at each distance from the center node (Average distance: <%=h "%.3f" % @statistics[ :pre ].distance_average %>):
+      <ul>
+      <% dists = @statistics[ :pre ].distance_count
+         dists.keys.sort.each do |i| %>
+         <li>Distance <%=h i %>: <%=h dists[ i ].size %>
+      <% end %>
+      </ul>
 </ul>
 <h3>Post-CMap:</h3>
 <ul>
   <li>Number of Nodes: <%=h @statistics[ :post ].node_count %>
   <li>Number of Links: <%=h @statistics[ :post ].edge_count %>
   <li>Number of Link Labels: <%=h @statistics[ :post ].edge_labels.size %>
+  <li>Number of nodes at each distance from the center node (Average distance: <%=h "%.3f" % @statistics[ :post ].distance_average %>):
+      <ul>
+      <% dists = @statistics[ :post ].distance_count
+         dists.keys.sort.each do |i| %>
+         <li>Distance <%=h i %>: <%=h dists[ i ].size %>
+      <% end %>
+      </ul>
 </ul>
 </div>
 <div class="analysis">
