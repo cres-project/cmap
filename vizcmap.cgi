@@ -25,7 +25,7 @@ class VizCMapApp
       @md5_id = cgi[ "id" ]
       @md5_id = nil if @md5_id.empty?
       @lang = cgi[ "lang" ]
-      @lang = "ja" if @lang.nil? or @lang.empty?
+      @lang = "en" if @lang.nil? or @lang.empty?
       @message = YAML.load( open("vizcmap.yml").read )
    end
 
