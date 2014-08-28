@@ -41,9 +41,9 @@
   <li>リンクラベル数: <%=h @statistics[ :pre ].edge_labels.size %>
   <li>中心ノードからの距離ごとのノード数 （平均: <%=h "%.3f" % @statistics[ :pre ].distance_average %>）:
   <ul>
-    <% dists = @statistics[ :pre ].distance_count
-       dists.keys.sort.each do |i| %>
-    <li>距離<%=h i %>: <%=h dists[ i ].size %>
+    <% pre_dists = @statistics[ :pre ].distance_count
+       pre_dists.keys.sort.each do |i| %>
+    <li>距離<%=h i %>: <%=h pre_dists[ i ].size %>
     <% end %>
   </ul>
 </ul>
@@ -54,9 +54,9 @@
   <li>リンクラベル数: <%=h @statistics[ :post ].edge_labels.size %>
   <li>中心ノードからの距離ごとのノード数 （平均: <%=h "%.3f" % @statistics[ :post ].distance_average %>）:
   <ul>
-    <% dists = @statistics[ :post ].distance_count
-       dists.keys.sort.each do |i| %>
-    <li>距離<%=h i %>: <%=h dists[ i ].size %>
+    <% post_dists = @statistics[ :post ].distance_count
+       post_dists.keys.sort.each do |i| %>
+    <li>距離<%=h i %>: <%=h post_dists[ i ].size %>
     <% end %>
   </ul>
 </ul>
@@ -81,6 +81,13 @@
     <li>共通リンクラベル: <%=h @statistics[:link_labels][:common].size %>
     <li>消失リンクラベル: <%=h @statistics[:link_labels][:lost].size %>
     <li>新規リンクラベル: <%=h @statistics[:link_labels][:new].size %>
+  </ul>
+  <li>変化量:
+  <ul>
+    <% dists = ( post_dists.keys + pre_dists.keys ).sort.uniq
+       dists.each do |i| %>
+    <li>距離<%=h i %>: <%=h post_dists[i].size - pre_dists[i].size %>
+    <% end %>
   </ul>
 </ul>
 </div>

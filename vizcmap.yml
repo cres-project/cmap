@@ -1,0 +1,39 @@
+ja:
+  ammount_of_changes: 変化量
+  average: 平均
+  clear: クリア
+  common_link_labels: 共通リンクラベル
+  common_links: 共通リンクラベル
+  common_nodes: 共通ノード
+  cres: CRESプロジェクト
+  cres_url: http://cres.jpn.org/?FrontPageJa
+  date_available: 初版公開日
+  display_format: 表示形式
+  distance: 距離
+  distances_from_center_node: 中心ノードからの距離
+  enlarge_image: 拡大して表示
+  last_modified: 最終更新日
+  link_labels: リンクラベル数
+  links: リンク数
+  lost_link_labels: 消失リンクラベル
+  lost_links: 消失リンク
+  lost_nodes: 消失ノード
+  new_link_labels: 新規リンクラベル
+  new_links: 新規リンク
+  new_nodes: 新規ノード
+  nodes: ノード数
+  post_concept_map: 事後コンセプトマップ
+  pre_concept_map: 事前コンセプトマップ
+  submit: 事前・事後コンセプトマップの統合結果を出力する
+  unified_graph: 統合グラフ
+  unified_graph_properties: 統合グラフの属性
+  vizcmap: VizCMap
+  vizcmap_title: VizCMapデモツール
+  vizcmap_url: http://cres.jpn.org/?VizCMapJa
+en:
+  cres: CRES Project
+  cres_url: http://cres.jpn.org
+  vizcmap: VizCMap
+  vizcmap_title: VizCMap
+  vizcmap_url: http://cres.jpn.org/?VizCMap
+

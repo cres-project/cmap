@@ -8,6 +8,7 @@ require "stringio"
 require "fileutils"
 require "erb"
 require "digest/md5"
+require "yaml"
 
 require "graph.rb"
 require "merge.rb"
@@ -25,6 +26,7 @@ class VizCMapApp
       @md5_id = nil if @md5_id.empty?
       @lang = cgi[ "lang" ]
       @lang = "ja" if @lang.nil? or @lang.empty?
+      @message = YAML.load( open("vizcmap.yml").read )
    end
 
    include CMapUtils
@@ -72,9 +74,20 @@ class VizCMapApp
       end
    end
 
+   def t( str )
+      str = str.to_s
+      label = @message[ @lang ]
+      label = @message[ "ja" ] unless label
+      if label[ str ]
+         label[ str ]
+      else
+         str.tr( "_", " " ).capitalize
+      end
+   end
+
    include ERB::Util
    def expand_rhtml
-      rhtml = open( "vizcmap.rhtml.#{ @lang }" ){|io| io.read }
+      rhtml = open( "vizcmap.rhtml" ){|io| io.read }
       ERB.new( rhtml, nil, "<>" ).result( binding )
    end
 end

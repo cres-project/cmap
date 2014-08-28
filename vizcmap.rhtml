@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="http://cres.jpn.org/skin/pukiwiki.css.php" type="text/css">
+<link rel="stylesheet" href="vizcmap.css" type="text/css">
+<link rev="made" href="mailto:tmasao@acm.org">
+<link rel="shortcut icon" href="http://cres.jpn.org/favicon.ico">
+<title>VizCMap</title>
+</head>
+<body>
+<div class="breadcrumb">
+  <a href="<%=h t("cres_url") %>"><%=h t("cres") %></a>
+  &gt;
+  <a href="<%=h t("vizcmap_url") %>"><%=h t("vizcmap") %></a>
+  &gt;
+  <strong><%=h t("vizcmap_title") %></strong>
+</div>
+<% if @lang == "ja" %>
+<div class="lang-switch">[ <strong>日本語</strong> | <a href="./?lang=en">English</a> ]</div>
+<% else %>
+<div class="lang-switch">[ <a href="./?lang=ja">日本語</a> | <strong>English</strong> ]</div>
+<% end %>
+<div class="last-update"><%=h t("date_available") %>: 2010-08-21</div>
+<!-- hhmts start --> 
+<div class="last-update"><%=h t("last_modified") %>: 2014-08-28</div>
+<!-- hhmts end -->
+<h1>VizCMap</h1>
+<% if @merged_dot %>
+<div id="result">
+<pre id="merged_dot"><%=h @merged_dot %></pre>
+</div>
+<div id="result_img">
+<a target="_blank" href="./vizcmap.cgi?id=<%=h @md5 %>&amp;format=png" title="<%=h t("enlarge_image") %>">
+<img src="./vizcmap.cgi?id=<%=h @md5 %>&amp;format=png" />
+</a>
+</div>
+<hr>
+<h2><%=h t("unified_graph_properties") %></h2>
+<div class="analysis">
+<h3><%=h t("pre_concept_map") %></h3>
+<ul>
+  <li><%=h t("nodes") %>: <%=h @statistics[ :pre ].node_count %>
+  <li><%=h t("links") %>: <%=h @statistics[ :pre ].edge_count %>
+  <li><%=h t("link_labels") %>: <%=h @statistics[ :pre ].edge_labels.size %>
+  <li><%=h t("distances_from_center_node") %>
+      (<%=h t("average") %>: <%=h "%.3f" % @statistics[ :pre ].distance_average %>):
+  <ul>
+    <% pre_dists = @statistics[ :pre ].distance_count
+       pre_dists.keys.sort.each do |i| %>
+    <li><%=h t("distance") %><%=h i %>: <%=h pre_dists[ i ].size %>
+    <% end %>
+  </ul>
+</ul>
+<h3><%=h t("post_concept_map") %></h3>
+<ul>
+  <li><%=h t("nodes") %>: <%=h @statistics[ :post ].node_count %>
+  <li><%=h t("links") %>: <%=h @statistics[ :post ].edge_count %>
+  <li><%=h t("link_labels") %>: <%=h @statistics[ :post ].edge_labels.size %>
+  <li><%=h t("distances_from_center_node") %>
+      (<%=h t("average") %>: <%=h "%.3f" % @statistics[ :post ].distance_average %>):
+  <ul>
+    <% post_dists = @statistics[ :post ].distance_count
+       post_dists.keys.sort.each do |i| %>
+    <li><%=h t("distance") %><%=h i %>: <%=h post_dists[ i ].size %>
+    <% end %>
+</ul>
+</div>
+<div class="analysis">
+<h3><%=h t("unified_graph") %></h3>
+<ul>
+  <li><%=h t("nodes") %>:
+  <ul>
+    <li><%=h t("common_nodes") %>: <%=h @statistics[:nodes][:common].size %>
+    <li><%=h t("lost_nodes") %>: <%=h @statistics[:nodes][:lost].size %>
+    <li><%=h t("new_nodes") %>: <%=h @statistics[:nodes][:new].size %>
+  </ul>
+  <li><%=h t("links") %>:
+  <ul>
+    <li><%=h t("common_links") %>: <%=h @statistics[:links][:common].size %>
+    <li><%=h t("lost_links") %>: <%=h @statistics[:links][:lost].size %>
+    <li><%=h t("new_links") %>: <%=h @statistics[:links][:new].size %>
+  </ul>
+  <li><%=h t("link_labels") %>:
+  <ul>
+    <li><%=h t("common_link_labels") %>: <%=h @statistics[:link_labels][:common].size %>
+    <li><%=h t("lost_link_labels") %>: <%=h @statistics[:link_labels][:lost].size %>
+    <li><%=h t("new_link_labels") %>: <%=h @statistics[:link_labels][:new].size %>
+  </ul>
+  <li><%=h t("ammount_of_changes") %>:
+  <ul>
+    <% dists = ( post_dists.keys + pre_dists.keys ).sort.uniq
+       dists.each do |i| %>
+    <li><%=h t("distance") %><%=h i %>: <%=h post_dists[i].size - pre_dists[i].size %>
+    <% end %>
+  </ul>
+</ul>
+</div>
+<hr>
+<% end %>
+<form action="./vizcmap.cgi" method="POST">
+<div class="form">
+<label for="pre_cmap">Pre-CMap:</label><br>
+<textarea name="pre_cmap" rows="10" cols="80">
+<% if pre_dot.nil? or pre_dot.empty? %>
+<%=h DEFAULT_PRE_DOT %>
+<% else %>
+<%=h @pre_dot %>
+<% end %>
+</textarea>
+<label for="post_cmap">Post-CMap:</label><br>
+<textarea name="post_cmap" rows="10" cols="80">
+<% if post_dot.nil? or post_dot.empty? %>
+<%=h DEFAULT_POST_DOT %>
+<% else %>
+<%=h @post_dot %>
+<% end %>
+</textarea>
+<label for="format"><%=h t("display_format") %></label>
+<select name="format">
+  <option>html</option>
+  <option>png</option>
+</select><br>
+<input type="submit" value="<%=h t("submit") %>">
+<input type="reset" value="<%=h t("clear") %>">
+<input type="hidden" value="<%=h @lang %>">
+</div>
+</form>
+<hr>
+<div class="breadcrumb">
+  <a href="<%=h t("cres_url") %>"><%=h t("cres") %></a>
+  &gt;
+  <a href="<%=h t("vizcmap_url") %>"><%=h t("vizcmap") %></a>
+  &gt;
+  <strong><%=h t("vizcmap_title") %></strong>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-389547-3");
+pageTracker._trackPageview();
+</script>
+</body>
+</html>
+</html>
+<!--
+Local Variables:
+html-helper-timestamp-template: "\n<div class=\"last-update\"><%=h t(:last_modified) %>: %Y-%m-%d</div>\n"
+end:
+-->
