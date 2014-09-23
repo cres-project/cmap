@@ -5,7 +5,7 @@ $:.unshift File.dirname(__FILE__)
 require "graph.rb"
 
 class DirectedGraph
-  def to_node_pairs( name )
+  def to_node_pairs( name = nil )
     str = %W[ Cmap node1 node2 link_label category category_node1 category_node2 ].join( "\t" )
     str << "\n"
     self.each do |n1|
@@ -20,8 +20,10 @@ class DirectedGraph
   end
 end
 
-ARGV.each do |f|
-  g = DirectedGraph.load_dot2( open(f) )
-  basename = File.basename( f, ".dot" )
-  puts g.to_node_pairs( basename )
+if $0 == __FILE__
+  ARGV.each do |f|
+    g = DirectedGraph.load_dot2( open(f) )
+    basename = File.basename( f, ".dot" )
+    puts g.to_node_pairs( basename )
+  end
 end
