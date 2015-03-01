@@ -31,4 +31,15 @@ ARGV.each do |f|
    count.keys.sort.each do |i|
       puts [ "dist#{i}", count[i].size, count[i].join(", ") ].join( "\t" )
    end
+   count = {}
+   g.nodes.each do |n|
+      children = g.edges_to[n]
+      children_size = 0
+      children_size = children.size if children
+      count[ children_size ] ||= []
+      count[ children_size ] << n
+   end
+   count.keys.sort.each do |i|
+      puts [ "children_size #{i}", count[i].size, count[i].join(", ") ].join( "\t" )
+   end
 end
