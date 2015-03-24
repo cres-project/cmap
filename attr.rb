@@ -39,7 +39,11 @@ ARGV.each do |f|
       count[ children_size ] ||= []
       count[ children_size ] << n
    end
-   count.keys.sort.each do |i|
-      puts [ "children_size #{i}", count[i].size, count[i].join(", ") ].join( "\t" )
+   ( 0..count.keys.max ).each do |i|
+      if count[i]
+         puts [ "children_size #{i}", count[i].size, count[i].join(", ") ].join( "\t" )
+      else 
+         puts "children_size #{i}\t0" if not count[i]
+      end
    end
 end
